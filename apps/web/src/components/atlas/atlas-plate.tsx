@@ -18,7 +18,11 @@ export function AtlasPlate({ kingdoms = KINGDOMS }: { kingdoms?: readonly Kingdo
     <svg
       viewBox={`0 0 ${VIEW} ${VIEW}`}
       className="h-auto w-full"
-      role="img"
+      // `role="group"`, not `role="img"`: the capitals are real links, and a node
+      // marked as an image is a leaf in the accessibility tree — the links inside
+      // it stay tabbable while being invisible to a screen reader. This plate is a
+      // labelled group of hotspots, and that is exactly what it is.
+      role="group"
       aria-label="Map of the twelve kingdoms, plotted by capital"
     >
       <title>The twelve kingdoms of Nooreign</title>

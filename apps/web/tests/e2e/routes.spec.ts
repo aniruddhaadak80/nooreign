@@ -24,10 +24,17 @@ test.describe("generated routes", () => {
 
   test("the chronicle machine scrubs years", async ({ page }) => {
     await page.goto("/chronicle");
-    const slider = page.getByLabel(/selected year/i);
+    const slider = page.getByTestId("year-slider");
+    const display = page.getByTestId("year-display");
     await expect(slider).toBeVisible();
-    await slider.fill("1986");
-    await expect(page.getByText(/Asilomar/i).first()).toBeVisible({ timeout: 10_000 });
+    await expect(display).toContainText("2026");
+
+    // A range input is driven by keyboard or by a real drag, not by `fill`.
+    await slider.focus();
+    for (let i = 0; i < 40; i += 1) await slider.press("ArrowLeft");
+
+    await expect(display).toContainText("1986", { timeout: 10_000 });
+    await expect(page.getByText(/Asilomar/i).first()).toBeVisible();
   });
 
   test("the observatory renders the coverage matrix", async ({ page }) => {
@@ -38,8 +45,7 @@ test.describe("generated routes", () => {
 
   test("a dilemma page scores its options on six axes", async ({ page }) => {
     await page.goto("/dilemmas");
-    const firstCard = page.locator("a").filter({ hasText: /options ·/ }).first();
-    await firstCard.click();
+    await page.getByRole("link", { name: /options ·/ }).first().click();
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
     for (const axis of ["welfare", "rights", "virtue", "care", "justice", "agency"]) {
       await expect(page.getByRole("columnheader", { name: axis })).toBeVisible();
@@ -55,7 +61,7 @@ test.describe("generated routes", () => {
 
   test("an experiment bench renders and responds", async ({ page }) => {
     await page.goto("/experiments");
-    await page.locator("a").filter({ hasText: /sweep/i }).first().click();
+    await page.getByRole("link", { name: /sweep/i }).first().click();
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
     await expect(page.getByText(/phase:/)).toBeVisible({ timeout: 15_000 });
   });

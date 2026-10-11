@@ -190,12 +190,14 @@ export function CouncilChamber({
       ) : null}
 
       {/* ------------------------------- verdict ------------------------------ */}
-      <section className="plate rounded-realm p-8">
+      <section className="plate rounded-realm p-8" data-testid="verdict">
         <div className="flex flex-wrap items-start justify-between gap-6">
           <div>
             <p className="eyebrow">Verdict — {result.dilemmaTitle}</p>
-            <h2 className="serif mt-3 text-3xl leading-tight text-gold">{labelFor(result, result.winnerId)}</h2>
-            <p className="mt-3 font-mono text-xs text-parchment-dim/80">
+            <h2 className="serif mt-3 text-3xl leading-tight text-gold" data-testid="verdict-winner">
+              {labelFor(result, result.winnerId)}
+            </h2>
+            <p className="mt-3 font-mono text-xs text-parchment-dim/80" data-testid="verdict-meta">
               margin {result.margin.toFixed(3)} · confidence {result.confidence.toFixed(3)} · seed{" "}
               {result.seed} · decided on <span className="text-gold">{result.decidingAxis}</span>
             </p>

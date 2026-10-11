@@ -93,7 +93,12 @@ export default function LandingPage() {
 
       {/* ---------------------------------------------------------------- */}
       <section>
-        <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-realm border border-abyss-border bg-abyss-border sm:grid-cols-3 lg:grid-cols-6">
+        {/*
+          A list, not a definition list: a `<dl>` may only contain `dt`/`dd`
+          groups, and each stat carries a descriptive note alongside its value.
+          The note belongs inside the `li`, which is where the semantics allow it.
+        */}
+        <ul className="grid grid-cols-2 gap-px overflow-hidden rounded-realm border border-abyss-border bg-abyss-border sm:grid-cols-3 lg:grid-cols-6">
           {[
             { label: "kingdoms", value: ATLAS_STATS.kingdoms, note: "schools of thought" },
             { label: "advisors", value: ATLAS_STATS.advisors, note: "on the courts" },
@@ -102,13 +107,13 @@ export default function LandingPage() {
             { label: "techniques", value: ATLAS_STATS.techniques, note: "stack towers" },
             { label: "glossary", value: ATLAS_STATS.glossary, note: "terms defined" },
           ].map((stat) => (
-            <div key={stat.label} className="bg-abyss px-5 py-6">
-              <dt className="eyebrow">{stat.label}</dt>
-              <dd className="serif mt-2 text-3xl text-parchment tabular">{stat.value}</dd>
+            <li key={stat.label} className="bg-abyss px-5 py-6">
+              <p className="eyebrow">{stat.label}</p>
+              <p className="serif mt-2 text-3xl text-parchment tabular">{stat.value}</p>
               <p className="mt-1 text-xs text-parchment-dim/70">{stat.note}</p>
-            </div>
+            </li>
           ))}
-        </dl>
+        </ul>
       </section>
 
       {/* ---------------------------------------------------------------- */}

@@ -40,14 +40,16 @@ export function ChronicleMachine({ eras, techniques }: { eras: readonly Era[]; t
             className="serif text-4xl text-gold tabular"
             aria-live="polite"
             aria-label={`Selected year ${formatYear(year)}`}
+            data-testid="year-display"
           >
             {formatYear(year)}
           </output>
         </div>
 
         <label className="mt-6 block">
-          <span className="sr-only">Year</span>
+          <span className="sr-only">Scrub the year</span>
           <input
+            data-testid="year-slider"
             type="range"
             min={ordered[0]?.startYear ?? -500}
             max={2026}
