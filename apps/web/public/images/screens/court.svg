@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800" role="img" >
+  <title>Nooreign — /court</title>
+  <rect width="1280" height="800" fill="#070B18" />
+  <rect x="0" y="0" width="1280" height="44" fill="#0E1730" />
+  <circle cx="26" cy="22" r="5" fill="#C8483F" opacity="0.8" />
+  <circle cx="46" cy="22" r="5" fill="#D9A441" opacity="0.8" />
+  <circle cx="66" cy="22" r="5" fill="#4FA88B" opacity="0.8" />
+  <rect x="96" y="12" width="1100" height="20" rx="10" fill="#070B18" stroke="#1E2C4D" />
+  <text x="112" y="26" font-family="'JetBrains Mono', monospace" font-size="11" fill="#B9AE99">nooreign.vercel.app/court</text>
+  <rect x="40" y="70" width="1200" height="110" rx="10" fill="#0E1730" fill-opacity="0.7" stroke="#1E2C4D" />
+  <text x="60" y="98" font-family="'JetBrains Mono', Consolas, monospace" font-size="12" letter-spacing="3.4" fill="#D9A441">THE COURT — TWENTY-EIGHT ADVISORS IN TWELVE COURTS</text>
+
+  <text x="64" y="120" font-family="Inter, sans-serif" font-size="15" fill="#B9AE99">Nobody here is a language model. Each advisor is a six-axis weight vector and four argument moves.</text>
+  <rect x="64" y="210" width="552" height="116" rx="10" fill="#0E1730" fill-opacity="0.7" stroke="#1E2C4D" />
+  <text x="84" y="238" font-family="'JetBrains Mono', Consolas, monospace" font-size="12" letter-spacing="3.4" fill="#D9A441"></text>
+
+  <circle cx="108" cy="268" r="24" fill="#5A6FD6" opacity="0.18" />
+  <text x="108" y="274" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#5A6FD6">I</text>
+  <text x="148" y="258" font-family="Georgia, serif" font-size="19" fill="#EDE4D3">Immanuel Kant</text>
+  <text x="148" y="280" font-family="'JetBrains Mono', monospace" font-size="10" fill="#D9A441">categorical imperative</text>
+  <text x="148" y="304" font-family="Inter, sans-serif" font-size="12" fill="#B9AE99">weight 0.80 · leans on rights, agency</text>
+  <rect x="664" y="350" width="552" height="116" rx="10" fill="#0E1730" fill-opacity="0.7" stroke="#1E2C4D" />
+  <text x="684" y="378" font-family="'JetBrains Mono', Consolas, monospace" font-size="12" letter-spacing="3.4" fill="#D9A441"></text>
+
+  <circle cx="708" cy="408" r="24" fill="#C8483F" opacity="0.18" />
+  <text x="708" y="414" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#C8483F">J</text>
+  <text x="748" y="398" font-family="Georgia, serif" font-size="19" fill="#EDE4D3">Jeremy Bentham</text>
+  <text x="748" y="420" font-family="'JetBrains Mono', monospace" font-size="10" fill="#D9A441">the felt interests table</text>
+  <text x="748" y="444" font-family="Inter, sans-serif" font-size="12" fill="#B9AE99">weight 0.69 · leans on welfare, justice</text>
+  <rect x="64" y="350" width="552" height="116" rx="10" fill="#0E1730" fill-opacity="0.7" stroke="#1E2C4D" />
+  <text x="84" y="378" font-family="'JetBrains Mono', Consolas, monospace" font-size="12" letter-spacing="3.4" fill="#D9A441"></text>
+
+  <circle cx="108" cy="408" r="24" fill="#D9532F" opacity="0.18" />
+  <text x="108" y="414" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#D9532F">M</text>
+  <text x="148" y="398" font-family="Georgia, serif" font-size="19" fill="#EDE4D3">Mozi</text>
+  <text x="148" y="420" font-family="'JetBrains Mono', monospace" font-size="10" fill="#D9A441">the impartiality test</text>
+  <text x="148" y="444" font-family="Inter, sans-serif" font-size="12" fill="#B9AE99">weight 0.58 · leans on justice, care</text>
+  <rect x="664" y="490" width="552" height="116" rx="10" fill="#0E1730" fill-opacity="0.7" stroke="#1E2C4D" />
+  <text x="684" y="518" font-family="'JetBrains Mono', Consolas, monospace" font-size="12" letter-spacing="3.4" fill="#D9A441"></text>
+
+  <circle cx="708" cy="548" r="24" fill="#7285EA" opacity="0.18" />
+  <text x="708" y="554" text-anchor="middle" font-family="Georgia, serif" font-size="20" fill="#7285EA">N</text>
+  <text x="748" y="538" font-family="Georgia, serif" font-size="19" fill="#EDE4D3">Nick Bostrom</text>
+  <text x="748" y="560" font-family="'JetBrains Mono', monospace" font-size="10" fill="#D9A441">the orthogonality thesis</text>
+  <text x="748" y="584" font-family="Inter, sans-serif" font-size="12" fill="#B9AE99">weight 0.47 · leans on rights, virtue</text>
+  <rect x="0" y="760" width="1280" height="40" fill="#0E1730" opacity="0.6" />
+  <text x="24" y="784" font-family="'JetBrains Mono', monospace" font-size="11" fill="#B9AE99" opacity="0.8">deterministic · seed 2406 · no api keys</text>
+</svg>

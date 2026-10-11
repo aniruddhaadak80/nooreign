@@ -1,0 +1,37 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "stream",
+  "globalEnv": [
+    "NODE_ENV",
+    "PORT",
+    "HOSTNAME",
+    "NOOREIGN_STANDALONE",
+    "NOOREIGN_SERVICE_URL",
+    "NEXT_PUBLIC_NOOREIGN_SERVICE_URL"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", "!**/*.md", "!**/*.test.ts", "!**/*.test.tsx"],
+      "outputs": [".next/**", "!.next/cache/**", "dist/**", "build/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "start": {
+      "dependsOn": ["build"],
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+      "dependsOn": ["^build"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"]
+    },
+    "test": {
+      "outputs": ["coverage/**"]
+    }
+  }
+}

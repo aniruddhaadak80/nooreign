@@ -1,0 +1,59 @@
+flowchart LR
+
+  commit["push or PR<br/>main, develop, or any branch"] --> ci
+
+  subgraph cijob [".github/workflows/ci.yml"]
+    direction TB
+    install["bun install --frozen-lockfile"]
+    quality["quality matrix<br/>ubuntu-latest + windows-latest"]
+    tc["bun run typecheck<br/>turbo typecheck -> tsc --noEmit per package"]
+    lint["bun run lint<br/>next lint --max-warnings=0 / eslint src"]
+    test["bun run test<br/>vitest run across packages/* and apps/web"]
+    build["bun run build<br/>turbo build -> next build"]
+    assets["asset-check.yml<br/>bun run assets then git diff --exit-code"]
+    e2e["e2e job (needs quality)<br/>bun run e2e:install then bun run test:e2e apps/web/tests/e2e"]
+    scale["scale job<br/>bun run loc --json, fails below 90% of LOC_BASELINE"]
+    python["python job<br/>pytest services/agents/tests -q ; ruff check services/agents"]
+    rust["rust job<br/>cargo test + cargo clippy -- -D warnings<br/>on crates/engine/Cargo.toml"]
+    secrets["secrets-scan job<br/>git grep over full history for credential shapes"]
+  end
+
+  commit --> install --> quality
+  quality --> tc --> lint --> test --> build
+
+  commit --> assets
+  build --> e2e
+  test --> scale
+  test --> python
+  test --> rust
+  commit --> secrets
+
+  build -->|"green on main"| vercelEdge
+  build -->|"docker build ."| dockerEdge
+  build -->|"fly deploy"| flyEdge
+  build -->|"render deploy"| renderEdge
+
+  vercelEdge ==> vercel
+  dockerEdge ==> docker
+  flyEdge ==> fly
+  renderEdge ==> render
+
+  subgraph targets ["Deployment targets — all from the same artefact"]
+    direction TB
+    vercel["Vercel<br/>deploy-vercel.yml on push to main<br/>vercel pull -> vercel build --prod -> vercel deploy --prebuilt"]
+    docker["Docker<br/>3-stage Dockerfile, output: standalone<br/>runner: oven/bun:1.3-slim, CMD bun apps/web/server.js<br/>HEALTHCHECK hits /api/healthz"]
+    fly["Fly.io<br/>fly.toml (planned)<br/>no state: the atlas has no database"]
+    render["Render<br/>render.yaml (planned)<br/>same image as Docker"]
+  end
+
+  vercel --> url["https://nooreign.vercel.app"]
+  docker --> url2["container on any host<br/>NOOREIGN_SERVICE_URL may stay empty"]
+  fly --> url3["fly deploy"]
+  render --> url4["render deploy"]
+
+  tag["push tag vX.Y.Z"] --> release[".github/workflows/release.yml<br/>verify tag == package.json version<br/>bun run build ; bun run assets<br/>tar docs + seed + LICENSE + README + CHANGELOG<br/>sha256 ; gh release create"]
+
+  release --> promote["promote the verified build<br/>do not rebuild at deploy time"]
+
+  note["The deploy never reruns the tests.<br/>Every target consumes the artefact that CI already built,<br/>so what ships is what was verified."]
+  promote -.-> note

@@ -1,0 +1,25 @@
+# Default owner for everything not claimed below.
+* @aniruddhaadak80
+
+# The deliberation engine is the part of this repo that must stay deterministic.
+# Any change here is a change to what the council concludes.
+/packages/core/            @aniruddhaadak80
+/crates/engine/           @aniruddhaadak80
+/services/agents/         @aniruddhaadak80
+
+# Seed content — kingdoms, dilemmas, eras, advisors. Historical accuracy is
+# checked by hand, so content changes get the same eyes as engine changes.
+/packages/seed/           @aniruddhaadak80
+
+# Design system and the Next.js app.
+/packages/ui/             @aniruddhaadak80
+/packages/i18n/           @aniruddhaadak80
+/packages/sdk/            @aniruddhaadak80
+/packages/config/         @aniruddhaadak80
+/apps/web/                @aniruddhaadak80
+
+# Infrastructure: CI, release and deployment.
+/.github/                 @aniruddhaadak80
+/scripts/                 @aniruddhaadak80
+/Dockerfile               @aniruddhaadak80
+/docker-compose.yml       @aniruddhaadak80

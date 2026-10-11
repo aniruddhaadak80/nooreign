@@ -1,0 +1,90 @@
+# Nooreign — local stack.
+#
+# `docker compose up --build` gives you the full atlas on http://localhost:3000.
+#
+# There is NO DATABASE, and that is a design decision rather than an omission.
+# The entire atlas — twelve kingdoms, the eras, the dilemmas, the advisors, the
+# chronicle — is a committed, versioned TypeScript seed (packages/seed), baked
+# in at build time. A deliberation is a pure function of (seed, dilemmaId,
+# optionId) running in the browser. There is nothing to persist, nothing to
+# migrate, and no user data to lose, so adding Postgres here would be pure
+# operational cost for zero function. If a future feature introduces real
+# persistence (shared annotations, accounts), add the service then — not now.
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # Inlined into the client bundle at build time, so it must be present at
+      # BUILD time, not just at run time.
+      args:
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
+    image: nooreign/web:latest
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      # Server-side call into the Python deliberation service. Empty means the
+      # app skips the enrichment entirely — see below.
+      NOOREIGN_SERVICE_URL: http://agents:8080
+      NEXT_PUBLIC_NOOREIGN_SERVICE_URL: ""
+    depends_on:
+      agents:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      # Mirrors the HEALTHCHECK baked into the Dockerfile, so `docker compose ps`
+      # and orchestrators agree on what "healthy" means.
+      test:
+        - CMD
+        - bun
+        - --eval
+        - "const r = await fetch('http://127.0.0.1:3000/api/healthz'); if (!r.ok) process.exit(1)"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  agents:
+    # The optional deliberation service (FastAPI). Kept as its own image
+    # because it has a completely different toolchain from the Bun workspace.
+    build:
+      context: ./services/agents
+      dockerfile: Dockerfile
+    image: nooreign/agents:latest
+    ports:
+      - "8080:8080"
+    environment:
+      # 0.0.0.0 inside the container so `web` can reach it; binding to loopback
+      # would make it invisible to the compose network.
+      AGENTS_HOST: 0.0.0.0
+      AGENTS_PORT: "8080"
+      PYTHON_PORT: "8080"
+      PYTHONPATH: /srv
+      PYTHONUNBUFFERED: "1"
+      RUST_LOG: info
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8080/healthz', timeout=3).status == 200 else 1)"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+# ------------------------------------------------------------------------------
+# The site is FULLY FUNCTIONAL without the `agents` service.
+#
+# Deliberation itself is computed client-side by packages/core, which is why the
+# atlas works offline and why every verdict is reproducible from seed 2406. The
+# Python service only adds optional live commentary, tracing and experiment
+# playback. If it is down, the atlas degrades to local deliberation; it does not
+# go dark.
+#
+# To run the atlas alone, drop the `depends_on` block from `web` (or simply start
+# the web container directly) and leave NOOREIGN_SERVICE_URL empty.
+# ------------------------------------------------------------------------------

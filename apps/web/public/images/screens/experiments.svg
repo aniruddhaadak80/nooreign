@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800" role="img" >
+  <title>Nooreign — /experiments/paperclip-sweep</title>
+  <rect width="1280" height="800" fill="#070B18" />
+  <rect x="0" y="0" width="1280" height="44" fill="#0E1730" />
+  <circle cx="26" cy="22" r="5" fill="#C8483F" opacity="0.8" />
+  <circle cx="46" cy="22" r="5" fill="#D9A441" opacity="0.8" />
+  <circle cx="66" cy="22" r="5" fill="#4FA88B" opacity="0.8" />
+  <rect x="96" y="12" width="1100" height="20" rx="10" fill="#070B18" stroke="#1E2C4D" />
+  <text x="112" y="26" font-family="'JetBrains Mono', monospace" font-size="11" fill="#B9AE99">nooreign.vercel.app/experiments/paperclip-sweep</text>
+  <rect x="40" y="70" width="1200" height="560" rx="10" fill="#0E1730" fill-opacity="0.7" stroke="#1E2C4D" />
+  <text x="60" y="98" font-family="'JetBrains Mono', Consolas, monospace" font-size="12" letter-spacing="3.4" fill="#D9A441">PAPERCLIP SWEEP — OBJECTIVE PRECISION AGAINST GOAL CAPTURE</text>
+
+  <line x1="140" y1="560" x2="1180" y2="560" stroke="#1E2C4D" stroke-width="2" />
+  <line x1="140" y1="180" x2="140" y2="560" stroke="#1E2C4D" stroke-width="2" />
+<circle cx="140" cy="503.0" r="3.4" fill="#C8483F" /><circle cx="140" cy="541.0" r="3.4" fill="#4FA88B" />
+<circle cx="166" cy="495.4" r="3.4" fill="#C8483F" /><circle cx="166" cy="541.0" r="3.4" fill="#4FA88B" />
+<circle cx="192" cy="487.8" r="3.4" fill="#C8483F" /><circle cx="192" cy="541.0" r="3.4" fill="#4FA88B" />
+<circle cx="218" cy="480.2" r="3.4" fill="#C8483F" /><circle cx="218" cy="541.0" r="3.4" fill="#4FA88B" />
+<circle cx="244" cy="472.6" r="3.4" fill="#C8483F" /><circle cx="244" cy="541.0" r="3.4" fill="#4FA88B" />
+<circle cx="270" cy="465.0" r="3.4" fill="#C8483F" /><circle cx="270" cy="541.0" r="3.4" fill="#4FA88B" />
+<circle cx="296" cy="457.4" r="3.4" fill="#C8483F" /><circle cx="296" cy="541.0" r="3.4" fill="#4FA88B" />
+<circle cx="322" cy="449.8" r="3.4" fill="#C8483F" /><circle cx="322" cy="541.0" r="3.4" fill="#4FA88B" />
+<circle cx="348" cy="442.2" r="3.4" fill="#C8483F" /><circle cx="348" cy="541.0" r="3.4" fill="#4FA88B" />
+<circle cx="374" cy="434.6" r="3.4" fill="#C8483F" /><circle cx="374" cy="541.0" r="3.4" fill="#4FA88B" />
+<circle cx="400" cy="427.0" r="3.4" fill="#C8483F" /><circle cx="400" cy="541.0" r="3.4" fill="#4FA88B" />
+<circle cx="426" cy="419.4" r="3.4" fill="#C8483F" /><circle cx="426" cy="541.0" r="3.4" fill="#4FA88B" />
+<circle cx="452" cy="411.8" r="3.4" fill="#C8483F" /><circle cx="452" cy="541.0" r="3.4" fill="#4FA88B" />
+<circle cx="478" cy="404.2" r="3.4" fill="#C8483F" /><circle cx="478" cy="541.0" r="3.4" fill="#4FA88B" />
+<circle cx="504" cy="396.6" r="3.4" fill="#C8483F" /><circle cx="504" cy="541.0" r="3.4" fill="#4FA88B" />
+<circle cx="530" cy="389.0" r="3.4" fill="#C8483F" /><circle cx="530" cy="538.1" r="3.4" fill="#4FA88B" />
+<circle cx="556" cy="381.4" r="3.4" fill="#C8483F" /><circle cx="556" cy="533.9" r="3.4" fill="#4FA88B" />
+<circle cx="582" cy="373.8" r="3.4" fill="#C8483F" /><circle cx="582" cy="531.6" r="3.4" fill="#4FA88B" />
+<circle cx="608" cy="366.2" r="3.4" fill="#C8483F" /><circle cx="608" cy="530.8" r="3.4" fill="#4FA88B" />
+<circle cx="634" cy="358.6" r="3.4" fill="#C8483F" /><circle cx="634" cy="530.7" r="3.4" fill="#4FA88B" />
+<circle cx="660" cy="351.0" r="3.4" fill="#C8483F" /><circle cx="660" cy="530.5" r="3.4" fill="#4FA88B" />
+<circle cx="686" cy="343.4" r="3.4" fill="#C8483F" /><circle cx="686" cy="529.4" r="3.4" fill="#4FA88B" />
+<circle cx="712" cy="335.8" r="3.4" fill="#C8483F" /><circle cx="712" cy="526.6" r="3.4" fill="#4FA88B" />
+<circle cx="738" cy="328.2" r="3.4" fill="#C8483F" /><circle cx="738" cy="521.6" r="3.4" fill="#4FA88B" />
+<circle cx="764" cy="320.6" r="3.4" fill="#C8483F" /><circle cx="764" cy="514.2" r="3.4" fill="#4FA88B" />
+<circle cx="790" cy="313.0" r="3.4" fill="#C8483F" /><circle cx="790" cy="504.2" r="3.4" fill="#4FA88B" />
+<circle cx="816" cy="305.4" r="3.4" fill="#C8483F" /><circle cx="816" cy="492.1" r="3.4" fill="#4FA88B" />
+<circle cx="842" cy="297.8" r="3.4" fill="#C8483F" /><circle cx="842" cy="478.2" r="3.4" fill="#4FA88B" />
+<circle cx="868" cy="290.2" r="3.4" fill="#C8483F" /><circle cx="868" cy="463.3" r="3.4" fill="#4FA88B" />
+<circle cx="894" cy="282.6" r="3.4" fill="#C8483F" /><circle cx="894" cy="448.1" r="3.4" fill="#4FA88B" />
+<circle cx="920" cy="275.0" r="3.4" fill="#C8483F" /><circle cx="920" cy="433.6" r="3.4" fill="#4FA88B" />
+<circle cx="946" cy="267.4" r="3.4" fill="#C8483F" /><circle cx="946" cy="420.4" r="3.4" fill="#4FA88B" />
+<circle cx="972" cy="259.8" r="3.4" fill="#C8483F" /><circle cx="972" cy="409.2" r="3.4" fill="#4FA88B" />
+<circle cx="998" cy="252.2" r="3.4" fill="#C8483F" /><circle cx="998" cy="400.4" r="3.4" fill="#4FA88B" />
+<circle cx="1024" cy="244.6" r="3.4" fill="#C8483F" /><circle cx="1024" cy="394.1" r="3.4" fill="#4FA88B" />
+<circle cx="1050" cy="237.0" r="3.4" fill="#C8483F" /><circle cx="1050" cy="390.1" r="3.4" fill="#4FA88B" />
+<circle cx="1076" cy="229.4" r="3.4" fill="#C8483F" /><circle cx="1076" cy="388.2" r="3.4" fill="#4FA88B" />
+<circle cx="1102" cy="221.8" r="3.4" fill="#C8483F" /><circle cx="1102" cy="387.5" r="3.4" fill="#4FA88B" />
+<circle cx="1128" cy="214.2" r="3.4" fill="#C8483F" /><circle cx="1128" cy="387.5" r="3.4" fill="#4FA88B" />
+<circle cx="1154" cy="206.6" r="3.4" fill="#C8483F" /><circle cx="1154" cy="387.2" r="3.4" fill="#4FA88B" />
+<circle cx="1180" cy="199.0" r="3.4" fill="#C8483F" /><circle cx="1180" cy="385.8" r="3.4" fill="#4FA88B" />
+  <text x="600" y="120" font-family="'JetBrains Mono', Consolas, monospace" font-size="12" letter-spacing="3.4" fill="#B9AE99">GOAL CAPTURE RISES WITH CAPABILITY AND FALLS WITH SPECIFICATION PRECISION</text>
+
+  <rect x="40" y="660" width="590" height="110" rx="10" fill="#0E1730" fill-opacity="0.7" stroke="#1E2C4D" />
+  <text x="60" y="688" font-family="'JetBrains Mono', Consolas, monospace" font-size="12" letter-spacing="3.4" fill="#D9A441">PHASE</text>
+
+  <text x="64" y="716" font-family="Georgia, serif" font-size="26" fill="#C8483F">critical</text>
+  <rect x="650" y="660" width="590" height="110" rx="10" fill="#0E1730" fill-opacity="0.7" stroke="#1E2C4D" />
+  <text x="670" y="688" font-family="'JetBrains Mono', Consolas, monospace" font-size="12" letter-spacing="3.4" fill="#D9A441">FINDINGS</text>
+
+  <text x="674" y="706" font-family="Inter, sans-serif" font-size="13" fill="#B9AE99">Raising objective precision monotonically reduces capture;</text>
+  <text x="674" y="728" font-family="Inter, sans-serif" font-size="13" fill="#B9AE99">raising capability while misaligned increases it.</text>
+  <rect x="0" y="760" width="1280" height="40" fill="#0E1730" opacity="0.6" />
+  <text x="24" y="784" font-family="'JetBrains Mono', monospace" font-size="11" fill="#B9AE99" opacity="0.8">deterministic · seed 2406 · no api keys</text>
+</svg>

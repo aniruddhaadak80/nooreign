@@ -1,0 +1,116 @@
+%%{init: {"theme":"base","themeVariables":{"background":"#070B18","primaryColor":"#0E1730","primaryTextColor":"#EDE4D3","primaryBorderColor":"#D9A441","lineColor":"#5A6FD6","secondaryColor":"#4FA88B","tertiaryColor":"#C8483F","fontFamily":"Inter, ui-sans-serif, system-ui, sans-serif"}}}%%
+stateDiagram-v2
+  direction TB
+
+  [*] --> Idle
+
+  state "Idle — nothing convened" as Idle
+
+  state "Convene" as Convene
+  state "Seed guard" as Guard
+  state "Round 1 — positions" as Score
+  state "Round 2 — objections" as Object
+  state "Round 3 — appeals" as Appeal
+  state "Ballot + decision" as Ballot
+  state "Super-majority + dissent" as Quorum
+  state "Synthesis" as Synth
+  state "Narrate + trace" as Trace
+  state "Adjourn" as Adjourn
+
+  Idle --> Convene: runCouncil({ dilemma, advisors, kingdoms, seed })
+
+  state Guard {
+    [*] --> checkIdempotence
+    checkIdempotence: same (seed, ids) -> same stream?
+    checkIdempotence --> clampRounds: yes
+    clampRounds: rounds clamped to 1..3
+    clampRounds --> [*]
+  }
+
+  Convene --> Guard: seed + rounds + quorum resolved
+  Guard --> Score: weight every advisor<br/>weighAdvisor = 0.7 own + 0.3 kingdom
+
+  Score --> Object: rounds >= 2
+  Score --> Ballot: rounds == 1
+
+  state Score {
+    [*] --> scoreOptions
+    scoreOptions: scoreOptionWith(vector, option)<br/>= sum(weight x delta) / sum(weight)
+    scoreOptions --> addJitter: jitter = round((rng.next()*2 - 1) x 0.05, 4)
+    addJitter --> rank: sort by score, tie-break on optionId
+    rank --> [*]
+  }
+
+  Object --> Appeal: rounds >= 3
+  Object --> Ballot: rounds == 2
+
+  state Object {
+    [*] --> pickRival
+    pickRival: strongest option that is not my own
+    pickRival --> pickMove: matchingMoves() by dilemma tag
+    pickMove --> answer: objection answers whoever ranked that rival first
+    answer --> [*]
+  }
+
+  Appeal --> Ballot: always
+
+  state Appeal {
+    [*] --> losersOnly
+    losersOnly: only advisors whose top option lost
+    losersOnly --> conviction: conviction = closeness x move.weight
+    conviction: closeness = clamp(1 - margin / leaderTotal, 0, 1)
+    conviction --> [*]
+  }
+
+  state Ballot {
+    [*] --> tally
+    tally: weightedBallot — total, share, mean, votes, supporters
+    tally --> tiebreak: total, then mean, then lowest risk, then smallest id
+    tiebreak --> [*]
+  }
+
+  Ballot --> Quorum: winnerId, margin, confidence, participation
+
+  state Quorum {
+    [*] --> superMajority
+    superMajority: yes / (yes + no) >= 2/3 AND yes >= ceil(2/3 x advisors)
+    superMajority --> minority: dissenters ranked by gapToWinner
+    minority --> [*]
+  }
+
+  Quorum --> Synth: margin >= 0.25 -> draw from the minority
+
+  state Synth {
+    [*] --> pool
+    pool: close -> dissenting advisors' synthesis / appeal moves
+    pool --> fallback: decisive -> winning side's premise moves
+    fallback --> [*]
+  }
+
+  Synth --> Trace
+
+  state Trace {
+    [*] --> contributions
+    contributions: 6 x { axis, weight, delta, product }
+    contributions --> subtotal: subtotal = round(sum(products), 4)
+    subtotal --> total: total = round(subtotal + jitter, 4)
+    total --> narrative: 4..8 prose lines, every one derived from a number
+    narrative --> [*]
+  }
+
+  Trace --> Adjourn: CouncilResult
+  Adjourn --> Idle: result discarded or cached by (dilemmaId, seed, roster hash)
+
+  note right of Guard
+    No randomness outside createRng.
+    No wall-clock time.
+    No iteration-order dependence.
+    Identical inputs deep-equal.
+  end note
+
+  note right of Quorum
+    An advisor whose own top option
+    differs abstains by default, so
+    abstentions do not enter the ratio
+    but do count against the raw floor.
+  end note

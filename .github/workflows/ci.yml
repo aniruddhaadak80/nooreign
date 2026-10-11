@@ -1,0 +1,225 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+  workflow_dispatch:
+
+# Least privilege by default. Jobs that need to write artifacts use the
+# artifact/upload APIs, which work with `contents: read`.
+permissions:
+  contents: read
+
+# Superseded runs on the same ref are cancelled — they only burn minutes.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  BUN_VERSION: "1.3.14"
+  # Deterministic generation: every committed artefact must be reproducible
+  # from this seed (packages/seed/src/index.ts SEED = 2406).
+  NOOREIGN_SEED: "2406"
+
+jobs:
+  quality:
+    name: typecheck · lint · test · build (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      # This repo is developed primarily on Windows, so the Windows leg is not
+      # optional: path separators, CRLF and the Turbo/Next file watcher all
+      # behave differently there. Green on both is the bar.
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: ${{ env.BUN_VERSION }}
+
+      # --frozen-lockfile: CI must never resolve a new version. If the lockfile
+      # is stale relative to package.json, the job fails loudly instead of
+      # silently installing something different from what was reviewed.
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Typecheck
+        run: bun run typecheck
+
+      - name: Lint
+        run: bun run lint
+
+      - name: Test
+        run: bun run test
+
+      - name: Build
+        run: bun run build
+
+      - name: Upload build artefacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-${{ matrix.os }}
+          path: |
+            apps/web/.next/**
+            packages/*/dist/**
+          retention-days: 7
+          if-no-files-found: ignore
+
+  e2e:
+    name: Playwright e2e
+    needs: quality
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: ${{ env.BUN_VERSION }}
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      # Chromium only: the atlas is a single-page, no-native-module app, so the
+      # full browser matrix would triple CI time for no extra signal.
+      - name: Install Playwright browser
+        run: bun run e2e:install
+
+      # `bun run test:e2e` is `playwright test`. The positional path scopes the
+      # run to the e2e suite; the Playwright config is what boots the dev
+      # server, so no separate server step (and no port juggling) is needed.
+      - name: Run end-to-end tests
+        run: bun run test:e2e apps/web/tests/e2e
+
+      - name: Upload Playwright report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: |
+            playwright-report/**
+            test-results/**
+          retention-days: 7
+          if-no-files-found: ignore
+
+  scale:
+    name: scale guardrail (loc)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: ${{ env.BUN_VERSION }}
+
+      # The atlas is a scale-engineered repo: shrinking it is a regression even
+      # when every test still passes. This job fails if the total line count
+      # drops more than 10% below the committed baseline.
+      #
+      # HOW TO UPDATE THE BASELINE
+      #   Repo → Settings → Secrets and variables → Actions → Variables →
+      #   add/edit `LOC_BASELINE` (plain integer, no separators). Set it to the
+      #   number `bun run loc` prints, rounded DOWN to the nearest 10% so normal
+      #   refactors and deletions do not trip the guard.
+      #   The fallback below only applies when the variable is unset.
+      - name: Count lines
+        id: loc
+        run: bun run loc --json > loc-report.json
+
+      - name: Enforce scale floor
+        env:
+          BASELINE: ${{ vars.LOC_BASELINE }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          total="$(jq -r '.totalLines' loc-report.json)"
+          baseline="${BASELINE:-30029}"          # 30,029 lines at first release
+          floor=$(( baseline * 90 / 100 ))        # tolerate a 10% drop
+          echo "total lines : ${total}"
+          echo "baseline    : ${baseline}"
+          echo "floor (-10%): ${floor}"
+          if [ "${total}" -lt "${floor}" ]; then
+            echo "::error::Line count regressed: ${total} < ${floor}. The atlas is meant to grow. If this deletion was intentional, raise LOC_BASELINE in repo variables."
+            exit 1
+          fi
+
+      - name: Upload LOC report
+        uses: actions/upload-artifact@v4
+        with:
+          name: loc-report
+          path: loc-report.json
+          retention-days: 7
+
+  python:
+    name: python (services/agents)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: services/agents/pyproject.toml
+
+      - name: Install the agents service
+        run: pip install -e "services/agents[dev]"
+
+      - name: Test
+        run: pytest services/agents/tests -q
+
+      - name: Lint
+        run: ruff check services/agents
+
+  rust:
+    name: rust (crates/engine)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: crates/engine -> target
+
+      - name: Test
+        run: cargo test --manifest-path crates/engine/Cargo.toml
+
+      # -D warnings: a clean build is the contract for a crate whose output is
+      # compared byte-for-byte against a baseline.
+      - name: Clippy
+        run: cargo clippy --manifest-path crates/engine/Cargo.toml -- -D warnings
+
+  secrets-scan:
+    name: secrets scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Full history so a key deleted in the last commit is still caught.
+          fetch-depth: 0
+
+      # This repo holds no production secrets by design (see SECURITY.md), so a
+      # match here means somebody committed one. The pattern targets the
+      # shapes that actually get leaked: provider-prefixed keys and live Vercel
+      # tokens, plus high-entropy PEM private key blocks.
+      - name: Scan tracked files for credential patterns
+        shell: bash
+        run: |
+          set -euo pipefail
+          pattern='(gh[pousr]_[A-Za-z0-9]{16,}|github_pat_[A-Za-z0-9_]{20,}|AKIA[0-9A-Z]{16}|sk-[A-Za-z0-9]{20,}|xox[abprs]-[A-Za-z0-9-]{10,}|AIza[0-9A-Za-z_-]{30,}|-----BEGIN (RSA |EC |OPENSSH |PGP )?PRIVATE KEY-----|vercel_[A-Za-z0-9]{20,})'
+          if git grep -nIE "$pattern" -- . \
+            ':!*.lock' \
+            ':!bun.lock' \
+            ':!.github/workflows/*' \
+            ':!.env.example'; then
+            echo "::error::Potential secret committed. Revoke the key, then open a PR removing it — see SECURITY.md."
+            exit 1
+          fi
+          echo "No credential-shaped strings in tracked files."

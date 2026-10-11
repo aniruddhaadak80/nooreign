@@ -1,0 +1,71 @@
+# Keep the build context small and free of host artefacts, secrets and VCS
+# noise. Everything here is either rebuilt inside the image or irrelevant to the
+# Next.js standalone output.
+
+# dependencies / build output
+node_modules
+**/node_modules
+.next
+**/.next
+.turbo
+**/.turbo
+dist
+**/dist
+build
+**/build
+out
+target
+**/target
+*.tsbuildinfo
+
+# VCS / CI metadata
+.git
+.github
+.gitignore
+.gitattributes
+.vercel
+
+# env / secrets — the image must never bake credentials
+.env
+.env.*
+!.env.example
+
+# testing artefacts
+coverage
+**/coverage
+playwright-report
+test-results
+**/test-results
+.pytest_cache
+.ruff_cache
+
+# python
+services/agents/.venv
+**/.venv
+venv
+**/venv
+__pycache__
+**/__pycache__
+*.py[cod]
+
+# editors / os
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+
+# The Python agents service and Rust engine are NOT part of the web image; they
+# are built by their own service definitions (see docker-compose.yml).
+services
+crates
+
+# docs are documentation, not runtime. The Docker build does not need them.
+docs
+
+# README/LICENSE are fine to exclude too — nothing in the running image uses them.
+README.md
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+SECURITY.md
+SUPPORT.md
+CHANGELOG.md

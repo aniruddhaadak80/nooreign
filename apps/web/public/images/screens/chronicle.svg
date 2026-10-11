@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800" role="img" >
+  <title>Nooreign — /chronicle</title>
+  <rect width="1280" height="800" fill="#070B18" />
+  <rect x="0" y="0" width="1280" height="44" fill="#0E1730" />
+  <circle cx="26" cy="22" r="5" fill="#C8483F" opacity="0.8" />
+  <circle cx="46" cy="22" r="5" fill="#D9A441" opacity="0.8" />
+  <circle cx="66" cy="22" r="5" fill="#4FA88B" opacity="0.8" />
+  <rect x="96" y="12" width="1100" height="20" rx="10" fill="#070B18" stroke="#1E2C4D" />
+  <text x="112" y="26" font-family="'JetBrains Mono', monospace" font-size="11" fill="#B9AE99">nooreign.vercel.app/chronicle</text>
+  <rect x="40" y="70" width="1200" height="520" rx="10" fill="#0E1730" fill-opacity="0.7" stroke="#1E2C4D" />
+  <text x="60" y="98" font-family="'JetBrains Mono', Consolas, monospace" font-size="12" letter-spacing="3.4" fill="#D9A441">CHRONICLE — HOW WE ALIGNED</text>
+
+  <text x="64" y="130" font-family="Georgia, serif" font-size="30" fill="#EDE4D3">Scrub the year</text>
+  <text x="1150" y="130" text-anchor="end" font-family="Georgia, serif" font-size="34" fill="#D9A441">2026 CE</text>
+  <line x1="120" y1="470" x2="1200" y2="470" stroke="#1E2C4D" stroke-width="2" />
+  <line x1="120" y1="470" x2="120" y2="446" stroke="#D9A441" stroke-width="1" />
+  <line x1="147" y1="470" x2="147" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="174" y1="470" x2="174" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="201" y1="470" x2="201" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="228" y1="470" x2="228" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="255" y1="470" x2="255" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="282" y1="470" x2="282" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="309" y1="470" x2="309" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="336" y1="470" x2="336" y2="446" stroke="#D9A441" stroke-width="1" />
+  <line x1="363" y1="470" x2="363" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="390" y1="470" x2="390" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="417" y1="470" x2="417" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="444" y1="470" x2="444" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="471" y1="470" x2="471" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="498" y1="470" x2="498" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="525" y1="470" x2="525" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="552" y1="470" x2="552" y2="446" stroke="#D9A441" stroke-width="1" />
+  <line x1="579" y1="470" x2="579" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="606" y1="470" x2="606" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="633" y1="470" x2="633" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="660" y1="470" x2="660" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="687" y1="470" x2="687" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="714" y1="470" x2="714" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="741" y1="470" x2="741" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="768" y1="470" x2="768" y2="446" stroke="#D9A441" stroke-width="1" />
+  <line x1="795" y1="470" x2="795" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="822" y1="470" x2="822" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="849" y1="470" x2="849" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="876" y1="470" x2="876" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="903" y1="470" x2="903" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="930" y1="470" x2="930" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="957" y1="470" x2="957" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="984" y1="470" x2="984" y2="446" stroke="#D9A441" stroke-width="1" />
+  <line x1="1011" y1="470" x2="1011" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="1038" y1="470" x2="1038" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="1065" y1="470" x2="1065" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="1092" y1="470" x2="1092" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="1119" y1="470" x2="1119" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="1146" y1="470" x2="1146" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="1173" y1="470" x2="1173" y2="458" stroke="#1E2C4D" stroke-width="1" />
+  <line x1="1200" y1="470" x2="1200" y2="446" stroke="#D9A441" stroke-width="1" />
+  <circle cx="1200" cy="470" r="9" fill="#D9A441" />
+  <circle cx="132.8" cy="470" r="5" fill="#D9A441" />
+  <text x="132.8" y="440" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#B9AE99">Socratic method</text>
+  <circle cx="190.4" cy="470" r="5" fill="#6FA96F" />
+  <text x="190.4" y="440" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#B9AE99">Aristotle</text>
+  <circle cx="205.4" cy="470" r="5" fill="#8FA6C8" />
+  <text x="205.4" y="440" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#B9AE99">The Stoa</text>
+  <circle cx="1093.7" cy="470" r="5" fill="#5A6FD6" />
+  <text x="1093.7" y="440" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#B9AE99">Kant's Critique</text>
+  <circle cx="1097.1" cy="470" r="5" fill="#C8483F" />
+  <text x="1097.1" y="440" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#B9AE99">Bentham's Principles</text>
+  <circle cx="1147.5" cy="470" r="5" fill="#4C9BE8" />
+  <text x="1147.5" y="440" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#B9AE99">Pragmatism</text>
+  <circle cx="1165.0" cy="470" r="5" fill="#5A6FD6" />
+  <text x="1165.0" y="440" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#B9AE99">Cybernetics</text>
+  <circle cx="1181.2" cy="470" r="5" fill="#C8483F" />
+  <text x="1181.2" y="440" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#B9AE99">Asilomar</text>
+  <circle cx="1194.5" cy="470" r="5" fill="#D9A441" />
+  <text x="1194.5" y="440" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#B9AE99">RLHF</text>
+  <circle cx="1196.6" cy="470" r="5" fill="#4FA88B" />
+  <text x="1196.6" y="440" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="9" fill="#B9AE99">Constitutional AI</text>
+  <rect x="40" y="620" width="590" height="150" rx="10" fill="#0E1730" fill-opacity="0.7" stroke="#1E2C4D" />
+  <text x="60" y="648" font-family="'JetBrains Mono', Consolas, monospace" font-size="12" letter-spacing="3.4" fill="#D9A441">ALIGNMENT STACK AVAILABLE</text>
+
+  <text x="64" y="700" font-family="Georgia, serif" font-size="28" fill="#EDE4D3">20 / 20</text>
+  <text x="64" y="730" font-family="Inter, sans-serif" font-size="13" fill="#B9AE99">techniques in existence by the end of this era</text>
+  <rect x="650" y="620" width="590" height="150" rx="10" fill="#0E1730" fill-opacity="0.7" stroke="#1E2C4D" />
+  <text x="670" y="648" font-family="'JetBrains Mono', Consolas, monospace" font-size="12" letter-spacing="3.4" fill="#D9A441">MOST RECENT MILESTONE</text>
+
+  <text x="674" y="690" font-family="'JetBrains Mono', monospace" font-size="12" fill="#D9A441">2024</text>
+  <text x="674" y="720" font-family="Inter, sans-serif" font-size="15" fill="#EDE4D3">EU AI Act enters into force</text>
+  <text x="674" y="744" font-family="Inter, sans-serif" font-size="13" fill="#B9AE99">international law becomes an alignment technique</text>
+  <rect x="0" y="760" width="1280" height="40" fill="#0E1730" opacity="0.6" />
+  <text x="24" y="784" font-family="'JetBrains Mono', monospace" font-size="11" fill="#B9AE99" opacity="0.8">deterministic · seed 2406 · no api keys</text>
+</svg>

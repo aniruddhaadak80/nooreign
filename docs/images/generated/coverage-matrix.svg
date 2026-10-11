@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="842" height="760" viewBox="0 0 842 760" role="img">
+  <title>Coverage of the moral axes by alignment technique</title>
+  <rect width="842" height="760" fill="#070B18" />
+  <rect x="40" y="38" width="3" height="46" fill="#D9A441" />
+  <text x="58" y="64" font-family="Georgia, serif" font-size="22" fill="#EDE4D3" text-anchor="start" font-weight="400">Coverage of the moral axes</text>
+  <text x="58" y="86" font-family="Inter, sans-serif" font-size="12" fill="#B9AE99" text-anchor="start" font-weight="400">Every technique in the alignment stack, by the axes it claims to address</text>
+  <text x="296" y="134" font-family="Consolas, monospace" font-size="12" fill="#D9A441" text-anchor="middle" font-weight="400">welfare</text>
+  <text x="388" y="134" font-family="Consolas, monospace" font-size="12" fill="#D9A441" text-anchor="middle" font-weight="400">rights</text>
+  <text x="480" y="134" font-family="Consolas, monospace" font-size="12" fill="#D9A441" text-anchor="middle" font-weight="400">virtue</text>
+  <text x="572" y="134" font-family="Consolas, monospace" font-size="12" fill="#D9A441" text-anchor="middle" font-weight="400">care</text>
+  <text x="664" y="134" font-family="Consolas, monospace" font-size="12" fill="#D9A441" text-anchor="middle" font-weight="400">justice</text>
+  <text x="756" y="134" font-family="Consolas, monospace" font-size="12" fill="#D9A441" text-anchor="middle" font-weight="400">agency</text>
+  <text x="40" y="167" font-family="Inter, sans-serif" font-size="12" fill="#EDE4D3" text-anchor="start" font-weight="400">Hard Constraints</text>
+  <text x="40" y="180" font-family="Inter, sans-serif" font-size="9" fill="#B9AE9988" text-anchor="start" font-weight="400">training · 1942</text>
+  <rect x="253" y="152" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="345" y="152" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.48" />
+  <rect x="437" y="152" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.48" />
+  <rect x="529" y="152" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.48" />
+  <rect x="621" y="152" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="713" y="152" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <text x="40" y="193" font-family="Inter, sans-serif" font-size="12" fill="#EDE4D3" text-anchor="start" font-weight="400">Data Curation &amp; Filtering</text>
+  <text x="40" y="206" font-family="Inter, sans-serif" font-size="9" fill="#B9AE9988" text-anchor="start" font-weight="400">training · 2019</text>
+  <rect x="253" y="178" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="345" y="178" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.54" />
+  <rect x="437" y="178" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.54" />
+  <rect x="529" y="178" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="621" y="178" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="713" y="178" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <text x="40" y="219" font-family="Inter, sans-serif" font-size="12" fill="#EDE4D3" text-anchor="start" font-weight="400">Imitation Learning</text>
+  <text x="40" y="232" font-family="Inter, sans-serif" font-size="9" fill="#B9AE9988" text-anchor="start" font-weight="400">training · 1989</text>
+  <rect x="253" y="204" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="345" y="204" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="437" y="204" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.56" />
+  <rect x="529" y="204" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="621" y="204" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="713" y="204" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.56" />
+  <text x="40" y="245" font-family="Inter, sans-serif" font-size="12" fill="#EDE4D3" text-anchor="start" font-weight="400">Preference Learning</text>
+  <text x="40" y="258" font-family="Inter, sans-serif" font-size="9" fill="#B9AE9988" text-anchor="start" font-weight="400">training · 2017</text>
+  <rect x="253" y="230" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.57" />
+  <rect x="345" y="230" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="437" y="230" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.57" />
+  <rect x="529" y="230" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="621" y="230" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="713" y="230" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.57" />
+  <text x="40" y="271" font-family="Inter, sans-serif" font-size="12" fill="#EDE4D3" text-anchor="start" font-weight="400">Reward Modelling</text>
+  <text x="40" y="284" font-family="Inter, sans-serif" font-size="9" fill="#B9AE9988" text-anchor="start" font-weight="400">training · 2021</text>
+  <rect x="253" y="256" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.55" />
+  <rect x="345" y="256" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="437" y="256" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.55" />
+  <rect x="529" y="256" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.55" />
+  <rect x="621" y="256" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="713" y="256" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <text x="40" y="297" font-family="Inter, sans-serif" font-size="12" fill="#EDE4D3" text-anchor="start" font-weight="400">Constitutional AI</text>
+  <text x="40" y="310" font-family="Inter, sans-serif" font-size="9" fill="#B9AE9988" text-anchor="start" font-weight="400">oversight · 2022</text>
+  <rect x="253" y="282" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="345" y="282" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.43" />
+  <rect x="437" y="282" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.43" />
+  <rect x="529" y="282" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="621" y="282" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.43" />
+  <rect x="713" y="282" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <text x="40" y="323" font-family="Inter, sans-serif" font-size="12" fill="#EDE4D3" text-anchor="start" font-weight="400">Over-optimisation Guards</text>
+  <text x="40" y="336" font-family="Inter, sans-serif" font-size="9" fill="#B9AE9988" text-anchor="start" font-weight="400">evaluation · 2023</text>
+  <rect x="253" y="308" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.41" />
+  <rect x="345" y="308" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="437" y="308" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.41" />
+  <rect x="529" y="308" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="621" y="308" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="713" y="308" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <text x="40" y="349" font-family="Inter, sans-serif" font-size="12" fill="#EDE4D3" text-anchor="start" font-weight="400">Saliency Probes</text>
+  <text x="40" y="362" font-family="Inter, sans-serif" font-size="9" fill="#B9AE9988" text-anchor="start" font-weight="400">interpretability · 2013</text>
+  <rect x="253" y="334" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="345" y="334" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.45" />
+  <rect x="437" y="334" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="529" y="334" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="621" y="334" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="713" y="334" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.45" />
+  <text x="40" y="375" font-family="Inter, sans-serif" font-size="12" fill="#EDE4D3" text-anchor="start" font-weight="400">Sparse Autoencoders</text>
+  <text x="40" y="388" font-family="Inter, sans-serif" font-size="9" fill="#B9AE9988" text-anchor="start" font-weight="400">interpretability · 2023</text>
+  <rect x="253" y="360" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="345" y="360" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.34" />
+  <rect x="437" y="360" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.34" />
+  <rect x="529" y="360" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="621" y="360" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="713" y="360" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.34" />
+  <text x="40" y="401" font-family="Inter, sans-serif" font-size="12" fill="#EDE4D3" text-anchor="start" font-weight="400">Activation Steering</text>
+  <text x="40" y="414" font-family="Inter, sans-serif" font-size="9" fill="#B9AE9988" text-anchor="start" font-weight="400">interpretability · 2021</text>
+  <rect x="253" y="386" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="345" y="386" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.40" />
+  <rect x="437" y="386" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="529" y="386" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="621" y="386" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="713" y="386" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.40" />
+  <text x="40" y="427" font-family="Inter, sans-serif" font-size="12" fill="#EDE4D3" text-anchor="start" font-weight="400">Scalable Oversight</text>
+  <text x="40" y="440" font-family="Inter, sans-serif" font-size="9" fill="#B9AE9988" text-anchor="start" font-weight="400">oversight · 2018</text>
+  <rect x="253" y="412" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="345" y="412" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.33" />
+  <rect x="437" y="412" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="529" y="412" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="621" y="412" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.33" />
+  <rect x="713" y="412" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.33" />
+  <text x="40" y="453" font-family="Inter, sans-serif" font-size="12" fill="#EDE4D3" text-anchor="start" font-weight="400">Debate</text>
+  <text x="40" y="466" font-family="Inter, sans-serif" font-size="9" fill="#B9AE9988" text-anchor="start" font-weight="400">oversight · 2018</text>
+  <rect x="253" y="438" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.31" />
+  <rect x="345" y="438" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="437" y="438" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.31" />
+  <rect x="529" y="438" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="621" y="438" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="713" y="438" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.31" />
+  <text x="40" y="479" font-family="Inter, sans-serif" font-size="12" fill="#EDE4D3" text-anchor="start" font-weight="400">Iterated Adversarial Debate</text>
+  <text x="40" y="492" font-family="Inter, sans-serif" font-size="9" fill="#B9AE9988" text-anchor="start" font-weight="400">oversight · 2022</text>
+  <rect x="253" y="464" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="345" y="464" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.27" />
+  <rect x="437" y="464" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="529" y="464" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="621" y="464" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="713" y="464" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.27" />
+  <text x="40" y="505" font-family="Inter, sans-serif" font-size="12" fill="#EDE4D3" text-anchor="start" font-weight="400">Weak-to-Strong Generalisation</text>
+  <text x="40" y="518" font-family="Inter, sans-serif" font-size="9" fill="#B9AE9988" text-anchor="start" font-weight="400">training · 2023</text>
+  <rect x="253" y="490" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="345" y="490" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.37" />
+  <rect x="437" y="490" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.37" />
+  <rect x="529" y="490" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.37" />
+  <rect x="621" y="490" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="713" y="490" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <text x="40" y="531" font-family="Inter, sans-serif" font-size="12" fill="#EDE4D3" text-anchor="start" font-weight="400">Red Teaming</text>
+  <text x="40" y="544" font-family="Inter, sans-serif" font-size="9" fill="#B9AE9988" text-anchor="start" font-weight="400">evaluation · 2021</text>
+  <rect x="253" y="516" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.48" />
+  <rect x="345" y="516" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.48" />
+  <rect x="437" y="516" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="529" y="516" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.48" />
+  <rect x="621" y="516" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="713" y="516" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <text x="40" y="557" font-family="Inter, sans-serif" font-size="12" fill="#EDE4D3" text-anchor="start" font-weight="400">Dangerous-Capability Evals</text>
+  <text x="40" y="570" font-family="Inter, sans-serif" font-size="9" fill="#B9AE9988" text-anchor="start" font-weight="400">evaluation · 2023</text>
+  <rect x="253" y="542" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.40" />
+  <rect x="345" y="542" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.40" />
+  <rect x="437" y="542" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="529" y="542" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="621" y="542" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.40" />
+  <rect x="713" y="542" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <text x="40" y="583" font-family="Inter, sans-serif" font-size="12" fill="#EDE4D3" text-anchor="start" font-weight="400">Tripwire Monitoring</text>
+  <text x="40" y="596" font-family="Inter, sans-serif" font-size="9" fill="#B9AE9988" text-anchor="start" font-weight="400">monitoring · 2023</text>
+  <rect x="253" y="568" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="345" y="568" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="437" y="568" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="529" y="568" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="621" y="568" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.34" />
+  <rect x="713" y="568" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.34" />
+  <text x="40" y="609" font-family="Inter, sans-serif" font-size="12" fill="#EDE4D3" text-anchor="start" font-weight="400">Corrigibility Training</text>
+  <text x="40" y="622" font-family="Inter, sans-serif" font-size="9" fill="#B9AE9988" text-anchor="start" font-weight="400">training · 2022</text>
+  <rect x="253" y="594" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="345" y="594" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="437" y="594" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.29" />
+  <rect x="529" y="594" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.29" />
+  <rect x="621" y="594" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="713" y="594" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.29" />
+  <text x="40" y="635" font-family="Inter, sans-serif" font-size="12" fill="#EDE4D3" text-anchor="start" font-weight="400">Compute Governance</text>
+  <text x="40" y="648" font-family="Inter, sans-serif" font-size="9" fill="#B9AE9988" text-anchor="start" font-weight="400">governance · 2022</text>
+  <rect x="253" y="620" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="345" y="620" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.29" />
+  <rect x="437" y="620" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="529" y="620" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="621" y="620" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.29" />
+  <rect x="713" y="620" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <text x="40" y="661" font-family="Inter, sans-serif" font-size="12" fill="#EDE4D3" text-anchor="start" font-weight="400">International Law</text>
+  <text x="40" y="674" font-family="Inter, sans-serif" font-size="9" fill="#B9AE9988" text-anchor="start" font-weight="400">governance · 2021</text>
+  <rect x="253" y="646" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="345" y="646" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.27" />
+  <rect x="437" y="646" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <rect x="529" y="646" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.27" />
+  <rect x="621" y="646" width="86" height="22" rx="3" fill="#4FA88B" opacity="0.27" />
+  <rect x="713" y="646" width="86" height="22" rx="3" fill="#1E2C4D" opacity="0.25" />
+  <text x="40" y="714" font-family="Georgia, serif" font-size="15" fill="#4FA88B" text-anchor="start" font-weight="400">axes no technique claims: none</text>
+  <text x="40" y="736" font-family="Consolas, monospace" font-size="10" fill="#B9AE9999" text-anchor="start" font-weight="400">generated from packages/seed · seed 2406</text>
+
+</svg>

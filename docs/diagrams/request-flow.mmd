@@ -1,0 +1,69 @@
+sequenceDiagram
+  autonumber
+  actor Reader
+  participant Browser
+  participant RSC as Next.js RSC route<br/>apps/web/src/app/[section]/[slug]/page.tsx
+  participant Seed as @repo/seed<br/>packages/seed/src/index.ts
+  participant Core as @repo/core<br/>council/deliberation.ts
+  participant Axioms as @repo/core<br/>ethics/axioms.ts
+  participant Utilons as @repo/core<br/>ethics/utilons.ts
+  participant Consensus as @repo/core<br/>council/consensus.ts
+  participant UI as apps/web components<br/>council/trace-view
+
+  Reader->>Browser: opens /council?dilemma=paperclip-maximiser&seed=2406
+  Browser->>RSC: GET (RSC payload request)
+  RSC->>Seed: getDilemma("paperclip-maximiser")
+  Seed-->>RSC: Dilemma (options, stakeholders, tags)
+  RSC->>Seed: ADVISORS.filter(a => seatIds.includes(a.id))
+  Seed-->>RSC: Advisor[]
+  RSC->>Seed: KINGDOMS
+  Seed-->>RSC: Kingdom[] (axiom priors)
+  RSC->>Core: runCouncil({ dilemma, advisors, kingdoms, seed: 2406, rounds: 3 })
+
+  Note over Core: No network. No model call. Pure arithmetic.
+
+  Core->>Axioms: weighAdvisor(advisor, kingdom) x N
+  Axioms-->>Core: AxiomVector (0.7 advisor + 0.3 kingdom)
+
+  loop Round 1 — positions
+    Core->>Axioms: scoreOptionWith(vector, option)
+    Axioms-->>Core: 6 x { axis, weight, delta, product }
+    Core->>Core: raw + jitterFor(seed, "r1", advisorId, optionId)
+    Core->>Core: rank, record PositionRecord + TraceEntry
+  end
+
+  loop Round 2 — objections
+    Core->>Core: pick strongest rival option, matchingMoves() by tag
+    Core->>Core: objection answers the advisor ranked that rival first
+  end
+
+  loop Round 3 — appeals (losing advisors only)
+    Core->>Core: closeness = 1 - margin / leaderTotal
+    Core->>Core: conviction = closeness x move.weight
+  end
+
+  Core->>Consensus: decision({ scores, options })
+  Consensus-->>Core: winnerId, margin, confidence, tieBroken, rationale
+  Core->>Consensus: superMajority(winnerId, stances)
+  Consensus-->>Core: yes / no / abstainers, required, satisfied
+  Core->>Consensus: minorityReport(scores, winnerId, advisors)
+  Consensus-->>Core: dissenters + strongest objection
+  Core->>Consensus: synthesis(advisors, winnerId, margin, scores)
+  Consensus-->>Core: SynthesisMove (drawn from the minority when close)
+
+  Core->>Utilons: aggregate(dilemma, winnerOption)
+  Utilons-->>Core: total, perStakeholder, aiShare, humanShare, spread
+  Core->>Utilons: utilonScale(total)
+  Utilons-->>Core: UtilonBand
+
+  Core-->>RSC: CouncilResult { traces, narrative, winnerId, decidingAxis, ... }
+  RSC-->>Browser: RSC flight payload
+  Browser->>UI: hydrate council page
+  UI->>UI: render trace: sum(products) == subtotal, total == subtotal + jitter
+  UI-->>Reader: verdict, margin, confidence, dissent, six-axis arithmetic
+
+  Reader->>Browser: drags a weight (e.g. Bentham rights 0.20 -> 0.60)
+  Browser->>RSC: re-run with patched vector
+  RSC->>Core: runCouncil({ ... same seed, patched weights })
+  Core-->>UI: new winnerId, new traces
+  UI-->>Reader: the verdict moves, and the trace shows which product moved

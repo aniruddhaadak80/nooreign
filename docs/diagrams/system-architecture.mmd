@@ -1,0 +1,128 @@
+%%{init: {"theme":"base","themeVariables":{"background":"#070B18","primaryColor":"#0E1730","primaryTextColor":"#EDE4D3","primaryBorderColor":"#D9A441","lineColor":"#5A6FD6","secondaryColor":"#4FA88B","tertiaryColor":"#C8483F","fontFamily":"Inter, ui-sans-serif, system-ui, sans-serif"}}}%%
+flowchart LR
+
+  subgraph web["apps/web — Next.js 15 App Router"]
+    direction TB
+    webLayout["src/app/layout.tsx<br/>root layout, metadata, fonts"]
+    webRoutes["src/app/*/page.tsx<br/>RSC routes"]
+    webDynamic["src/app/[section]/[slug]/page.tsx<br/>generateStaticParams"]
+    webShell["src/components/shell<br/>AppHeader, AppFooter, Logo"]
+    webAtlas["src/components/atlas<br/>AtlasPlate, AxiomRadar, KingdomGrid"]
+    webChron["src/components/chronicle<br/>ChronicleMachine"]
+    webHealth["src/app/api/healthz/route.ts<br/>GET"]
+    webOg["src/app/og/route.tsx (planned)<br/>OG image"]
+  end
+
+  subgraph core["packages/core — pure domain logic"]
+    direction TB
+    coreEthics["src/ethics/axioms.ts<br/>dot product, weighAdvisor, decidingAxis"]
+    coreUtilons["src/ethics/utilons.ts<br/>aggregate, fairnessIndex, utilonScale"]
+    coreDelib["src/council/deliberation.ts<br/>runCouncil, compareCouncils"]
+    coreCons["src/council/consensus.ts<br/>decision, superMajority, minorityReport"]
+    coreGraph["src/council/argument-graph.ts<br/>buildGraph, topologicalOrder"]
+    coreVoices["src/council/voices.ts<br/>renderMove, openingStatement"]
+    coreTimeline["src/chronicle/timeline.ts<br/>eraIndex, buildRail, progressOf"]
+    coreObs["src/observatory/maturity.ts<br/>towerView, coverageMatrix, readiness"]
+    coreSim["src/experiments/simulator.ts<br/>SCORERS, runExperiment, sweep"]
+    coreSearch["src/search/index.ts<br/>buildIndex, query, suggest"]
+    coreJournal["src/journal/prompts.ts<br/>reflectivePrompts"]
+    coreUtil["src/util/{math,rng,result}.ts<br/>safeDiv, createRng, Result"]
+  end
+
+  subgraph ui["packages/ui — design system"]
+    direction TB
+    uiLib["src/lib/{palette,scales,format,cn}.ts<br/>PALETTE, AXIOM_COLORS"]
+    uiSvg["src/svg/{crests,portraits,terrain}.ts<br/>deterministic SVG"]
+    uiCmp["src/components/*.tsx<br/>Card, Badge, Panel, StatTile"]
+    uiStyles["src/styles.css<br/>@import tailwindcss"]
+  end
+
+  subgraph seed["packages/seed — offline datasets"]
+    direction TB
+    seedTypes["src/types.ts<br/>zod schemas, AXIOM_KEYS, DIMENSION_META"]
+    seedData["src/{kingdoms,advisors,eras,dilemmas,<br/>techniques,experiments,glossary,texts}.ts"]
+    seedIndex["src/index.ts<br/>getKingdom, advisorsOfKingdom, validateSeed"]
+  end
+
+  subgraph sdk["packages/sdk — typed clients"]
+    direction TB
+    sdkWeb["src/web.ts<br/>web route client"]
+    sdkAgents["src/agents.ts<br/>FastAPI client"]
+    sdkOpen["openapi.json"]
+  end
+
+  subgraph agents["services/agents — Python FastAPI (optional)"]
+    direction TB
+    agModels["app/models.py<br/>pydantic contracts, AXIOM_KEYS"]
+    agMain["app/main.py<br/>/healthz /deliberate /argument-graph"]
+    agEngine["app/engine/*.py<br/>mirrors packages/core arithmetic"]
+  end
+
+  subgraph engine["crates/engine — Rust reference (parity)"]
+    direction TB
+    rsAxiom["src/axiom.rs<br/>AxiomVector, score_option"]
+    rsUtilon["src/utilon.rs<br/>aggregate, fairness"]
+    rsTree["src/outcome_tree.rs<br/>outcome enumeration"]
+    rsParity["tests/parity.rs<br/>golden vectors vs TS engine"]
+  end
+
+  cfg["packages/config<br/>tsconfig.base.json"]
+
+  webLayout -->|"fonts, metadataBase, theme classes"| webRoutes
+  webShell -->|"NAV_SECTIONS"| webLayout
+  webRoutes -->|"rendered props"| webAtlas
+  webRoutes -->|"rendered props"| webChron
+  webRoutes -->|"slug"| webDynamic
+
+  webDynamic -->|"static params from id/slug columns"| seedIndex
+  webAtlas -->|"kingdoms, advisors, dilemmas"| seedIndex
+  webChron -->|"eras, techniques"| seedIndex
+  webRoutes -->|"domain maths"| coreDelib
+  webRoutes -->|"axis geometry"| coreUtilons
+  webRoutes -->|"rail positions"| coreTimeline
+  webRoutes -->|"tower + coverage"| coreObs
+  webRoutes -->|"sweeps"| coreSim
+  webRoutes -->|"codex query"| coreSearch
+
+  webHealth -->|"ATLAS_STATS manifest"| seedIndex
+  webOg -->|"crest + palette"| uiSvg
+
+  coreDelib -->|"weighAdvisor, decidingAxis"| coreEthics
+  coreDelib -->|"utilonScale"| coreUtilons
+  coreDelib -->|"decision, superMajority, synthesis"| coreCons
+  coreVoices -->|"dominantAxiom"| coreEthics
+  coreObs -->|"coverageMatrix, readinessScore"| coreEthics
+  coreTimeline -->|"clamp, safeDiv"| coreUtil
+  coreSim -->|"createRng jitter source"| coreUtil
+  coreCons -->|"clamp, mean, sum"| coreUtil
+  coreSearch -->|"safeDiv"| coreUtil
+
+  coreEthics -->|"AXIOM_KEYS, AxiomVector"| seedTypes
+  coreUtilons -->|"Dilemma, DilemmaOption"| seedTypes
+  coreDelib -->|"Advisor, Dilemma, Kingdom"| seedTypes
+  coreTimeline -->|"Era, Technique"| seedTypes
+  coreObs -->|"Technique, TechniqueKind"| seedTypes
+  coreSim -->|"Experiment, ExperimentModel"| seedTypes
+
+  seedIndex -->|"validated rows"| seedData
+  seedData -->|"typed const arrays"| seedTypes
+
+  uiSvg -->|"AXIOM_COLORS mirrors @theme tokens"| uiLib
+  uiCmp -->|"cn, class-variance-authority"| uiLib
+  uiStyles -->|"@source ../../../../packages/ui/src"| webLayout
+
+  sdkAgents -->|"HTTP + pydantic schemas"| agMain
+  agMain -->|"request models"| agModels
+  agEngine -->|"same AXIOM_KEYS order"| agModels
+  sdkOpen -->|"generated from"| agModels
+
+  rsParity -->|"fixed vectors"| rsAxiom
+  rsParity -->|"fixed vectors"| rsUtilon
+  rsAxiom -->|"canonical axis order"| rsTree
+
+  cfg -->|"strict, noUncheckedIndexedAccess,<br/>exactOptionalPropertyTypes"| coreEthics
+  cfg -->|"strict"| webRoutes
+  cfg -->|"strict"| seedIndex
+
+  web -.->|"optional: NOOREIGN_SERVICE_URL"| sdkAgents
+  core -.->|"parity target"| rsParity

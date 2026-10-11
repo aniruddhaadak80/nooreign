@@ -1,0 +1,36 @@
+{
+  "name": "@repo/ui",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Nooreign design system — crests, terrain, rails, traces, council chrome",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles.css": "./src/styles.css"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --max-warnings=0",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@repo/core": "workspace:*",
+    "@repo/seed": "workspace:*",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "d3-scale": "^4.0.2",
+    "framer-motion": "^12.0.0",
+    "lucide-react": "^0.469.0",
+    "react": "^19.0.0",
+    "tailwind-merge": "^2.6.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  }
+}

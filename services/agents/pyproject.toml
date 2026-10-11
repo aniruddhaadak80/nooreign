@@ -1,0 +1,48 @@
+[project]
+name = "nooreign-agents"
+version = "1.0.0"
+description = "The Nooreign council engine, headless: deterministic deliberation over HTTP."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+# Runtime dependencies are deliberately minimal and entirely local: no client
+# libraries for model APIs, no telemetry SDKs, nothing that phones home. The
+# service's whole job is arithmetic and a JSON contract.
+dependencies = [
+  "fastapi>=0.115",
+  "uvicorn[standard]>=0.30",
+  "pydantic>=2.7",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "httpx>=0.27",
+  "ruff>=0.6",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+# `services/agents/tests` legitimately imports from the package, which is not
+# configured as an installed distribution.
+src = ["."]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+ignore = [
+  # `dict` over `Mapping` in a couple of spots is clearer than the import.
+  "RUF012",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E501"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+# Resolved relative to this file, so the repo root lands on `sys.path` and the
+# package is importable as `services.agents.app` from anywhere.
+pythonpath = ["../.."]
+testpaths = ["tests"]
+addopts = "-q"

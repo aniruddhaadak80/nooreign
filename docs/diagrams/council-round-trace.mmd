@@ -1,0 +1,63 @@
+flowchart TD
+
+  %% One advisor's arithmetic for one option, exactly as packages/core computes it.
+  %%   contributions = AXIOM_KEYS.map(k => ({ axiom: k, weight, delta, product: weight*delta }))
+  %%   subtotal     = round(sum(products), 4)
+  %%   jitter       = round((rng.next() * 2 - 1) * JITTER, 4), JITTER = 0.05
+  %%   total        = round(subtotal + jitter, 4)
+  %%   score        = round(subtotal / weightSum + jitter, 4)   <- what the ballot ranks
+
+  start(["council seat: advisor A, option O"]) --> blend
+
+  blend["weighAdvisor(A, kingdom)<br/>0.7 x A.axioms + 0.3 x kingdom.axioms<br/>rounded to 4 dp per axis"]
+  blend --> axes
+
+  axes["the six axes, walked in AXIOM_KEYS order"]
+
+  subgraph contributions["contributions[] — six terms, fixed order"]
+    direction LR
+    a1["1. welfare<br/>w x d = product"]
+    a2["2. rights<br/>w x d = product"]
+    a3["3. virtue<br/>w x d = product"]
+    a4["4. care<br/>w x d = product"]
+    a5["5. justice<br/>w x d = product"]
+    a6["6. agency<br/>w x d = product"]
+    a1 --> a2 --> a3 --> a4 --> a5 --> a6
+  end
+
+  axes --> contributions
+
+  contributions --> sum
+  sum["subtotal = round(sum(contributions[].product), 4)"]
+  sum --> norm
+  norm["weightSum = sum of the six weights<br/>scoreOptionWith = safeDiv(subtotal, weightSum)"]
+  norm --> jitter
+
+  jitter["jitter = round((rng.next() * 2 - 1) x 0.05, 4)<br/>rng = createRng(seed, tag, advisorId, optionId)"]
+
+  jitter --> total
+  total["total = round(subtotal + jitter, 4)<br/>this is the headline the trace shows"]
+
+  total --> ballotscore["score = round(scoreOptionWith + jitter, 4)<br/>this is the number the ballot tallies"]
+
+  total --> invariant
+  ballotscore --> invariant
+
+  invariant["INVARIANT the UI renders against<br/>sum(contributions[].product) === subtotal<br/>total === subtotal + jitter"]
+  invariant --> rank
+
+  rank["rank options by score desc,<br/>tie-break on optionId.localeCompare"]
+
+  rank --> record
+
+  record["TraceEntry { advisorId, advisorName, kingdomId, round, kind,<br/>optionId, premise, claim, moveId, leansOn,<br/>contributions[6], subtotal, jitter, total }"]
+
+  record --> adjudicate["decidingAxis(courtVector, winner, runnerUp)<br/>largest weighted gap — not the largest delta"]
+
+  adjudicate --> next(["position -> objection -> appeal"])
+
+  note1["weightSum = 0 -> score 0, never NaN<br/>every advisor who weighs nothing ranks everything equally"]
+  note1 -.-> norm
+
+  note2["Jitter is capped at +/-0.05 on purpose:<br/>a philosopher off by a twentieth of their own<br/>confidence is still a philosopher with a view.<br/>A larger bound would let the seed decide verdicts."]
+  note2 -.-> jitter

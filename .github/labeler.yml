@@ -1,0 +1,72 @@
+# Path-scoped labels so that adding a kingdom, a dilemma or a UI component routes
+# to the right reviewer without anyone maintaining a hand-written list.
+
+'engine':
+  - changed-files:
+      - 'packages/core/**'
+
+'seed-content':
+  - changed-files:
+      - 'packages/seed/**'
+
+'dilemma-content':
+  - changed-files:
+      - 'packages/seed/src/dilemmas.ts'
+      - 'packages/seed/src/kingdoms.ts'
+      - 'packages/seed/src/eras.ts'
+      - 'packages/seed/src/advisors.ts'
+      - 'packages/seed/src/chronicle/**'
+      - 'packages/seed/src/experiments.ts'
+
+'design-system':
+  - changed-files:
+      - 'packages/ui/**'
+      - 'apps/web/src/app/globals.css'
+
+'web':
+  - changed-files:
+      - 'apps/web/**'
+
+'frontend':
+  - changed-files:
+      - 'apps/web/**'
+      - 'packages/ui/**'
+      - 'packages/i18n/**'
+
+'agents-service':
+  - changed-files:
+      - 'services/**'
+
+'rust-engine':
+  - changed-files:
+      - 'crates/**'
+
+'docs':
+  - changed-files:
+      - 'docs/**'
+      - '*.md'
+      - '!README.md'
+
+'ci-infra':
+  - changed-files:
+      - '.github/**'
+      - 'Dockerfile'
+      - 'docker-compose.yml'
+      - 'vercel.json'
+      - 'fly.toml'
+      - 'render.yaml'
+      - 'railway.json'
+      - 'dependabot.yml'
+
+'dependencies':
+  - changed-files:
+      - 'package.json'
+      - 'bun.lock'
+      - '**/package.json'
+
+'tests':
+  - changed-files:
+      - '**/*.test.ts'
+      - '**/*.test.tsx'
+      - 'apps/web/tests/**'
+      - 'services/agents/tests/**'

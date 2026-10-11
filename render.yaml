@@ -1,0 +1,61 @@
+# Render blueprint for Nooreign.
+#
+# Render reads this file from the repo root ("Infrastructure → Blueprints").
+# Applying it creates the web service and, optionally, the Python agents service.
+#
+# REQUIRED ENV VARS (set under each service → Environment):
+#   web    → NEXT_PUBLIC_SITE_URL  (canonical origin; inlined at build time)
+#   agents → AGENTS_HOST, AGENTS_PORT  (0.0.0.0 / 8080 inside a container)
+# NOOREIGN_SERVICE_URL on `web` may stay EMPTY: the atlas deliberates in the
+# browser and only uses the Python service for optional live commentary.
+
+databases: []
+
+services:
+  - type: web
+    name: nooreign-web
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: starter
+    # The Dockerfile emits the Next.js standalone server; this is the same
+    # artifact Fly runs, so there is no separate build step to keep in sync.
+    healthCheckPath: /api/healthz
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_TELEMETRY_DISABLED
+        value: "1"
+      - key: NEXT_PUBLIC_SITE_URL
+        sync: false # set in the dashboard; inlined into the client bundle at build
+      - key: NOOREIGN_SERVICE_URL
+        value: "" # optional; blank disables live deliberation commentary
+      - key: NEXT_PUBLIC_NOOREIGN_SERVICE_URL
+        value: ""
+
+  # The optional deliberation service. Declared as a `worker` (background
+  # service) rather than a second `web` service: it serves HTTP on request but
+  # holds no inbound traffic of its own, and Render gives workers the longer
+  # start allowance this service needs. It can be swapped out or left sleeping
+  # without affecting the atlas — every verdict is computed client-side from
+  # seed 2406, so if this service is down the site simply deliberates locally.
+  - type: worker
+    name: nooreign-agents
+    runtime: python
+    rootDir: services/agents
+    plan: starter
+    pythonVersion: "3.12"
+    buildCommand: pip install -e ".[dev]"
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port 8080
+    healthCheckPath: /healthz
+    autoDeployTrigger: commit
+    envVars:
+      - key: AGENTS_HOST
+        value: 0.0.0.0
+      - key: AGENTS_PORT
+        value: "8080"
+      - key: PYTHONPATH
+        value: /opt/render/project/src/services/agents
+      - key: PYTHONUNBUFFERED
+        value: "1"

@@ -1,0 +1,17 @@
+{
+  "seed": 2406,
+  "generatedBy": "bun run seed",
+  "counts": {
+    "kingdoms": 12,
+    "advisors": 28,
+    "eras": 32,
+    "techniques": 20,
+    "dilemmas": 20,
+    "experiments": 8,
+    "glossary": 120,
+    "texts": 28,
+    "dimensions": 6
+  },
+  "integrity": "clean",
+  "note": "Every stochastic path in this repository derives from this seed via a mulberry32 PRNG."
+}

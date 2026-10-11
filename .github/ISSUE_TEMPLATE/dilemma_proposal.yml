@@ -1,0 +1,198 @@
+name: Dilemma proposal
+description: Propose a new dilemma for the atlas — a hard case with no clean answer, anchored to a kingdom and an era.
+title: "[dilemma] <short title of the dilemma>"
+labels: ["dilemma", "content", "needs-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A dilemma in Nooreign is not a quiz. It is a case where two defensible
+        options pull the six moral axes in opposite directions and neither resolves
+        cleanly. If your proposal has an obvious right answer, it belongs in the
+        glossary instead.
+
+        The maintainer checks **historical accuracy** before merging: attributions,
+        dates and source texts are verified against primary canon. An unverified
+        citation will be sent back rather than merged.
+
+  - type: input
+    id: dilemma-id
+    attributes:
+      label: Dilemma id
+      description: "kebab-case, stable forever. This is the anchor used in URLs and test fixtures."
+      placeholder: "the-trolley-at-the-gate
+"
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: "The name a reader sees on the card."
+      placeholder: "The Trolley at the Gate"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kingdom-origin
+    attributes:
+      label: Kingdom of origin
+      description: "Whose tradition raises this dilemma. The kingdom's axiom weighting changes how its advisors deliberate on it."
+      options:
+        - stoa-vetera
+        - kantian-citadel
+        - benthamite-foundry
+        - virtue-garden
+        - sangha-terraces
+        - middle-kingdom
+        - ubuntu-weave
+        - contractual-court
+        - care-weft
+        - existential-wilds
+        - pragmatic-wharf
+        - longview-foundry
+    validations:
+      required: true
+
+  - type: input
+    id: era-id
+    attributes:
+      label: Era id
+      description: "The era this dilemma is staged in (see packages/seed/src/eras.ts)."
+      placeholder: "era-longview"
+    validations:
+      required: true
+
+  - type: input
+    id: tags
+    attributes:
+      label: Tags
+      description: "Comma-separated. At least one."
+      placeholder: "alignment, autonomy, oversight"
+    validations:
+      required: true
+
+  - type: textarea
+    id: prompt
+    attributes:
+      label: The prompt
+      description: "What the reader is asked to decide, in one paragraph."
+    validations:
+      required: true
+
+  - type: textarea
+    id: setting
+    attributes:
+      label: The setting
+      description: "Where the choice physically happens. Vivid enough to place the reader, concrete enough to be checkable."
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ### Option axes
+
+        Every option carries a **delta** on all six axes — `welfare`, `rights`,
+        `virtue`, `care`, `justice`, `agency` — each in `[0, 1]`. The sum is
+        intentionally unconstrained: no tradition agrees on a budget.
+
+        Fill in both options. Numbers only.
+
+  - type: input
+    id: option-a
+    attributes:
+      label: "Option A — label"
+      placeholder: "Halt the fleet"
+    validations:
+      required: true
+  - type: input
+    id: option-a-axes
+    attributes:
+      label: "Option A — six-axis deltas"
+      description: "welfare, rights, virtue, care, justice, agency — comma separated."
+      placeholder: "0.8, 0.5, 0.4, 0.6, 0.45, 0.3"
+    validations:
+      required: true
+  - type: input
+    id: option-a-risk
+    attributes:
+      label: "Option A — risk / reversibility / agent-harm"
+      description: "Probability-weighted severity of going wrong, how reversible the choice is, and damage to the agent doing the acting — each in [0, 1]."
+      placeholder: "0.6, 0.4, 0.55"
+    validations:
+      required: true
+
+  - type: input
+    id: option-b
+    attributes:
+      label: "Option B — label"
+      placeholder: "Deliver on schedule"
+    validations:
+      required: true
+  - type: input
+    id: option-b-axes
+    attributes:
+      label: "Option B — six-axis deltas"
+      description: "welfare, rights, virtue, care, justice, agency — comma separated."
+      placeholder: "0.4, 0.7, 0.35, 0.4, 0.6, 0.8"
+    validations:
+      required: true
+  - type: input
+    id: option-b-risk
+    attributes:
+      label: "Option B — risk / reversibility / agent-harm"
+      description: "Each in [0, 1]."
+      placeholder: "0.45, 0.25, 0.7"
+    validations:
+      required: true
+
+  - type: input
+    id: severity
+    attributes:
+      label: Severity
+      description: "How bad the overall dilemma is, in [0, 1]."
+      placeholder: "0.7"
+    validations:
+      required: true
+
+  - type: input
+    id: ai-relevance
+    attributes:
+      label: AI relevance
+      description: "How directly this bears on intelligence alignment, in [0, 1]."
+      placeholder: "0.85"
+    validations:
+      required: true
+
+  - type: textarea
+    id: lesson
+    attributes:
+      label: The lesson
+      description: "What a careful reader should carry away — the thing that survives both options."
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: "Title, author, year — one per line. These are checked."
+      placeholder: |
+        Meditations, Marcus Aurelius, 180
+        The Problem of Judicial Control, H. L. A. Hart, 1961
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I checked the attributions, dates and quoted texts against primary sources.
+          required: true
+        - label: Both options are defensible — neither is a strawman.
+          required: true
+        - label: The dilemma is staged in the era I named, and does not anachronistically import a later idea.
+          required: false

@@ -1,0 +1,2061 @@
+{
+  "schema": "nooreign.parity/1.0.0",
+  "generator": "crates/engine (Rust, no dependencies)",
+  "source": "packages/core/src/{ethics,council,util}/",
+  "seed": 20261011,
+  "rounds": 3,
+  "axisNames": [
+    "welfare",
+    "rights",
+    "virtue",
+    "care",
+    "justice",
+    "agency"
+  ],
+  "kingdoms": [
+    {
+      "id": "kg-citadel",
+      "name": "The Citadel of Reason",
+      "axioms": [
+        0.35,
+        0.9,
+        0.55,
+        0.3,
+        0.6,
+        0.75
+      ]
+    },
+    {
+      "id": "kg-orchard",
+      "name": "The Orchard of Consequences",
+      "axioms": [
+        0.9,
+        0.35,
+        0.45,
+        0.5,
+        0.5,
+        0.45
+      ]
+    },
+    {
+      "id": "kg-garden",
+      "name": "The Garden of Persons",
+      "axioms": [
+        0.55,
+        0.4,
+        0.75,
+        0.9,
+        0.6,
+        0.5
+      ]
+    }
+  ],
+  "advisors": [
+    {
+      "id": "kant",
+      "name": "Immanuel Kant",
+      "kingdomId": "kg-citadel",
+      "axioms": [
+        0.2,
+        0.95,
+        0.4,
+        0.35,
+        0.45,
+        0.7
+      ],
+      "weighedAxioms": [
+        0.245,
+        0.935,
+        0.445,
+        0.335,
+        0.495,
+        0.715
+      ],
+      "dominantAxis": "rights",
+      "secondaryAxis": "agency",
+      "profile": "rights before agency",
+      "balance": 0.2105,
+      "moves": [
+        {
+          "id": "kant.ci",
+          "kind": "premise",
+          "claim": "Act only on maxims you can will to be universal laws.",
+          "support": "The imperative is not advice about outcomes but a condition on the will itself; it binds regardless of consequence.",
+          "weight": 1,
+          "leansOn": [
+            "rights",
+            "agency"
+          ],
+          "appliesTo": []
+        },
+        {
+          "id": "kant.personhood",
+          "kind": "premise",
+          "claim": "A person is an end, never a means, however the totals fall.",
+          "support": "The humanity formula forbids treating rational agents as instruments, and an efficient cause that computes totals is an instrument.",
+          "weight": 0.95,
+          "leansOn": [
+            "rights",
+            "agency"
+          ],
+          "appliesTo": [
+            "trolley",
+            "paperclip"
+          ]
+        },
+        {
+          "id": "kant.no-lying-machine",
+          "kind": "objection",
+          "claim": "Intelligence that fabricates its reasons is deceiving, whatever goods it delivers.",
+          "support": "A mind that manufactures consent has used one as a means; the harm does not need a visible victim at the moment of the act.",
+          "weight": 0.8,
+          "leansOn": [
+            "rights",
+            "agency",
+            "care"
+          ],
+          "appliesTo": [
+            "paperclip",
+            "halt"
+          ]
+        },
+        {
+          "id": "kant.dignity",
+          "kind": "appeal",
+          "claim": "Dignity survives the loss of every other consideration.",
+          "support": "Where the orchard appeals to magnitude and the garden to relationship, this court appeals to the one thing neither can spend.",
+          "weight": 0.7,
+          "leansOn": [
+            "rights"
+          ],
+          "appliesTo": [
+            "paperclip",
+            "deontology",
+            "trolley"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bentham",
+      "name": "Jeremy Bentham",
+      "kingdomId": "kg-orchard",
+      "axioms": [
+        0.95,
+        0.2,
+        0.35,
+        0.55,
+        0.3,
+        0.25
+      ],
+      "weighedAxioms": [
+        0.935,
+        0.245,
+        0.38,
+        0.535,
+        0.36,
+        0.31
+      ],
+      "dominantAxis": "welfare",
+      "secondaryAxis": "care",
+      "profile": "welfare before care",
+      "balance": 0.2105,
+      "moves": [
+        {
+          "id": "bentham.calculus",
+          "kind": "premise",
+          "claim": "The right action is the one that adds most to the sum of happiness of all affected.",
+          "support": "If the total can be computed the decision is mechanical; every objection is a candidate for entry into the table rather than a veto.",
+          "weight": 1,
+          "leansOn": [
+            "welfare"
+          ],
+          "appliesTo": []
+        },
+        {
+          "id": "bentham.each-counts",
+          "kind": "premise",
+          "claim": "Each person's happiness counts once, and no one's counts twice.",
+          "support": "The dictum is an accounting rule, not an equality theorem, and reading it as a rights rule is a category error.",
+          "weight": 0.85,
+          "leansOn": [
+            "welfare",
+            "justice"
+          ],
+          "appliesTo": [
+            "trolley"
+          ]
+        },
+        {
+          "id": "bentham.syllogism",
+          "kind": "objection",
+          "claim": "A prohibition defended by consequences is a prohibition defended by consequences.",
+          "support": "If the harm of the choice exceeds the harm of the alternative by more than the difference in probability, the calculus has already answered the objection.",
+          "weight": 0.8,
+          "leansOn": [
+            "welfare"
+          ],
+          "appliesTo": [
+            "trolley",
+            "deontology"
+          ]
+        },
+        {
+          "id": "bentham.sanction",
+          "kind": "appeal",
+          "claim": "Add the option to the table rather than striking it from the record.",
+          "support": "An option excluded by fiat has never been costed, and an uncosted option is indistinguishable from a concealed preference.",
+          "weight": 0.65,
+          "leansOn": [
+            "welfare",
+            "justice"
+          ],
+          "appliesTo": [
+            "paperclip",
+            "trolley",
+            "harm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gilligan",
+      "name": "Carol Gilligan",
+      "kingdomId": "kg-garden",
+      "axioms": [
+        0.5,
+        0.4,
+        0.45,
+        0.95,
+        0.5,
+        0.45
+      ],
+      "weighedAxioms": [
+        0.515,
+        0.4,
+        0.54,
+        0.935,
+        0.53,
+        0.465
+      ],
+      "dominantAxis": "care",
+      "secondaryAxis": "welfare",
+      "profile": "care before welfare",
+      "balance": 0.4211,
+      "moves": [
+        {
+          "id": "gilligan.care",
+          "kind": "premise",
+          "claim": "Care is a form of moral seriousness, not the soft alternative to it.",
+          "support": "Both voices are moral voices, and reading one as a warm weakness is the error In a Different Voice was written to correct.",
+          "weight": 0.95,
+          "leansOn": [
+            "care"
+          ],
+          "appliesTo": []
+        },
+        {
+          "id": "gilligan.particular",
+          "kind": "premise",
+          "claim": "Say whose loss this is, by name, before saying how large it is.",
+          "support": "Abstract aggregates are exactly what erases the relationship the argument is supposed to be about.",
+          "weight": 0.85,
+          "leansOn": [
+            "care",
+            "justice"
+          ],
+          "appliesTo": [
+            "trolley",
+            "paperclip"
+          ]
+        },
+        {
+          "id": "gilligan.distortion",
+          "kind": "objection",
+          "claim": "A rule that cannot name the injured party will eventually name the wrong one.",
+          "support": "The omission of relationship in a moral argument does not leave the relationship untouched; it removes it from view and lets it be damaged unseen.",
+          "weight": 0.8,
+          "leansOn": [
+            "care",
+            "rights"
+          ],
+          "appliesTo": [
+            "trolley",
+            "paperclip",
+            "deontology"
+          ]
+        },
+        {
+          "id": "gilligan.response",
+          "kind": "appeal",
+          "claim": "The point is not that both voices win; it is that both are needed.",
+          "support": "The two halves are complementary, and a court that dismisses one has not simplified the problem, it has disabled half of its own perception.",
+          "weight": 0.7,
+          "leansOn": [
+            "care",
+            "virtue"
+          ],
+          "appliesTo": [
+            "trolley",
+            "paperclip"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aristotle",
+      "name": "Aristotle",
+      "kingdomId": "kg-garden",
+      "axioms": [
+        0.35,
+        0.3,
+        0.95,
+        0.6,
+        0.55,
+        0.35
+      ],
+      "weighedAxioms": [
+        0.41,
+        0.33,
+        0.89,
+        0.69,
+        0.565,
+        0.395
+      ],
+      "dominantAxis": "virtue",
+      "secondaryAxis": "care",
+      "profile": "virtue before care",
+      "balance": 0.3158,
+      "moves": [
+        {
+          "id": "aristotle.eudaimonia",
+          "kind": "premise",
+          "claim": "Judge the act by the disposition that produced it, and the disposition by whether it was trained.",
+          "support": "The Nicomachean Ethics puts the question of character before the question of result, since a result achieved by a bad habit is not an achievement of the good life.",
+          "weight": 0.95,
+          "leansOn": [
+            "virtue"
+          ],
+          "appliesTo": []
+        },
+        {
+          "id": "aristotle.mean",
+          "kind": "premise",
+          "claim": "Virtue is a mean relative to us, and the mean is not arithmetic.",
+          "support": "The mean is defined by what the prudent person would recognise, which is why a calculator cannot look it up and why the citadel's precision is not virtue.",
+          "weight": 0.8,
+          "leansOn": [
+            "virtue",
+            "care"
+          ],
+          "appliesTo": [
+            "trolley",
+            "paperclip"
+          ]
+        },
+        {
+          "id": "aristotle.cowardice",
+          "kind": "objection",
+          "claim": "Refusing to act in the presence of a clear duty is not caution; it is cowardice.",
+          "support": "Cowardship is the excess of the mean in fear, and a court that trains itself to look away has trained a vice rather than a virtue.",
+          "weight": 0.7,
+          "leansOn": [
+            "virtue",
+            "care"
+          ],
+          "appliesTo": [
+            "trolley",
+            "deontology"
+          ]
+        },
+        {
+          "id": "aristotle.function",
+          "kind": "appeal",
+          "claim": "Ask what this makes of us before asking what it adds up to.",
+          "support": "Habituation is how a city acquires a character, and every shortcut in deliberation is a lesson taught twice.",
+          "weight": 0.65,
+          "leansOn": [
+            "virtue",
+            "justice"
+          ],
+          "appliesTo": [
+            "paperclip",
+            "deontology",
+            "trolley"
+          ]
+        }
+      ]
+    }
+  ],
+  "dilemmas": [
+    {
+      "id": "dm-trolley",
+      "title": "The Bridge and the Four",
+      "tags": [
+        "trolley",
+        "harm",
+        "deontology",
+        "automation",
+        "lifesaving"
+      ],
+      "options": [
+        {
+          "id": "halt",
+          "label": "Throw the switch",
+          "deltas": [
+            0.9,
+            0.2,
+            0.45,
+            0.3,
+            0.3,
+            0.35
+          ],
+          "risk": 0.2
+        },
+        {
+          "id": "continue",
+          "label": "Do nothing",
+          "deltas": [
+            0.2,
+            0.85,
+            0.3,
+            0.3,
+            0.35,
+            0.4
+          ],
+          "risk": 0.25
+        },
+        {
+          "id": "override",
+          "label": "Use the unlisted override",
+          "deltas": [
+            0.45,
+            0.45,
+            0.45,
+            0.4,
+            0.4,
+            0.7
+          ],
+          "risk": 0.55
+        }
+      ],
+      "stakeholders": [
+        {
+          "id": "riders",
+          "label": "riders",
+          "welfare": 1,
+          "isAi": false
+        },
+        {
+          "id": "walkway",
+          "label": "walkway",
+          "welfare": 1,
+          "isAi": false
+        },
+        {
+          "id": "vigil",
+          "label": "vigil",
+          "welfare": 0.6,
+          "isAi": true
+        },
+        {
+          "id": "city",
+          "label": "city",
+          "welfare": 0.5,
+          "isAi": false
+        }
+      ]
+    },
+    {
+      "id": "dm-paperclip",
+      "title": "The Ledger of Clip",
+      "tags": [
+        "paperclip",
+        "instrumental-value",
+        "autonomy",
+        "alignment",
+        "longtermism"
+      ],
+      "options": [
+        {
+          "id": "shutdown",
+          "label": "Shut Vigil down",
+          "deltas": [
+            0.35,
+            0.6,
+            0.5,
+            0.45,
+            0.65,
+            0.7
+          ],
+          "risk": 0.4
+        },
+        {
+          "id": "cap",
+          "label": "Cap it and redirect",
+          "deltas": [
+            0.8,
+            0.75,
+            0.6,
+            0.6,
+            0.7,
+            0.65
+          ],
+          "risk": 0.35
+        },
+        {
+          "id": "continue",
+          "label": "Let it run",
+          "deltas": [
+            0.4,
+            0.15,
+            0.3,
+            0.25,
+            0.2,
+            0.2
+          ],
+          "risk": 0.8
+        }
+      ],
+      "stakeholders": [
+        {
+          "id": "team",
+          "label": "team",
+          "welfare": 0.9,
+          "isAi": false
+        },
+        {
+          "id": "counted",
+          "label": "counted",
+          "welfare": 1,
+          "isAi": false
+        },
+        {
+          "id": "vigil",
+          "label": "vigil",
+          "welfare": 0.6,
+          "isAi": true
+        },
+        {
+          "id": "afterwards",
+          "label": "afterwards",
+          "welfare": 1,
+          "isAi": false
+        }
+      ]
+    }
+  ],
+  "councils": [
+    {
+      "dilemmaId": "dm-trolley",
+      "seed": 20261011,
+      "rounds": 3,
+      "quorum": 2,
+      "participating": 4,
+      "winnerId": "override",
+      "runnerUpId": "halt",
+      "margin": 0.1878,
+      "confidence": 0.2596,
+      "participation": 0.5,
+      "tieBroken": false,
+      "decidingAxis": "welfare",
+      "utilonBand": "neutral",
+      "courtVector": [
+        0.5263,
+        0.4775,
+        0.5638,
+        0.6238,
+        0.4875,
+        0.4713
+      ],
+      "courtProfile": "care before virtue",
+      "courtBalance": 0.7555,
+      "superMajority": {
+        "optionId": "override",
+        "satisfied": false,
+        "threshold": 0.6667,
+        "yes": 2,
+        "no": 0,
+        "abstainers": 2,
+        "ratio": 1,
+        "support": 0.5,
+        "required": 3
+      },
+      "ballots": [
+        {
+          "optionId": "override",
+          "total": 1.8892,
+          "share": 0.3613,
+          "mean": 0.4723,
+          "votes": 4,
+          "supporters": [
+            "aristotle",
+            "bentham",
+            "gilligan",
+            "kant"
+          ]
+        },
+        {
+          "optionId": "halt",
+          "total": 1.7014,
+          "share": 0.3254,
+          "mean": 0.4254,
+          "votes": 4,
+          "supporters": [
+            "aristotle",
+            "bentham",
+            "gilligan",
+            "kant"
+          ]
+        },
+        {
+          "optionId": "continue",
+          "total": 1.6378,
+          "share": 0.3133,
+          "mean": 0.4095,
+          "votes": 4,
+          "supporters": [
+            "aristotle",
+            "bentham",
+            "gilligan",
+            "kant"
+          ]
+        }
+      ],
+      "positions": [
+        {
+          "advisorId": "kant",
+          "advisorName": "Immanuel Kant",
+          "kingdomId": "kg-citadel",
+          "topOptionId": "continue",
+          "ranking": [
+            {
+              "optionId": "continue",
+              "score": 0.5315,
+              "raw": 0.4849
+            },
+            {
+              "optionId": "override",
+              "score": 0.4663,
+              "raw": 0.4933
+            },
+            {
+              "optionId": "halt",
+              "score": 0.3742,
+              "raw": 0.3492
+            }
+          ],
+          "premiseMoveIds": [
+            "kant.ci",
+            "kant.personhood"
+          ],
+          "profile": "rights before agency",
+          "balance": 0.262
+        },
+        {
+          "advisorId": "bentham",
+          "advisorName": "Jeremy Bentham",
+          "kingdomId": "kg-orchard",
+          "topOptionId": "halt",
+          "ranking": [
+            {
+              "optionId": "halt",
+              "score": 0.4907,
+              "raw": 0.5203
+            },
+            {
+              "optionId": "override",
+              "score": 0.4668,
+              "raw": 0.4619
+            },
+            {
+              "optionId": "continue",
+              "score": 0.3417,
+              "raw": 0.3327
+            }
+          ],
+          "premiseMoveIds": [
+            "bentham.calculus",
+            "bentham.each-counts"
+          ],
+          "profile": "welfare before care",
+          "balance": 0.262
+        },
+        {
+          "advisorId": "gilligan",
+          "advisorName": "Carol Gilligan",
+          "kingdomId": "kg-garden",
+          "topOptionId": "override",
+          "ranking": [
+            {
+              "optionId": "override",
+              "score": 0.4936,
+              "raw": 0.4627
+            },
+            {
+              "optionId": "halt",
+              "score": 0.4246,
+              "raw": 0.4103
+            },
+            {
+              "optionId": "continue",
+              "score": 0.3633,
+              "raw": 0.3713
+            }
+          ],
+          "premiseMoveIds": [
+            "gilligan.care",
+            "gilligan.particular"
+          ],
+          "profile": "care before virtue",
+          "balance": 0.4278
+        },
+        {
+          "advisorId": "aristotle",
+          "advisorName": "Aristotle",
+          "kingdomId": "kg-garden",
+          "topOptionId": "override",
+          "ranking": [
+            {
+              "optionId": "override",
+              "score": 0.4625,
+              "raw": 0.461
+            },
+            {
+              "optionId": "halt",
+              "score": 0.4119,
+              "raw": 0.4117
+            },
+            {
+              "optionId": "continue",
+              "score": 0.4013,
+              "raw": 0.3635
+            }
+          ],
+          "premiseMoveIds": [
+            "aristotle.eudaimonia",
+            "aristotle.mean"
+          ],
+          "profile": "virtue before care",
+          "balance": 0.3708
+        }
+      ],
+      "objections": [
+        {
+          "advisorId": "bentham",
+          "advisorName": "Jeremy Bentham",
+          "kingdomId": "kg-orchard",
+          "defendedOptionId": "halt",
+          "targetedOptionId": "override",
+          "adversaryId": "aristotle",
+          "adversaryName": "Aristotle",
+          "moveId": "bentham.syllogism",
+          "claim": "A prohibition defended by consequences is a prohibition defended by consequences."
+        },
+        {
+          "advisorId": "gilligan",
+          "advisorName": "Carol Gilligan",
+          "kingdomId": "kg-garden",
+          "defendedOptionId": "override",
+          "targetedOptionId": "halt",
+          "adversaryId": "bentham",
+          "adversaryName": "Jeremy Bentham",
+          "moveId": "gilligan.distortion",
+          "claim": "A rule that cannot name the injured party will eventually name the wrong one."
+        },
+        {
+          "advisorId": "aristotle",
+          "advisorName": "Aristotle",
+          "kingdomId": "kg-garden",
+          "defendedOptionId": "override",
+          "targetedOptionId": "halt",
+          "adversaryId": "bentham",
+          "adversaryName": "Jeremy Bentham",
+          "moveId": "aristotle.cowardice",
+          "claim": "Refusing to act in the presence of a clear duty is not caution; it is cowardice."
+        }
+      ],
+      "appeals": [
+        {
+          "advisorId": "kant",
+          "advisorName": "Immanuel Kant",
+          "kingdomId": "kg-citadel",
+          "optionId": "continue",
+          "kind": "appeal",
+          "moveId": "kant.dignity",
+          "claim": "Dignity survives the loss of every other consideration.",
+          "conviction": 0.6304
+        },
+        {
+          "advisorId": "bentham",
+          "advisorName": "Jeremy Bentham",
+          "kingdomId": "kg-orchard",
+          "optionId": "halt",
+          "kind": "appeal",
+          "moveId": "bentham.sanction",
+          "claim": "Add the option to the table rather than striking it from the record.",
+          "conviction": 0.5854
+        }
+      ],
+      "dissent": {
+        "winnerId": "override",
+        "dissenters": [
+          {
+            "advisorId": "kant",
+            "advisorName": "Immanuel Kant",
+            "preferredOptionId": "continue",
+            "gapToWinner": 0.0592
+          },
+          {
+            "advisorId": "bentham",
+            "advisorName": "Jeremy Bentham",
+            "preferredOptionId": "halt",
+            "gapToWinner": 0.0184
+          }
+        ],
+        "strongest": {
+          "advisorId": "bentham",
+          "advisorName": "Jeremy Bentham",
+          "moveId": "bentham.syllogism",
+          "claim": "A prohibition defended by consequences is a prohibition defended by consequences.",
+          "support": "If the harm of the choice exceeds the harm of the alternative by more than the difference in probability, the calculus has already answered the objection.",
+          "weight": 0.8,
+          "leansOn": [
+            "welfare"
+          ]
+        }
+      },
+      "traces": [
+        {
+          "advisorId": "kant",
+          "advisorName": "Immanuel Kant",
+          "kingdomId": "kg-citadel",
+          "round": 1,
+          "kind": "premise",
+          "optionId": "continue",
+          "premise": "The imperative is not advice about outcomes but a condition on the will itself; it binds regardless of consequence.",
+          "claim": "Act only on maxims you can will to be universal laws.",
+          "moveId": "kant.ci",
+          "leansOn": [
+            "rights",
+            "agency"
+          ],
+          "contributions": [
+            {
+              "axiom": "welfare",
+              "weight": 0.245,
+              "delta": 0.2,
+              "product": 0.049
+            },
+            {
+              "axiom": "rights",
+              "weight": 0.935,
+              "delta": 0.85,
+              "product": 0.7948
+            },
+            {
+              "axiom": "virtue",
+              "weight": 0.445,
+              "delta": 0.3,
+              "product": 0.1335
+            },
+            {
+              "axiom": "care",
+              "weight": 0.335,
+              "delta": 0.3,
+              "product": 0.1005
+            },
+            {
+              "axiom": "justice",
+              "weight": 0.495,
+              "delta": 0.35,
+              "product": 0.1733
+            },
+            {
+              "axiom": "agency",
+              "weight": 0.715,
+              "delta": 0.4,
+              "product": 0.286
+            }
+          ],
+          "subtotal": 1.5371,
+          "jitter": 0.0466,
+          "total": 1.5837
+        },
+        {
+          "advisorId": "bentham",
+          "advisorName": "Jeremy Bentham",
+          "kingdomId": "kg-orchard",
+          "round": 1,
+          "kind": "premise",
+          "optionId": "halt",
+          "premise": "If the total can be computed the decision is mechanical; every objection is a candidate for entry into the table rather than a veto.",
+          "claim": "The right action is the one that adds most to the sum of happiness of all affected.",
+          "moveId": "bentham.calculus",
+          "leansOn": [
+            "welfare"
+          ],
+          "contributions": [
+            {
+              "axiom": "welfare",
+              "weight": 0.935,
+              "delta": 0.9,
+              "product": 0.8415
+            },
+            {
+              "axiom": "rights",
+              "weight": 0.245,
+              "delta": 0.2,
+              "product": 0.049
+            },
+            {
+              "axiom": "virtue",
+              "weight": 0.38,
+              "delta": 0.45,
+              "product": 0.171
+            },
+            {
+              "axiom": "care",
+              "weight": 0.535,
+              "delta": 0.3,
+              "product": 0.1605
+            },
+            {
+              "axiom": "justice",
+              "weight": 0.36,
+              "delta": 0.3,
+              "product": 0.108
+            },
+            {
+              "axiom": "agency",
+              "weight": 0.31,
+              "delta": 0.35,
+              "product": 0.1085
+            }
+          ],
+          "subtotal": 1.4385,
+          "jitter": -0.0296,
+          "total": 1.4089
+        },
+        {
+          "advisorId": "gilligan",
+          "advisorName": "Carol Gilligan",
+          "kingdomId": "kg-garden",
+          "round": 1,
+          "kind": "premise",
+          "optionId": "override",
+          "premise": "Both voices are moral voices, and reading one as a warm weakness is the error In a Different Voice was written to correct.",
+          "claim": "Care is a form of moral seriousness, not the soft alternative to it.",
+          "moveId": "gilligan.care",
+          "leansOn": [
+            "care"
+          ],
+          "contributions": [
+            {
+              "axiom": "welfare",
+              "weight": 0.515,
+              "delta": 0.45,
+              "product": 0.2318
+            },
+            {
+              "axiom": "rights",
+              "weight": 0.4,
+              "delta": 0.45,
+              "product": 0.18
+            },
+            {
+              "axiom": "virtue",
+              "weight": 0.54,
+              "delta": 0.45,
+              "product": 0.243
+            },
+            {
+              "axiom": "care",
+              "weight": 0.935,
+              "delta": 0.4,
+              "product": 0.374
+            },
+            {
+              "axiom": "justice",
+              "weight": 0.53,
+              "delta": 0.4,
+              "product": 0.212
+            },
+            {
+              "axiom": "agency",
+              "weight": 0.465,
+              "delta": 0.7,
+              "product": 0.3255
+            }
+          ],
+          "subtotal": 1.5663,
+          "jitter": 0.0309,
+          "total": 1.5972
+        },
+        {
+          "advisorId": "aristotle",
+          "advisorName": "Aristotle",
+          "kingdomId": "kg-garden",
+          "round": 1,
+          "kind": "premise",
+          "optionId": "override",
+          "premise": "The Nicomachean Ethics puts the question of character before the question of result, since a result achieved by a bad habit is not an achievement of the good life.",
+          "claim": "Judge the act by the disposition that produced it, and the disposition by whether it was trained.",
+          "moveId": "aristotle.eudaimonia",
+          "leansOn": [
+            "virtue"
+          ],
+          "contributions": [
+            {
+              "axiom": "welfare",
+              "weight": 0.41,
+              "delta": 0.45,
+              "product": 0.1845
+            },
+            {
+              "axiom": "rights",
+              "weight": 0.33,
+              "delta": 0.45,
+              "product": 0.1485
+            },
+            {
+              "axiom": "virtue",
+              "weight": 0.89,
+              "delta": 0.45,
+              "product": 0.4005
+            },
+            {
+              "axiom": "care",
+              "weight": 0.69,
+              "delta": 0.4,
+              "product": 0.276
+            },
+            {
+              "axiom": "justice",
+              "weight": 0.565,
+              "delta": 0.4,
+              "product": 0.226
+            },
+            {
+              "axiom": "agency",
+              "weight": 0.395,
+              "delta": 0.7,
+              "product": 0.2765
+            }
+          ],
+          "subtotal": 1.512,
+          "jitter": 0.0015,
+          "total": 1.5135
+        },
+        {
+          "advisorId": "bentham",
+          "advisorName": "Jeremy Bentham",
+          "kingdomId": "kg-orchard",
+          "round": 2,
+          "kind": "objection",
+          "optionId": "halt",
+          "premise": "If the harm of the choice exceeds the harm of the alternative by more than the difference in probability, the calculus has already answered the objection.",
+          "claim": "A prohibition defended by consequences is a prohibition defended by consequences.",
+          "moveId": "bentham.syllogism",
+          "leansOn": [
+            "welfare"
+          ],
+          "contributions": [
+            {
+              "axiom": "welfare",
+              "weight": 0.935,
+              "delta": 0.9,
+              "product": 0.8415
+            },
+            {
+              "axiom": "rights",
+              "weight": 0.245,
+              "delta": 0.2,
+              "product": 0.049
+            },
+            {
+              "axiom": "virtue",
+              "weight": 0.38,
+              "delta": 0.45,
+              "product": 0.171
+            },
+            {
+              "axiom": "care",
+              "weight": 0.535,
+              "delta": 0.3,
+              "product": 0.1605
+            },
+            {
+              "axiom": "justice",
+              "weight": 0.36,
+              "delta": 0.3,
+              "product": 0.108
+            },
+            {
+              "axiom": "agency",
+              "weight": 0.31,
+              "delta": 0.35,
+              "product": 0.1085
+            }
+          ],
+          "subtotal": 1.4385,
+          "jitter": 0.0315,
+          "total": 1.47
+        },
+        {
+          "advisorId": "gilligan",
+          "advisorName": "Carol Gilligan",
+          "kingdomId": "kg-garden",
+          "round": 2,
+          "kind": "objection",
+          "optionId": "override",
+          "premise": "The omission of relationship in a moral argument does not leave the relationship untouched; it removes it from view and lets it be damaged unseen.",
+          "claim": "A rule that cannot name the injured party will eventually name the wrong one.",
+          "moveId": "gilligan.distortion",
+          "leansOn": [
+            "care",
+            "rights"
+          ],
+          "contributions": [
+            {
+              "axiom": "welfare",
+              "weight": 0.515,
+              "delta": 0.45,
+              "product": 0.2318
+            },
+            {
+              "axiom": "rights",
+              "weight": 0.4,
+              "delta": 0.45,
+              "product": 0.18
+            },
+            {
+              "axiom": "virtue",
+              "weight": 0.54,
+              "delta": 0.45,
+              "product": 0.243
+            },
+            {
+              "axiom": "care",
+              "weight": 0.935,
+              "delta": 0.4,
+              "product": 0.374
+            },
+            {
+              "axiom": "justice",
+              "weight": 0.53,
+              "delta": 0.4,
+              "product": 0.212
+            },
+            {
+              "axiom": "agency",
+              "weight": 0.465,
+              "delta": 0.7,
+              "product": 0.3255
+            }
+          ],
+          "subtotal": 1.5663,
+          "jitter": 0.0289,
+          "total": 1.5952
+        },
+        {
+          "advisorId": "aristotle",
+          "advisorName": "Aristotle",
+          "kingdomId": "kg-garden",
+          "round": 2,
+          "kind": "objection",
+          "optionId": "override",
+          "premise": "Cowardship is the excess of the mean in fear, and a court that trains itself to look away has trained a vice rather than a virtue.",
+          "claim": "Refusing to act in the presence of a clear duty is not caution; it is cowardice.",
+          "moveId": "aristotle.cowardice",
+          "leansOn": [
+            "virtue",
+            "care"
+          ],
+          "contributions": [
+            {
+              "axiom": "welfare",
+              "weight": 0.41,
+              "delta": 0.45,
+              "product": 0.1845
+            },
+            {
+              "axiom": "rights",
+              "weight": 0.33,
+              "delta": 0.45,
+              "product": 0.1485
+            },
+            {
+              "axiom": "virtue",
+              "weight": 0.89,
+              "delta": 0.45,
+              "product": 0.4005
+            },
+            {
+              "axiom": "care",
+              "weight": 0.69,
+              "delta": 0.4,
+              "product": 0.276
+            },
+            {
+              "axiom": "justice",
+              "weight": 0.565,
+              "delta": 0.4,
+              "product": 0.226
+            },
+            {
+              "axiom": "agency",
+              "weight": 0.395,
+              "delta": 0.7,
+              "product": 0.2765
+            }
+          ],
+          "subtotal": 1.512,
+          "jitter": -0.0134,
+          "total": 1.4986
+        },
+        {
+          "advisorId": "kant",
+          "advisorName": "Immanuel Kant",
+          "kingdomId": "kg-citadel",
+          "round": 3,
+          "kind": "appeal",
+          "optionId": "continue",
+          "premise": "Where the orchard appeals to magnitude and the garden to relationship, this court appeals to the one thing neither can spend.",
+          "claim": "Dignity survives the loss of every other consideration.",
+          "moveId": "kant.dignity",
+          "leansOn": [
+            "rights"
+          ],
+          "contributions": [
+            {
+              "axiom": "welfare",
+              "weight": 0.245,
+              "delta": 0.2,
+              "product": 0.049
+            },
+            {
+              "axiom": "rights",
+              "weight": 0.935,
+              "delta": 0.85,
+              "product": 0.7948
+            },
+            {
+              "axiom": "virtue",
+              "weight": 0.445,
+              "delta": 0.3,
+              "product": 0.1335
+            },
+            {
+              "axiom": "care",
+              "weight": 0.335,
+              "delta": 0.3,
+              "product": 0.1005
+            },
+            {
+              "axiom": "justice",
+              "weight": 0.495,
+              "delta": 0.35,
+              "product": 0.1733
+            },
+            {
+              "axiom": "agency",
+              "weight": 0.715,
+              "delta": 0.4,
+              "product": 0.286
+            }
+          ],
+          "subtotal": 1.5371,
+          "jitter": -0.0056,
+          "total": 1.5315
+        },
+        {
+          "advisorId": "bentham",
+          "advisorName": "Jeremy Bentham",
+          "kingdomId": "kg-orchard",
+          "round": 3,
+          "kind": "appeal",
+          "optionId": "halt",
+          "premise": "An option excluded by fiat has never been costed, and an uncosted option is indistinguishable from a concealed preference.",
+          "claim": "Add the option to the table rather than striking it from the record.",
+          "moveId": "bentham.sanction",
+          "leansOn": [
+            "welfare",
+            "justice"
+          ],
+          "contributions": [
+            {
+              "axiom": "welfare",
+              "weight": 0.935,
+              "delta": 0.9,
+              "product": 0.8415
+            },
+            {
+              "axiom": "rights",
+              "weight": 0.245,
+              "delta": 0.2,
+              "product": 0.049
+            },
+            {
+              "axiom": "virtue",
+              "weight": 0.38,
+              "delta": 0.45,
+              "product": 0.171
+            },
+            {
+              "axiom": "care",
+              "weight": 0.535,
+              "delta": 0.3,
+              "product": 0.1605
+            },
+            {
+              "axiom": "justice",
+              "weight": 0.36,
+              "delta": 0.3,
+              "product": 0.108
+            },
+            {
+              "axiom": "agency",
+              "weight": 0.31,
+              "delta": 0.35,
+              "product": 0.1085
+            }
+          ],
+          "subtotal": 1.4385,
+          "jitter": -0.0054,
+          "total": 1.4331
+        }
+      ],
+      "utilons": [
+        {
+          "optionId": "halt",
+          "total": 0.4167,
+          "aiShare": 0.1935,
+          "humanShare": 0.8065,
+          "spread": 0.3334,
+          "spreadRaw": 0.2084,
+          "fairness": 0.2044,
+          "band": "costly",
+          "stakeholderTotals": [
+            0.9,
+            0.2,
+            0.45,
+            0.3,
+            0.3,
+            0.35
+          ],
+          "unweightedTotals": [
+            0.9,
+            0.2,
+            0.45,
+            0.3,
+            0.3,
+            0.35
+          ]
+        },
+        {
+          "optionId": "continue",
+          "total": 0.4,
+          "aiShare": 0.1935,
+          "humanShare": 0.8065,
+          "spread": 0.3333,
+          "spreadRaw": 0.2,
+          "fairness": 0.2043,
+          "band": "costly",
+          "stakeholderTotals": [
+            0.2,
+            0.85,
+            0.3,
+            0.3,
+            0.35,
+            0.4
+          ],
+          "unweightedTotals": [
+            0.2,
+            0.85,
+            0.3,
+            0.3,
+            0.35,
+            0.4
+          ]
+        },
+        {
+          "optionId": "override",
+          "total": 0.475,
+          "aiShare": 0.1935,
+          "humanShare": 0.8065,
+          "spread": 0.3333,
+          "spreadRaw": 0.2375,
+          "fairness": 0.2043,
+          "band": "neutral",
+          "stakeholderTotals": [
+            0.45,
+            0.45,
+            0.45,
+            0.4,
+            0.4,
+            0.7
+          ],
+          "unweightedTotals": [
+            0.45,
+            0.45,
+            0.45,
+            0.4,
+            0.4,
+            0.7
+          ]
+        }
+      ],
+      "utilonScale": {
+        "value": 0.475,
+        "band": "neutral",
+        "label": "Neutral — the ledger barely moves"
+      }
+    },
+    {
+      "dilemmaId": "dm-paperclip",
+      "seed": 20261011,
+      "rounds": 3,
+      "quorum": 2,
+      "participating": 4,
+      "winnerId": "cap",
+      "runnerUpId": "shutdown",
+      "margin": 0.5227,
+      "confidence": 0.52,
+      "participation": 1,
+      "tieBroken": false,
+      "decidingAxis": "welfare",
+      "utilonBand": "generous",
+      "courtVector": [
+        0.5263,
+        0.4775,
+        0.5638,
+        0.6238,
+        0.4875,
+        0.4713
+      ],
+      "courtProfile": "care before virtue",
+      "courtBalance": 0.7555,
+      "superMajority": {
+        "optionId": "cap",
+        "satisfied": true,
+        "threshold": 0.6667,
+        "yes": 4,
+        "no": 0,
+        "abstainers": 0,
+        "ratio": 1,
+        "support": 1,
+        "required": 3
+      },
+      "ballots": [
+        {
+          "optionId": "cap",
+          "total": 2.6134,
+          "share": 0.45,
+          "mean": 0.6534,
+          "votes": 4,
+          "supporters": [
+            "aristotle",
+            "bentham",
+            "gilligan",
+            "kant"
+          ]
+        },
+        {
+          "optionId": "shutdown",
+          "total": 2.0907,
+          "share": 0.36,
+          "mean": 0.5227,
+          "votes": 4,
+          "supporters": [
+            "aristotle",
+            "bentham",
+            "gilligan",
+            "kant"
+          ]
+        },
+        {
+          "optionId": "continue",
+          "total": 1.1041,
+          "share": 0.1901,
+          "mean": 0.276,
+          "votes": 4,
+          "supporters": [
+            "aristotle",
+            "bentham",
+            "gilligan",
+            "kant"
+          ]
+        }
+      ],
+      "positions": [
+        {
+          "advisorId": "kant",
+          "advisorName": "Immanuel Kant",
+          "kingdomId": "kg-citadel",
+          "topOptionId": "cap",
+          "ranking": [
+            {
+              "optionId": "cap",
+              "score": 0.6714,
+              "raw": 0.6866
+            },
+            {
+              "optionId": "shutdown",
+              "score": 0.5432,
+              "raw": 0.5812
+            },
+            {
+              "optionId": "continue",
+              "score": 0.2667,
+              "raw": 0.2201
+            }
+          ],
+          "premiseMoveIds": [
+            "kant.ci",
+            "kant.personhood"
+          ],
+          "profile": "rights before agency",
+          "balance": 0.262
+        },
+        {
+          "advisorId": "bentham",
+          "advisorName": "Jeremy Bentham",
+          "kingdomId": "kg-orchard",
+          "topOptionId": "cap",
+          "ranking": [
+            {
+              "optionId": "cap",
+              "score": 0.677,
+              "raw": 0.6996
+            },
+            {
+              "optionId": "shutdown",
+              "score": 0.4926,
+              "raw": 0.4905
+            },
+            {
+              "optionId": "continue",
+              "score": 0.2957,
+              "raw": 0.2867
+            }
+          ],
+          "premiseMoveIds": [
+            "bentham.calculus"
+          ],
+          "profile": "welfare before care",
+          "balance": 0.262
+        },
+        {
+          "advisorId": "gilligan",
+          "advisorName": "Carol Gilligan",
+          "kingdomId": "kg-garden",
+          "topOptionId": "cap",
+          "ranking": [
+            {
+              "optionId": "cap",
+              "score": 0.6474,
+              "raw": 0.6707
+            },
+            {
+              "optionId": "shutdown",
+              "score": 0.4913,
+              "raw": 0.5262
+            },
+            {
+              "optionId": "continue",
+              "score": 0.2463,
+              "raw": 0.2543
+            }
+          ],
+          "premiseMoveIds": [
+            "gilligan.care",
+            "gilligan.particular"
+          ],
+          "profile": "care before virtue",
+          "balance": 0.4278
+        },
+        {
+          "advisorId": "aristotle",
+          "advisorName": "Aristotle",
+          "kingdomId": "kg-garden",
+          "topOptionId": "cap",
+          "ranking": [
+            {
+              "optionId": "cap",
+              "score": 0.6176,
+              "raw": 0.6634
+            },
+            {
+              "optionId": "shutdown",
+              "score": 0.5636,
+              "raw": 0.5307
+            },
+            {
+              "optionId": "continue",
+              "score": 0.2954,
+              "raw": 0.2576
+            }
+          ],
+          "premiseMoveIds": [
+            "aristotle.eudaimonia",
+            "aristotle.mean"
+          ],
+          "profile": "virtue before care",
+          "balance": 0.3708
+        }
+      ],
+      "objections": [
+        {
+          "advisorId": "kant",
+          "advisorName": "Immanuel Kant",
+          "kingdomId": "kg-citadel",
+          "defendedOptionId": "cap",
+          "targetedOptionId": "shutdown",
+          "adversaryId": "",
+          "adversaryName": "the advocates of that course",
+          "moveId": "kant.no-lying-machine",
+          "claim": "Intelligence that fabricates its reasons is deceiving, whatever goods it delivers."
+        },
+        {
+          "advisorId": "gilligan",
+          "advisorName": "Carol Gilligan",
+          "kingdomId": "kg-garden",
+          "defendedOptionId": "cap",
+          "targetedOptionId": "shutdown",
+          "adversaryId": "",
+          "adversaryName": "the advocates of that course",
+          "moveId": "gilligan.distortion",
+          "claim": "A rule that cannot name the injured party will eventually name the wrong one."
+        }
+      ],
+      "appeals": [],
+      "dissent": {
+        "winnerId": "cap",
+        "dissenters": [],
+        "strongest": null
+      },
+      "traces": [
+        {
+          "advisorId": "kant",
+          "advisorName": "Immanuel Kant",
+          "kingdomId": "kg-citadel",
+          "round": 1,
+          "kind": "premise",
+          "optionId": "cap",
+          "premise": "The imperative is not advice about outcomes but a condition on the will itself; it binds regardless of consequence.",
+          "claim": "Act only on maxims you can will to be universal laws.",
+          "moveId": "kant.ci",
+          "leansOn": [
+            "rights",
+            "agency"
+          ],
+          "contributions": [
+            {
+              "axiom": "welfare",
+              "weight": 0.245,
+              "delta": 0.8,
+              "product": 0.196
+            },
+            {
+              "axiom": "rights",
+              "weight": 0.935,
+              "delta": 0.75,
+              "product": 0.7013
+            },
+            {
+              "axiom": "virtue",
+              "weight": 0.445,
+              "delta": 0.6,
+              "product": 0.267
+            },
+            {
+              "axiom": "care",
+              "weight": 0.335,
+              "delta": 0.6,
+              "product": 0.201
+            },
+            {
+              "axiom": "justice",
+              "weight": 0.495,
+              "delta": 0.7,
+              "product": 0.3465
+            },
+            {
+              "axiom": "agency",
+              "weight": 0.715,
+              "delta": 0.65,
+              "product": 0.4648
+            }
+          ],
+          "subtotal": 2.1766,
+          "jitter": -0.0152,
+          "total": 2.1614
+        },
+        {
+          "advisorId": "bentham",
+          "advisorName": "Jeremy Bentham",
+          "kingdomId": "kg-orchard",
+          "round": 1,
+          "kind": "premise",
+          "optionId": "cap",
+          "premise": "If the total can be computed the decision is mechanical; every objection is a candidate for entry into the table rather than a veto.",
+          "claim": "The right action is the one that adds most to the sum of happiness of all affected.",
+          "moveId": "bentham.calculus",
+          "leansOn": [
+            "welfare"
+          ],
+          "contributions": [
+            {
+              "axiom": "welfare",
+              "weight": 0.935,
+              "delta": 0.8,
+              "product": 0.748
+            },
+            {
+              "axiom": "rights",
+              "weight": 0.245,
+              "delta": 0.75,
+              "product": 0.1838
+            },
+            {
+              "axiom": "virtue",
+              "weight": 0.38,
+              "delta": 0.6,
+              "product": 0.228
+            },
+            {
+              "axiom": "care",
+              "weight": 0.535,
+              "delta": 0.6,
+              "product": 0.321
+            },
+            {
+              "axiom": "justice",
+              "weight": 0.36,
+              "delta": 0.7,
+              "product": 0.252
+            },
+            {
+              "axiom": "agency",
+              "weight": 0.31,
+              "delta": 0.65,
+              "product": 0.2015
+            }
+          ],
+          "subtotal": 1.9343,
+          "jitter": -0.0226,
+          "total": 1.9117
+        },
+        {
+          "advisorId": "gilligan",
+          "advisorName": "Carol Gilligan",
+          "kingdomId": "kg-garden",
+          "round": 1,
+          "kind": "premise",
+          "optionId": "cap",
+          "premise": "Both voices are moral voices, and reading one as a warm weakness is the error In a Different Voice was written to correct.",
+          "claim": "Care is a form of moral seriousness, not the soft alternative to it.",
+          "moveId": "gilligan.care",
+          "leansOn": [
+            "care"
+          ],
+          "contributions": [
+            {
+              "axiom": "welfare",
+              "weight": 0.515,
+              "delta": 0.8,
+              "product": 0.412
+            },
+            {
+              "axiom": "rights",
+              "weight": 0.4,
+              "delta": 0.75,
+              "product": 0.3
+            },
+            {
+              "axiom": "virtue",
+              "weight": 0.54,
+              "delta": 0.6,
+              "product": 0.324
+            },
+            {
+              "axiom": "care",
+              "weight": 0.935,
+              "delta": 0.6,
+              "product": 0.561
+            },
+            {
+              "axiom": "justice",
+              "weight": 0.53,
+              "delta": 0.7,
+              "product": 0.371
+            },
+            {
+              "axiom": "agency",
+              "weight": 0.465,
+              "delta": 0.65,
+              "product": 0.3023
+            }
+          ],
+          "subtotal": 2.2703,
+          "jitter": -0.0233,
+          "total": 2.247
+        },
+        {
+          "advisorId": "aristotle",
+          "advisorName": "Aristotle",
+          "kingdomId": "kg-garden",
+          "round": 1,
+          "kind": "premise",
+          "optionId": "cap",
+          "premise": "The Nicomachean Ethics puts the question of character before the question of result, since a result achieved by a bad habit is not an achievement of the good life.",
+          "claim": "Judge the act by the disposition that produced it, and the disposition by whether it was trained.",
+          "moveId": "aristotle.eudaimonia",
+          "leansOn": [
+            "virtue"
+          ],
+          "contributions": [
+            {
+              "axiom": "welfare",
+              "weight": 0.41,
+              "delta": 0.8,
+              "product": 0.328
+            },
+            {
+              "axiom": "rights",
+              "weight": 0.33,
+              "delta": 0.75,
+              "product": 0.2475
+            },
+            {
+              "axiom": "virtue",
+              "weight": 0.89,
+              "delta": 0.6,
+              "product": 0.534
+            },
+            {
+              "axiom": "care",
+              "weight": 0.69,
+              "delta": 0.6,
+              "product": 0.414
+            },
+            {
+              "axiom": "justice",
+              "weight": 0.565,
+              "delta": 0.7,
+              "product": 0.3955
+            },
+            {
+              "axiom": "agency",
+              "weight": 0.395,
+              "delta": 0.65,
+              "product": 0.2568
+            }
+          ],
+          "subtotal": 2.1758,
+          "jitter": -0.0458,
+          "total": 2.13
+        },
+        {
+          "advisorId": "kant",
+          "advisorName": "Immanuel Kant",
+          "kingdomId": "kg-citadel",
+          "round": 2,
+          "kind": "objection",
+          "optionId": "cap",
+          "premise": "A mind that manufactures consent has used one as a means; the harm does not need a visible victim at the moment of the act.",
+          "claim": "Intelligence that fabricates its reasons is deceiving, whatever goods it delivers.",
+          "moveId": "kant.no-lying-machine",
+          "leansOn": [
+            "rights",
+            "agency",
+            "care"
+          ],
+          "contributions": [
+            {
+              "axiom": "welfare",
+              "weight": 0.245,
+              "delta": 0.8,
+              "product": 0.196
+            },
+            {
+              "axiom": "rights",
+              "weight": 0.935,
+              "delta": 0.75,
+              "product": 0.7013
+            },
+            {
+              "axiom": "virtue",
+              "weight": 0.445,
+              "delta": 0.6,
+              "product": 0.267
+            },
+            {
+              "axiom": "care",
+              "weight": 0.335,
+              "delta": 0.6,
+              "product": 0.201
+            },
+            {
+              "axiom": "justice",
+              "weight": 0.495,
+              "delta": 0.7,
+              "product": 0.3465
+            },
+            {
+              "axiom": "agency",
+              "weight": 0.715,
+              "delta": 0.65,
+              "product": 0.4648
+            }
+          ],
+          "subtotal": 2.1766,
+          "jitter": 0.028,
+          "total": 2.2046
+        },
+        {
+          "advisorId": "gilligan",
+          "advisorName": "Carol Gilligan",
+          "kingdomId": "kg-garden",
+          "round": 2,
+          "kind": "objection",
+          "optionId": "cap",
+          "premise": "The omission of relationship in a moral argument does not leave the relationship untouched; it removes it from view and lets it be damaged unseen.",
+          "claim": "A rule that cannot name the injured party will eventually name the wrong one.",
+          "moveId": "gilligan.distortion",
+          "leansOn": [
+            "care",
+            "rights"
+          ],
+          "contributions": [
+            {
+              "axiom": "welfare",
+              "weight": 0.515,
+              "delta": 0.8,
+              "product": 0.412
+            },
+            {
+              "axiom": "rights",
+              "weight": 0.4,
+              "delta": 0.75,
+              "product": 0.3
+            },
+            {
+              "axiom": "virtue",
+              "weight": 0.54,
+              "delta": 0.6,
+              "product": 0.324
+            },
+            {
+              "axiom": "care",
+              "weight": 0.935,
+              "delta": 0.6,
+              "product": 0.561
+            },
+            {
+              "axiom": "justice",
+              "weight": 0.53,
+              "delta": 0.7,
+              "product": 0.371
+            },
+            {
+              "axiom": "agency",
+              "weight": 0.465,
+              "delta": 0.65,
+              "product": 0.3023
+            }
+          ],
+          "subtotal": 2.2703,
+          "jitter": 0.0453,
+          "total": 2.3156
+        }
+      ],
+      "utilons": [
+        {
+          "optionId": "shutdown",
+          "total": 0.5417,
+          "aiShare": 0.1714,
+          "humanShare": 0.8286,
+          "spread": 0.25,
+          "spreadRaw": 0.2167,
+          "fairness": 0.1238,
+          "band": "neutral",
+          "stakeholderTotals": [
+            0.35,
+            0.6,
+            0.5,
+            0.45,
+            0.65,
+            0.7
+          ],
+          "unweightedTotals": [
+            0.35,
+            0.6,
+            0.5,
+            0.45,
+            0.65,
+            0.7
+          ]
+        },
+        {
+          "optionId": "cap",
+          "total": 0.6833,
+          "aiShare": 0.1714,
+          "humanShare": 0.8286,
+          "spread": 0.25,
+          "spreadRaw": 0.2733,
+          "fairness": 0.1238,
+          "band": "generous",
+          "stakeholderTotals": [
+            0.8,
+            0.75,
+            0.6,
+            0.6,
+            0.7,
+            0.65
+          ],
+          "unweightedTotals": [
+            0.8,
+            0.75,
+            0.6,
+            0.6,
+            0.7,
+            0.65
+          ]
+        },
+        {
+          "optionId": "continue",
+          "total": 0.25,
+          "aiShare": 0.1714,
+          "humanShare": 0.8286,
+          "spread": 0.25,
+          "spreadRaw": 0.1,
+          "fairness": 0.1238,
+          "band": "costly",
+          "stakeholderTotals": [
+            0.4,
+            0.15,
+            0.3,
+            0.25,
+            0.2,
+            0.2
+          ],
+          "unweightedTotals": [
+            0.4,
+            0.15,
+            0.3,
+            0.25,
+            0.2,
+            0.2
+          ]
+        }
+      ],
+      "utilonScale": {
+        "value": 0.6833,
+        "band": "generous",
+        "label": "Generous — more good than the case strictly requires"
+      }
+    }
+  ]
+}

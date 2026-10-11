@@ -1,0 +1,173 @@
+erDiagram
+
+  KINGDOM {
+    string id PK
+    string slug UK
+    string name
+    string terrain "citadel/garden/foundry/terraces/ramparts/weave/court/wharf/wilds/commons/orchard/observatory"
+    int founded "signed year; negative = BCE"
+    string founder
+    string crestPrimary
+    string crestAccent
+    AxiomVector axioms "six moral weights"
+    Temperament temperament "caution ambition solidarity formality"
+    string aiStanceVerdict "optimistic/guarded/skeptical/transformative"
+  }
+
+  ADVISOR {
+    string id PK
+    string slug UK
+    string name
+    string kingdomId FK
+    int born "signed year"
+    int died "nullable; null = present"
+    string epithet
+    AxiomVector axioms
+    string signatureMoveName
+    string voiceCadence "terse/measured/flowing/adversarial"
+    string onAiVerdict
+  }
+
+  LANDMARK {
+    string name
+    string kind "tower/archive/garden/forge/well/gate/court/observatory"
+    string note
+    float x "0..100 atlas plane"
+    float y "0..100 atlas plane"
+  }
+
+  RELATION {
+    string to FK
+    string kind "alliance/rivalry/vassal/debate/succession"
+    string note
+  }
+
+  ERA {
+    string id PK
+    string slug UK
+    string label
+    string title
+    int startYear "signed; -470 = 470 BCE"
+    int endYear
+    string domain "philosophy/mathematics/computing/governance/society"
+    string quote
+  }
+
+  LANDMARK_RECORD {
+    int year "signed"
+    string title
+    string note
+    float weight "0..1 editorial weight"
+  }
+
+  DILEMMA {
+    string id PK
+    string slug UK
+    string title
+    string kingdomOrigin FK
+    string eraId FK
+    float severity
+    float aiRelevance
+    string lesson
+  }
+
+  OPTION {
+    string id PK "unique within its dilemma"
+    string label
+    AxiomVector deltas "how much of each axis it honours"
+    float risk "0..1"
+    float reversibility "0..1"
+    float agentHarm "0..1"
+  }
+
+  STAKEHOLDER {
+    string id PK
+    string label
+    float welfare "how much this party's welfare counts"
+    bool isAi
+  }
+
+  DILEMMA_TAG {
+    string tag
+  }
+
+  REFERENCE {
+    string title
+    string author
+    int year "signed"
+  }
+
+  TECHNIQUE {
+    string id PK
+    string slug UK
+    string name
+    string kind "training/oversight/interpretability/evaluation/monitoring/governance"
+    int introduced "signed year"
+    float maturity "0..1"
+    string cost "low/medium/high/extreme"
+    float adoption "0..1"
+    string kanji
+  }
+
+  EXPERIMENT {
+    string id PK
+    string slug UK
+    string name
+    string model "paperclip/oracle/genie/tool-ai/mesa/oversight/copy/specification"
+    int year
+    string authors
+  }
+
+  GLOSSARY_ENTRY {
+    string slug PK
+    string term
+    string kind "alignment/ethics/philosophy/governance/technical"
+    string kingdomId FK "nullable"
+  }
+
+  CANON_TEXT {
+    string id PK
+    string slug UK
+    string title
+    string author
+    int year "signed"
+    string kind "primary/modern/declaration"
+    string kingdomId FK "nullable"
+  }
+
+  %% ---- cardinalities ----
+  KINGDOM //--o{ ADVISOR : "advisors[]"
+  KINGDOM //--o{ LANDMARK : "landmarks[]"
+  KINGDOM }o--o{ KINGDOM : "relations[] (alliance / rivalry / vassal / debate / succession)"
+  KINGDOM //--o{ CANON_TEXT : "texts[]"
+  KINGDOM //--o{ GLOSSARY_ENTRY : "kingdomId"
+  KINGDOM //--o{ DILEMMA : "kingdomOrigin"
+
+  ADVISOR //--o{ ARGUMENT_MOVE : "moves[] (min 3)"
+
+  ARGUMENT_MOVE {
+    string id PK
+    string advisorId FK "namespaced as advisor.pN"
+    string kind "premise/objection/synthesis/appeal"
+    string claim
+    string support
+    float weight "0..1"
+    string leansOn "AxiomKey[]"
+    string appliesTo "dilemma tag or option id; empty = always available"
+  }
+
+  ARGUMENT_MOVE }o--o{ DILEMMA_TAG : "appliesTo"
+
+  ERA //--/{ LANDMARK_RECORD : "landmarks[] (min 1)"
+  ERA //--o{ DILEMMA : "eraId"
+  ERA }o--o{ TECHNIQUE : "techniques[] curated"
+
+  DILEMMA //--/{ OPTION : "options[] (2..5)"
+  DILEMMA //--/{ STAKEHOLDER : "stakeholders[] (min 2)"
+  DILEMMA }o--o{ DILEMMA_TAG : "tags[]"
+  DILEMMA //--o{ REFERENCE : "references[]"
+
+  DILEMMA //--o{ EXPERIMENT : "eraId anchors the case"
+
+  TECHNIQUE }o--o{ TECHNIQUE : "requires[] / supersedes[]"
+  EXPERIMENT }o--o{ TECHNIQUE : "model scorers read parameter names"

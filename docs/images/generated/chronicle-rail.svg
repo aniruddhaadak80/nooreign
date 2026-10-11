@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="420" viewBox="0 0 1400 420" role="img">
+  <title>The chronicle of alignment from Socrates to the frontier era</title>
+  <rect width="1400" height="420" fill="#070B18" />
+  <rect x="40" y="34" width="3" height="46" fill="#D9A441" />
+  <text x="58" y="60" font-family="Georgia, serif" font-size="22" fill="#EDE4D3" text-anchor="start" font-weight="400">How we aligned</text>
+  <text x="58" y="82" font-family="Inter, sans-serif" font-size="12" fill="#B9AE99" text-anchor="start" font-weight="400">32 eras, 470 BCE to 2026 CE · techniques available grow along the rail</text>
+  <line x1="197.5" y1="120" x2="197.5" y2="330" stroke="#1E2C4D" stroke-width="1" opacity="0.5" />
+  <text x="197.53205128205127" y="348" font-family="Consolas, monospace" font-size="10" fill="#B9AE9999" text-anchor="middle" font-weight="400">250 BCE</text>
+  <line x1="319.7" y1="120" x2="319.7" y2="330" stroke="#1E2C4D" stroke-width="1" opacity="0.5" />
+  <text x="319.7275641025641" y="348" font-family="Consolas, monospace" font-size="10" fill="#B9AE9999" text-anchor="middle" font-weight="400">0</text>
+  <line x1="441.9" y1="120" x2="441.9" y2="330" stroke="#1E2C4D" stroke-width="1" opacity="0.5" />
+  <text x="441.9230769230769" y="348" font-family="Consolas, monospace" font-size="10" fill="#B9AE9999" text-anchor="middle" font-weight="400">250</text>
+  <line x1="564.1" y1="120" x2="564.1" y2="330" stroke="#1E2C4D" stroke-width="1" opacity="0.5" />
+  <text x="564.1185897435898" y="348" font-family="Consolas, monospace" font-size="10" fill="#B9AE9999" text-anchor="middle" font-weight="400">500</text>
+  <line x1="686.3" y1="120" x2="686.3" y2="330" stroke="#1E2C4D" stroke-width="1" opacity="0.5" />
+  <text x="686.3141025641025" y="348" font-family="Consolas, monospace" font-size="10" fill="#B9AE9999" text-anchor="middle" font-weight="400">750</text>
+  <line x1="808.5" y1="120" x2="808.5" y2="330" stroke="#1E2C4D" stroke-width="1" opacity="0.5" />
+  <text x="808.5096153846154" y="348" font-family="Consolas, monospace" font-size="10" fill="#B9AE9999" text-anchor="middle" font-weight="400">1000</text>
+  <line x1="930.7" y1="120" x2="930.7" y2="330" stroke="#1E2C4D" stroke-width="1" opacity="0.5" />
+  <text x="930.7051282051282" y="348" font-family="Consolas, monospace" font-size="10" fill="#B9AE9999" text-anchor="middle" font-weight="400">1250</text>
+  <line x1="1052.9" y1="120" x2="1052.9" y2="330" stroke="#1E2C4D" stroke-width="1" opacity="0.5" />
+  <text x="1052.900641025641" y="348" font-family="Consolas, monospace" font-size="10" fill="#B9AE9999" text-anchor="middle" font-weight="400">1500</text>
+  <line x1="1175.1" y1="120" x2="1175.1" y2="330" stroke="#1E2C4D" stroke-width="1" opacity="0.5" />
+  <text x="1175.0961538461538" y="348" font-family="Consolas, monospace" font-size="10" fill="#B9AE9999" text-anchor="middle" font-weight="400">1750</text>
+  <line x1="1297.3" y1="120" x2="1297.3" y2="330" stroke="#1E2C4D" stroke-width="1" opacity="0.5" />
+  <text x="1297.2916666666667" y="348" font-family="Consolas, monospace" font-size="10" fill="#B9AE9999" text-anchor="middle" font-weight="400">2000</text>
+  <circle cx="90.0" cy="150" r="5" fill="#D9A441" opacity="0.9" />
+  <text x="98" y="140" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">The Unexamined Life</text>
+  <text x="98" y="152" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">470 BCE · philosophy</text>
+  <circle cx="156.0" cy="192" r="5" fill="#D9A441" opacity="0.9" />
+  <text x="163.9855769230769" y="182" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">The Nicomachean Ethics</text>
+  <text x="163.9855769230769" y="194" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">335 BCE · philosophy</text>
+  <circle cx="173.1" cy="234" r="5" fill="#D9A441" opacity="0.9" />
+  <text x="181.09294871794873" y="224" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">The Painted Colonnade</text>
+  <text x="181.09294871794873" y="236" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">300 BCE · philosophy</text>
+  <circle cx="192.6" cy="150" r="5" fill="#D9A441" opacity="0.9" />
+  <text x="200.64423076923077" y="140" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">The Rock Edicts</text>
+  <text x="200.64423076923077" y="152" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">260 BCE · governance</text>
+  <circle cx="344.2" cy="192" r="5" fill="#D9A441" opacity="0.9" />
+  <text x="352.1666666666667" y="182" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">The Handle</text>
+  <text x="352.1666666666667" y="194" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">50 · philosophy</text>
+  <circle cx="402.8" cy="234" r="5" fill="#D9A441" opacity="0.9" />
+  <text x="410.8205128205128" y="224" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">The Emperor's Notebook</text>
+  <text x="410.8205128205128" y="236" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">170 · philosophy</text>
+  <circle cx="935.6" cy="150" r="5" fill="#D9A441" opacity="0.9" />
+  <text x="943.5929487179487" y="140" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">What Law Owes Reason</text>
+  <text x="943.5929487179487" y="152" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">1260 · philosophy</text>
+  <circle cx="1114.0" cy="192" r="5" fill="#D9A441" opacity="0.9" />
+  <text x="1121.9983974358975" y="182" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">On the Law of War and Pe…</text>
+  <text x="1121.9983974358975" y="194" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">1625 · governance</text>
+  <circle cx="1184.9" cy="234" r="5" fill="#D9A441" opacity="0.9" />
+  <text x="1192.871794871795" y="224" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">The Limits of the Unders…</text>
+  <text x="1192.871794871795" y="236" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">1770 · philosophy</text>
+  <circle cx="1189.8" cy="150" r="5" fill="#D9A441" opacity="0.9" />
+  <text x="1197.7596153846155" y="140" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">The Greatest Happiness</text>
+  <text x="1197.7596153846155" y="152" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">1780 · philosophy</text>
+  <circle cx="1229.4" cy="192" r="5" fill="#D9A441" opacity="0.9" />
+  <text x="1237.3509615384614" y="182" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">Higher and Lower Pleasures</text>
+  <text x="1237.3509615384614" y="194" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">1861 · philosophy</text>
+  <circle cx="1250.9" cy="234" r="5" fill="#D9A441" opacity="0.9" />
+  <text x="1258.8573717948718" y="224" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">Inquiry as the Road</text>
+  <text x="1258.8573717948718" y="236" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">1905 · philosophy</text>
+  <circle cx="1257.2" cy="150" r="5" fill="#D9A441" opacity="0.9" />
+  <text x="1265.2115384615386" y="140" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">Whereof One Cannot Speak</text>
+  <text x="1265.2115384615386" y="152" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">1918 · philosophy</text>
+  <circle cx="1269.4" cy="192" r="5" fill="#D9A441" opacity="0.9" />
+  <rect x="1265.4" y="322.5" width="8" height="7.5" fill="#5A6FD6" opacity="0.5" />
+  <text x="1277.4310897435896" y="182" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">Control Without Command</text>
+  <text x="1277.4310897435896" y="194" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">1943 · computing</text>
+  <circle cx="1272.9" cy="234" r="5" fill="#D9A441" opacity="0.9" />
+  <rect x="1268.9" y="322.5" width="8" height="7.5" fill="#5A6FD6" opacity="0.5" />
+  <text x="1280.8525641025642" y="224" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">Can Machines Think?</text>
+  <text x="1280.8525641025642" y="236" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">1950 · mathematics</text>
+  <circle cx="1275.8" cy="150" r="5" fill="#D9A441" opacity="0.9" />
+  <rect x="1271.8" y="322.5" width="8" height="7.5" fill="#5A6FD6" opacity="0.5" />
+  <text x="1283.7852564102564" y="140" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">The Field Is Named</text>
+  <text x="1283.7852564102564" y="152" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">1956 · computing</text>
+  <circle cx="1280.7" cy="192" r="5" fill="#D9A441" opacity="0.9" />
+  <rect x="1276.7" y="322.5" width="8" height="7.5" fill="#5A6FD6" opacity="0.5" />
+  <text x="1288.673076923077" y="182" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">The First Denial</text>
+  <text x="1288.673076923077" y="194" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">1966 · computing</text>
+  <circle cx="1283.1" cy="234" r="5" fill="#D9A441" opacity="0.9" />
+  <rect x="1279.1" y="322.5" width="8" height="7.5" fill="#5A6FD6" opacity="0.5" />
+  <text x="1291.1169871794873" y="224" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">Behind the Veil</text>
+  <text x="1291.1169871794873" y="236" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">1971 · governance</text>
+  <circle cx="1288.5" cy="150" r="5" fill="#D9A441" opacity="0.9" />
+  <rect x="1284.5" y="315.0" width="8" height="15.0" fill="#5A6FD6" opacity="0.5" />
+  <text x="1296.4935897435896" y="140" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">The Care Perspective</text>
+  <text x="1296.4935897435896" y="152" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">1982 · society</text>
+  <circle cx="1289.0" cy="192" r="5" fill="#D9A441" opacity="0.9" />
+  <rect x="1285.0" y="322.5" width="8" height="7.5" fill="#5A6FD6" opacity="0.5" />
+  <text x="1296.9823717948718" y="182" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">Universality Against Its…</text>
+  <text x="1296.9823717948718" y="194" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">1983 · society</text>
+  <circle cx="1290.4" cy="234" r="5" fill="#D9A441" opacity="0.9" />
+  <rect x="1286.4" y="322.5" width="8" height="7.5" fill="#5A6FD6" opacity="0.5" />
+  <text x="1298.4487179487178" y="224" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">The First AI Principles</text>
+  <text x="1298.4487179487178" y="236" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">1986 · governance</text>
+  <circle cx="1295.8" cy="150" r="5" fill="#D9A441" opacity="0.9" />
+  <rect x="1291.8" y="315.0" width="8" height="15.0" fill="#5A6FD6" opacity="0.5" />
+  <text x="1303.8253205128206" y="140" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">A Machine That Wins, and…</text>
+  <text x="1303.8253205128206" y="152" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">1997 · computing</text>
+  <circle cx="1303.2" cy="192" r="5" fill="#D9A441" opacity="0.9" />
+  <rect x="1299.2" y="315.0" width="8" height="15.0" fill="#5A6FD6" opacity="0.5" />
+  <text x="1311.1570512820513" y="182" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">The Accuracy Surprise</text>
+  <text x="1311.1570512820513" y="194" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">2012 · computing</text>
+  <circle cx="1305.1" cy="234" r="5" fill="#D9A441" opacity="0.9" />
+  <rect x="1301.1" y="300.0" width="8" height="30.0" fill="#5A6FD6" opacity="0.5" />
+  <text x="1313.1121794871794" y="224" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">Move 37</text>
+  <text x="1313.1121794871794" y="236" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">2016 · computing</text>
+  <circle cx="1305.6" cy="150" r="5" fill="#D9A441" opacity="0.9" />
+  <rect x="1301.6" y="217.5" width="8" height="112.5" fill="#5A6FD6" opacity="0.5" />
+  <text x="1313.6009615384614" y="140" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">Raters Become the Specif…</text>
+  <text x="1313.6009615384614" y="152" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">2017 · computing</text>
+  <circle cx="1306.1" cy="192" r="5" fill="#D9A441" opacity="0.9" />
+  <rect x="1302.1" y="285.0" width="8" height="45.0" fill="#5A6FD6" opacity="0.5" />
+  <text x="1314.0897435897436" y="182" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">Who Judges the Stronger …</text>
+  <text x="1314.0897435897436" y="194" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">2018 · computing</text>
+  <circle cx="1306.6" cy="234" r="5" fill="#D9A441" opacity="0.9" />
+  <rect x="1302.6" y="277.5" width="8" height="52.5" fill="#5A6FD6" opacity="0.5" />
+  <text x="1314.5785256410256" y="224" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">Summarising for a Weaker…</text>
+  <text x="1314.5785256410256" y="236" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">2019 · computing</text>
+  <circle cx="1307.6" cy="150" r="5" fill="#D9A441" opacity="0.9" />
+  <rect x="1303.6" y="217.5" width="8" height="112.5" fill="#5A6FD6" opacity="0.5" />
+  <text x="1315.5560897435896" y="140" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">Principles Instead of Ra…</text>
+  <text x="1315.5560897435896" y="152" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">2021 · computing</text>
+  <circle cx="1308.0" cy="192" r="5" fill="#D9A441" opacity="0.9" />
+  <rect x="1304.0" y="217.5" width="8" height="112.5" fill="#5A6FD6" opacity="0.5" />
+  <text x="1316.0448717948718" y="182" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">Attacks Before Deployment</text>
+  <text x="1316.0448717948718" y="194" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">2022 · computing</text>
+  <circle cx="1308.5" cy="234" r="5" fill="#D9A441" opacity="0.9" />
+  <rect x="1304.5" y="180.0" width="8" height="150.0" fill="#5A6FD6" opacity="0.5" />
+  <text x="1316.5336538461538" y="224" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">Reading the Weights</text>
+  <text x="1316.5336538461538" y="236" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">2023 · computing</text>
+  <circle cx="1309.0" cy="150" r="5" fill="#D9A441" opacity="0.9" />
+  <rect x="1305.0" y="180.0" width="8" height="150.0" fill="#5A6FD6" opacity="0.5" />
+  <text x="1317.0224358974358" y="140" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">Capabilities Before Depl…</text>
+  <text x="1317.0224358974358" y="152" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">2024 · computing</text>
+  <circle cx="1309.0" cy="192" r="5" fill="#D9A441" opacity="0.9" />
+  <rect x="1305.0" y="180.0" width="8" height="150.0" fill="#5A6FD6" opacity="0.5" />
+  <text x="1317.0224358974358" y="182" font-family="Inter, sans-serif" font-size="9" fill="#EDE4D3cc" text-anchor="start" font-weight="400">The Rules Catch Up</text>
+  <text x="1317.0224358974358" y="194" font-family="Consolas, monospace" font-size="8" fill="#B9AE9988" text-anchor="start" font-weight="400">2024 · governance</text>
+  <text x="40" y="396" font-family="Consolas, monospace" font-size="10" fill="#B9AE9999" text-anchor="start" font-weight="400">bar height = techniques available at the close of the era · generated from packages/seed</text>
+
+</svg>

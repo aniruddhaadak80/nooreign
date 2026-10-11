@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1220" height="1120" viewBox="0 0 1220 1120" role="img">
+  <title>Six-axis profiles for every advisor</title>
+  <rect width="1220" height="1120" fill="#070B18" />
+  <rect x="40" y="32" width="3" height="46" fill="#D9A441" />
+  <text x="58" y="58" font-family="Georgia, serif" font-size="22" fill="#EDE4D3" text-anchor="start" font-weight="400">The courts, as vectors</text>
+  <text x="58" y="80" font-family="Inter, sans-serif" font-size="12" fill="#B9AE99" text-anchor="start" font-weight="400">28 advisors · gold = welfare, indigo = care · every deliberation starts here</text>
+  <polygon points="175.0,269.0 197.5,282.0 197.5,308.0 175.0,321.0 152.5,308.0 152.5,282.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="175.0,243.0 220.0,269.0 220.0,321.0 175.0,347.0 130.0,321.0 130.0,269.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="175.0,271.6 197.5,282.0 213.3,317.1 175.0,315.8 152.5,308.0 156.1,284.1" fill="#8FA6C8" fill-opacity="0.2" stroke="#8FA6C8" stroke-width="1.4" />
+  <text x="175" y="367" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Epictetus</text>
+  <polygon points="365.0,269.0 387.5,282.0 387.5,308.0 365.0,321.0 342.5,308.0 342.5,282.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="365.0,243.0 410.0,269.0 410.0,321.0 365.0,347.0 320.0,321.0 320.0,269.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="365.0,266.4 385.3,283.3 401.0,315.8 365.0,318.4 340.2,309.3 347.0,284.6" fill="#7D93B8" fill-opacity="0.2" stroke="#7D93B8" stroke-width="1.4" />
+  <text x="365" y="367" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Marcus Aurelius</text>
+  <polygon points="555.0,269.0 577.5,282.0 577.5,308.0 555.0,321.0 532.5,308.0 532.5,282.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="555.0,243.0 600.0,269.0 600.0,321.0 555.0,347.0 510.0,321.0 510.0,269.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="555.0,279.4 597.8,270.3 578.4,308.5 555.0,313.2 530.2,309.3 522.6,276.3" fill="#6C7BD6" fill-opacity="0.2" stroke="#6C7BD6" stroke-width="1.4" />
+  <text x="555" y="367" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Immanuel Kant</text>
+  <polygon points="745.0,269.0 767.5,282.0 767.5,308.0 745.0,321.0 722.5,308.0 722.5,282.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="745.0,243.0 790.0,269.0 790.0,321.0 745.0,347.0 700.0,321.0 700.0,269.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="745.0,275.2 783.3,272.9 769.8,309.3 745.0,315.8 718.0,310.6 713.5,276.8" fill="#8A93E0" fill-opacity="0.2" stroke="#8A93E0" stroke-width="1.4" />
+  <text x="745" y="367" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Christine Korsgaard</text>
+  <polygon points="935.0,269.0 957.5,282.0 957.5,308.0 935.0,321.0 912.5,308.0 912.5,282.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="935.0,243.0 980.0,269.0 980.0,321.0 935.0,347.0 890.0,321.0 890.0,269.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="935.0,245.6 944.9,289.3 944.0,300.2 935.0,309.6 912.5,308.0 921.5,287.2" fill="#C8483F" fill-opacity="0.2" stroke="#C8483F" stroke-width="1.4" />
+  <text x="935" y="367" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Jeremy Bentham</text>
+  <polygon points="1125.0,269.0 1147.5,282.0 1147.5,308.0 1125.0,321.0 1102.5,308.0 1102.5,282.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="1125.0,243.0 1170.0,269.0 1170.0,321.0 1125.0,347.0 1080.0,321.0 1080.0,269.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="1125.0,249.2 1143.9,284.1 1143.0,305.4 1125.0,318.4 1100.2,309.3 1102.5,282.0" fill="#D9645B" fill-opacity="0.2" stroke="#D9645B" stroke-width="1.4" />
+  <text x="1125" y="367" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">John Stuart Mill</text>
+  <polygon points="175.0,459.0 197.5,472.0 197.5,498.0 175.0,511.0 152.5,498.0 152.5,472.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="175.0,433.0 220.0,459.0 220.0,511.0 175.0,537.0 130.0,511.0 130.0,459.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="175.0,459.0 193.0,474.6 217.8,509.7 175.0,516.2 154.7,496.7 152.5,472.0" fill="#6FA96F" fill-opacity="0.2" stroke="#6FA96F" stroke-width="1.4" />
+  <text x="175" y="557" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Aristotle</text>
+  <polygon points="365.0,459.0 387.5,472.0 387.5,498.0 365.0,511.0 342.5,498.0 342.5,472.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="365.0,433.0 410.0,459.0 410.0,511.0 365.0,537.0 320.0,511.0 320.0,459.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="365.0,456.4 387.5,472.0 397.4,503.7 365.0,511.0 342.5,498.0 342.5,472.0" fill="#84BC84" fill-opacity="0.2" stroke="#84BC84" stroke-width="1.4" />
+  <text x="365" y="557" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">G. E. Moore</text>
+  <polygon points="555.0,459.0 577.5,472.0 577.5,498.0 555.0,511.0 532.5,498.0 532.5,472.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="555.0,433.0 600.0,459.0 600.0,511.0 555.0,537.0 510.0,511.0 510.0,459.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="555.0,447.6 582.0,469.4 588.8,504.5 555.0,531.8 528.0,500.6 537.0,474.6" fill="#E08A3C" fill-opacity="0.2" stroke="#E08A3C" stroke-width="1.4" />
+  <text x="555" y="557" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Gautama Buddha</text>
+  <polygon points="745.0,459.0 767.5,472.0 767.5,498.0 745.0,511.0 722.5,498.0 722.5,472.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="745.0,433.0 790.0,459.0 790.0,511.0 745.0,537.0 700.0,511.0 700.0,459.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="745.0,452.8 772.0,469.4 776.5,503.2 745.0,527.6 718.0,500.6 724.7,473.3" fill="#EBA75B" fill-opacity="0.2" stroke="#EBA75B" stroke-width="1.4" />
+  <text x="745" y="557" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Nagarjuna</text>
+  <polygon points="935.0,459.0 957.5,472.0 957.5,498.0 935.0,511.0 912.5,498.0 912.5,472.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="935.0,433.0 980.0,459.0 980.0,511.0 935.0,537.0 890.0,511.0 890.0,459.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="935.0,458.0 955.3,473.3 971.0,505.8 935.0,529.7 908.0,500.6 923.7,478.5" fill="#D9532F" fill-opacity="0.2" stroke="#D9532F" stroke-width="1.4" />
+  <text x="935" y="557" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Confucius</text>
+  <polygon points="1125.0,459.0 1147.5,472.0 1147.5,498.0 1125.0,511.0 1102.5,498.0 1102.5,472.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="1125.0,433.0 1170.0,459.0 1170.0,511.0 1125.0,537.0 1080.0,511.0 1080.0,459.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="1125.0,448.6 1152.0,469.4 1155.6,502.7 1125.0,530.8 1092.6,503.7 1109.2,475.9" fill="#C6482B" fill-opacity="0.2" stroke="#C6482B" stroke-width="1.4" />
+  <text x="1125" y="557" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Mozi</text>
+  <polygon points="175.0,649.0 197.5,662.0 197.5,688.0 175.0,701.0 152.5,688.0 152.5,662.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="175.0,623.0 220.0,649.0 220.0,701.0 175.0,727.0 130.0,701.0 130.0,649.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="175.0,642.8 197.5,662.0 202.0,690.6 175.0,723.4 142.6,693.7 161.5,667.2" fill="#4FA88B" fill-opacity="0.2" stroke="#4FA88B" stroke-width="1.4" />
+  <text x="175" y="747" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Desmond Tutu</text>
+  <polygon points="365.0,649.0 387.5,662.0 387.5,688.0 365.0,701.0 342.5,688.0 342.5,662.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="365.0,623.0 410.0,649.0 410.0,701.0 365.0,727.0 320.0,701.0 320.0,649.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="365.0,644.8 389.8,660.7 391.1,690.1 365.0,720.8 334.4,692.7 344.7,663.3" fill="#5FB99C" fill-opacity="0.2" stroke="#5FB99C" stroke-width="1.4" />
+  <text x="365" y="747" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Kwame Anthony Appiah</text>
+  <polygon points="555.0,649.0 577.5,662.0 577.5,688.0 555.0,701.0 532.5,688.0 532.5,662.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="555.0,623.0 600.0,649.0 600.0,701.0 555.0,727.0 510.0,701.0 510.0,649.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="555.0,648.0 587.4,656.3 572.1,684.9 555.0,700.0 512.2,699.7 525.3,657.8" fill="#9B8AE6" fill-opacity="0.2" stroke="#9B8AE6" stroke-width="1.4" />
+  <text x="555" y="747" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">John Rawls</text>
+  <polygon points="745.0,649.0 767.5,662.0 767.5,688.0 745.0,701.0 722.5,688.0 722.5,662.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="745.0,623.0 790.0,649.0 790.0,701.0 745.0,727.0 700.0,701.0 700.0,649.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="745.0,649.0 777.4,656.3 763.9,685.9 745.0,702.0 703.6,698.9 717.1,658.9" fill="#A99BEC" fill-opacity="0.2" stroke="#A99BEC" stroke-width="1.4" />
+  <text x="745" y="747" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">T. M. Scanlon</text>
+  <polygon points="935.0,649.0 957.5,662.0 957.5,688.0 935.0,701.0 912.5,688.0 912.5,662.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="935.0,623.0 980.0,649.0 980.0,701.0 935.0,727.0 890.0,701.0 890.0,649.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="935.0,643.8 957.5,662.0 961.1,690.1 935.0,724.4 909.8,689.6 915.2,663.6" fill="#E5A0B4" fill-opacity="0.2" stroke="#E5A0B4" stroke-width="1.4" />
+  <text x="935" y="747" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Carol Gilligan</text>
+  <polygon points="1125.0,649.0 1147.5,662.0 1147.5,688.0 1125.0,701.0 1102.5,688.0 1102.5,662.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="1125.0,623.0 1170.0,649.0 1170.0,701.0 1125.0,727.0 1080.0,701.0 1080.0,649.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="1125.0,642.8 1147.5,662.0 1151.1,690.1 1125.0,723.9 1098.9,690.1 1107.0,664.6" fill="#EBAAC0" fill-opacity="0.2" stroke="#EBAAC0" stroke-width="1.4" />
+  <text x="1125" y="747" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Virginia Held</text>
+  <polygon points="175.0,839.0 197.5,852.0 197.5,878.0 175.0,891.0 152.5,878.0 152.5,852.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="175.0,813.0 220.0,839.0 220.0,891.0 175.0,917.0 130.0,891.0 130.0,839.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="175.0,839.0 202.9,848.9 205.6,882.7 175.0,886.8 152.5,878.0 134.5,841.6" fill="#8B97A5" fill-opacity="0.2" stroke="#8B97A5" stroke-width="1.4" />
+  <text x="175" y="937" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Simone de Beauvoir</text>
+  <polygon points="365.0,839.0 387.5,852.0 387.5,878.0 365.0,891.0 342.5,878.0 342.5,852.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="365.0,813.0 410.0,839.0 410.0,891.0 365.0,917.0 320.0,891.0 320.0,839.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="365.0,838.0 392.9,848.9 395.6,882.7 365.0,885.8 342.5,878.0 326.3,842.6" fill="#6E7A88" fill-opacity="0.2" stroke="#6E7A88" stroke-width="1.4" />
+  <text x="365" y="937" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Albert Camus</text>
+  <polygon points="555.0,839.0 577.5,852.0 577.5,878.0 555.0,891.0 532.5,878.0 532.5,852.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="555.0,813.0 600.0,839.0 600.0,891.0 555.0,917.0 510.0,891.0 510.0,839.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="555.0,834.8 575.3,853.3 577.5,878.0 555.0,891.0 528.9,880.1 527.1,848.9" fill="#4C9BE8" fill-opacity="0.2" stroke="#4C9BE8" stroke-width="1.4" />
+  <text x="555" y="937" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">John Dewey</text>
+  <polygon points="745.0,839.0 767.5,852.0 767.5,878.0 745.0,891.0 722.5,878.0 722.5,852.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="745.0,813.0 790.0,839.0 790.0,891.0 745.0,917.0 700.0,891.0 700.0,839.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="745.0,839.0 769.8,850.7 768.4,878.5 745.0,888.4 717.1,881.1 718.9,849.9" fill="#6FB1EA" fill-opacity="0.2" stroke="#6FB1EA" stroke-width="1.4" />
+  <text x="745" y="937" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Karl Popper</text>
+  <polygon points="935.0,839.0 957.5,852.0 957.5,878.0 935.0,891.0 912.5,878.0 912.5,852.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="935.0,813.0 980.0,839.0 980.0,891.0 935.0,917.0 890.0,891.0 890.0,839.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="935.0,826.0 957.5,852.0 955.3,876.7 935.0,891.0 908.0,880.6 914.7,853.3" fill="#5A6FD6" fill-opacity="0.2" stroke="#5A6FD6" stroke-width="1.4" />
+  <text x="935" y="937" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Norbert Wiener</text>
+  <polygon points="1125.0,839.0 1147.5,852.0 1147.5,878.0 1125.0,891.0 1102.5,878.0 1102.5,852.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="1125.0,813.0 1170.0,839.0 1170.0,891.0 1125.0,917.0 1080.0,891.0 1080.0,839.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="1125.0,822.4 1149.8,850.7 1147.5,878.0 1125.0,896.2 1098.0,880.6 1107.0,854.6" fill="#6E7FE0" fill-opacity="0.2" stroke="#6E7FE0" stroke-width="1.4" />
+  <text x="1125" y="937" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Hans Jonas</text>
+  <polygon points="175.0,1029.0 197.5,1042.0 197.5,1068.0 175.0,1081.0 152.5,1068.0 152.5,1042.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="175.0,1003.0 220.0,1029.0 220.0,1081.0 175.0,1107.0 130.0,1081.0 130.0,1029.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="175.0,1007.2 197.5,1042.0 193.0,1065.4 175.0,1086.2 145.7,1071.9 157.0,1044.6" fill="#7A86E8" fill-opacity="0.2" stroke="#7A86E8" stroke-width="1.4" />
+  <text x="175" y="1127" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Peter Singer</text>
+  <polygon points="365.0,1029.0 387.5,1042.0 387.5,1068.0 365.0,1081.0 342.5,1068.0 342.5,1042.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="365.0,1003.0 410.0,1029.0 410.0,1081.0 365.0,1107.0 320.0,1081.0 320.0,1029.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="365.0,1012.4 392.0,1039.4 386.6,1067.5 365.0,1081.0 337.1,1071.1 342.5,1042.0" fill="#6C7BE8" fill-opacity="0.2" stroke="#6C7BE8" stroke-width="1.4" />
+  <text x="365" y="1127" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Stuart Russell</text>
+  <polygon points="555.0,1029.0 577.5,1042.0 577.5,1068.0 555.0,1081.0 532.5,1068.0 532.5,1042.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="555.0,1003.0 600.0,1029.0 600.0,1081.0 555.0,1107.0 510.0,1081.0 510.0,1029.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="555.0,1009.2 579.8,1040.7 572.1,1064.9 555.0,1080.0 525.7,1071.9 536.1,1044.1" fill="#7285EA" fill-opacity="0.2" stroke="#7285EA" stroke-width="1.4" />
+  <text x="555" y="1127" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Nick Bostrom</text>
+  <polygon points="745.0,1029.0 767.5,1042.0 767.5,1068.0 745.0,1081.0 722.5,1068.0 722.5,1042.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="745.0,1003.0 790.0,1029.0 790.0,1081.0 745.0,1107.0 700.0,1081.0 700.0,1029.0" fill="none" stroke="#1E2C4D" stroke-width="0.8" />
+  <polygon points="745.0,1016.0 772.9,1038.9 763.0,1065.4 745.0,1076.8 718.0,1070.6 727.9,1045.1" fill="#5F72D6" fill-opacity="0.2" stroke="#5F72D6" stroke-width="1.4" />
+  <text x="745" y="1127" font-family="Georgia, serif" font-size="11" fill="#EDE4D3" text-anchor="middle" font-weight="400">Eliezer Yudkowsky</text>
+  <text x="40" y="1096" font-family="Consolas, monospace" font-size="10" fill="#B9AE9999" text-anchor="start" font-weight="400">generated from packages/seed/src/advisors.ts · seed 2406</text>
+
+</svg>

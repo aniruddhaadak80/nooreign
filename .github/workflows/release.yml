@@ -1,0 +1,149 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Existing tag to release, e.g. v0.1.0"
+        required: true
+        type: string
+      dry_run:
+        description: "Build and upload the artefact, but do not publish a GitHub Release"
+        required: false
+        default: true
+        type: boolean
+
+permissions:
+  contents: write # creating a Release and attaching an asset
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: build & publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history for conventional-commit range queries
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.3.14"
+
+      - name: Resolve the tag
+        id: tag
+        env:
+          DISPATCH_TAG: ${{ inputs.tag }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag="${GITHUB_REF_NAME}"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            tag="${DISPATCH_TAG}"
+            # A dispatched release must point at an existing, reachable tag —
+            # otherwise the release would describe code nobody can check out.
+            git fetch --tags --force --quiet
+          fi
+          if ! git rev-parse "refs/tags/${tag}" >/dev/null 2>&1; then
+            echo "::error::Tag ${tag} does not exist. Create and push it first."
+            exit 1
+          fi
+          # Require the conventional `vMAJOR.MINOR.PATCH[-prerelease]` shape so a
+          # typo'd tag can never become a release.
+          if ! [[ "$tag" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "::error::Tag ${tag} is not a valid semver tag (expected v1.2.3[-rc.1])."
+            exit 1
+          fi
+          echo "tag=${tag}" >> "$GITHUB_OUTPUT"
+          echo "version=${tag#v}" >> "$GITHUB_OUTPUT"
+          {
+            echo "## Releasing ${tag}"
+            echo
+            echo "Commit: \`$(git rev-list -n 1 "${tag}")\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Verify the tag matches package.json
+        shell: bash
+        run: |
+          set -euo pipefail
+          expected="v$(jq -r '.version' package.json)"
+          if [ "${expected}" != "${{ steps.tag.outputs.tag }}" ]; then
+            echo "::error::Tag ${{ steps.tag.outputs.tag }} does not match package.json version (${expected}). Bump the version in the same PR that tags."
+            exit 1
+          fi
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      # The release must be exactly what CI already verified.
+      - name: Build
+        run: bun run build
+
+      - name: Generate assets
+        run: bun run assets
+
+      - name: Collect release payload
+        env:
+          VERSION: ${{ steps.tag.outputs.version }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          staging="release/nooreign-${VERSION}"
+          rm -rf release && mkdir -p "${staging}"
+
+          # Docs + generated assets are the consumable artefact of this repo:
+          # the atlas content and the diagrams are reproducible from seed 2406.
+          cp -R docs "${staging}/docs"
+          if [ -d apps/web/public/images ]; then
+            cp -R apps/web/public/images "${staging}/images"
+          fi
+          if [ -d packages/seed ]; then
+            cp -R packages/seed "${staging}/seed"
+          fi
+          cp LICENSE README.md CHANGELOG.md "${staging}/"
+
+          echo "loc: $(bun run loc --json | jq -r '.totalLines') lines" > "${staging}/BUILD_INFO.txt"
+          git log -1 --format='commit: %H%ndate: %cI' >> "${staging}/BUILD_INFO.txt"
+
+          tar -czf "nooreign-${VERSION}.tar.gz" -C release .
+          sha256sum "nooreign-${VERSION}.tar.gz" > "nooreign-${VERSION}.tar.gz.sha256"
+          ls -la nooreign-*
+
+      - name: Upload the release artefact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nooreign-${{ steps.tag.outputs.version }}
+          path: |
+            nooreign-*.tar.gz
+            nooreign-*.tar.gz.sha256
+          retention-days: 30
+
+      - name: Publish the GitHub Release
+        if: github.event_name == 'push' || !inputs.dry_run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.tag.outputs.tag }}
+          VERSION: ${{ steps.tag.outputs.version }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          previous="$(git describe --tags --abbrev=0 "${TAG}^" 2>/dev/null || true)"
+          range="${previous:+${previous}..${TAG}}"
+          echo "## Changelog — ${TAG}" >> "$GITHUB_STEP_SUMMARY"
+
+          if [ -n "${range}" ]; then
+            git log --pretty=format:'- %s (%h)' "${range}" > notes.md || true
+          else
+            git log --pretty=format:'- %s (%h)' -n 50 "${TAG}" > notes.md || true
+          fi
+
+          gh release create "${TAG}" \
+            --title "${TAG}" \
+            --generate-notes \
+            --notes-file notes.md \
+            "nooreign-${VERSION}.tar.gz#nooreign-${VERSION}.tar.gz (sha256 in .sha256)"

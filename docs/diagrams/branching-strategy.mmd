@@ -1,0 +1,64 @@
+gitGraph
+  %% Branches that exist in this repo.
+  %%   main       — tagged releases, production deploys (deploy-vercel.yml)
+  %%   develop    — integration branch; every PR targets this
+  %%   feat/*     — one feature branch per docs/guides walkthrough
+  %%   fix/*      — short-lived, merged forward
+  %%   release/*  — cut only when main needs a hotfix that develop has not taken
+  %% PRs are squashed. A merge commit on develop would make `git bisect` noisy
+  %% for verdict-regression work.
+
+  commit id: "seed 2406 — 12 kingdoms, 28 advisors, 32 eras"
+  commit id: "six-axis calculus + runCouncil"
+  commit id: "v0.1.0"
+
+  branch develop
+  checkout develop
+  commit id: "chronicle rail + observatory towers"
+  commit id: "experiments simulator, 8 scorers"
+  commit id: "codex search index"
+
+  checkout main
+  merge develop
+
+  branch feat/adding-a-kingdom
+  checkout feat/adding-a-kingdom
+  commit id: "13th kingdom: schema + seed row + route"
+  commit id: "regenerate assets, docs/diagrams"
+  checkout develop
+  merge feat/adding-a-kingdom
+
+  branch feat/agents-service
+  checkout feat/agents-service
+  commit id: "services/agents FastAPI + pydantic contracts"
+  commit id: "parity fixtures shared with packages/core"
+  checkout develop
+  merge feat/agents-service
+
+  branch fix/verdict-regression-bisect
+  checkout fix/verdict-regression-bisect
+  commit id: "reproduce: pendulum margins under seed 2406"
+  commit id: "pin tie-break order in decision()"
+  checkout main
+  merge fix/verdict-regression-bisect
+
+  branch release/0.2.0
+  checkout release/0.2.0
+  commit id: "changelog, version bump, LOC_BASELINE raise"
+  checkout main
+  merge release/0.2.0
+  commit id: "v0.2.0"
+
+  checkout develop
+  merge main
+
+  branch feat/rust-parity
+  checkout feat/rust-parity
+  commit id: "crates/engine axiom.rs + outcome_tree.rs"
+  commit id: "golden vectors shared with the TS engine"
+  checkout develop
+  merge feat/rust-parity
+
+  checkout main
+  merge develop
+  commit id: "v0.3.0"

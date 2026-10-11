@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+/* Tailwind v4 only scans the app directory by default; the design system lives
+   outside it, so both workspace packages are declared as sources explicitly. */
+@source "../../../../packages/ui/src";
+@source "../../../../packages/i18n/src";
+
+@theme {
+  /* Nooreign palette: abyssal observatory, parchment vellum, council crimson. */
+  --color-abyss: #070b18;
+  --color-abyss-raised: #0e1730;
+  --color-abyss-border: #1e2c4d;
+  --color-parchment: #ede4d3;
+  --color-parchment-dim: #b9ae99;
+  --color-crimson: #c8483f;
+  --color-gold: #d9a441;
+  --color-verdigris: #4fa88b;
+  --color-indigo-glow: #5a6fd6;
+  --color-ink: #060911;
+
+  --font-display: var(--font-cinzel), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-jetbrains), ui-monospace, "SFMono-Regular", monospace;
+
+  --radius-plate: 0.25rem;
+  --radius-realm: 0.625rem;
+}
+
+:root {
+  color-scheme: dark;
+  --header-height: 4rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background-color: var(--color-abyss);
+  color: var(--color-parchment);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* The observatory grid: a fixed star-field behind every page. */
+.starfield {
+  background-image:
+    radial-gradient(circle at 18% 12%, rgba(90, 111, 214, 0.16), transparent 42%),
+    radial-gradient(circle at 82% 8%, rgba(200, 72, 63, 0.1), transparent 38%),
+    radial-gradient(circle at 50% 96%, rgba(79, 168, 139, 0.08), transparent 45%),
+    linear-gradient(to bottom, var(--color-abyss), var(--color-ink));
+  background-attachment: fixed;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.rule-parchment {
+  border-color: color-mix(in oklab, var(--color-parchment) 14%, transparent);
+}
+
+.plate {
+  border: 1px solid var(--color-abyss-border);
+  background: color-mix(in oklab, var(--color-abyss-raised) 88%, transparent);
+}
+
+.serif {
+  font-family: var(--font-display);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Skip link: visible only when focused. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  padding: 0.5rem 0.875rem;
+  background: var(--color-gold);
+  color: var(--color-ink);
+  border-radius: var(--radius-plate);
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-gold) 40%, transparent);
+  color: var(--color-parchment);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}

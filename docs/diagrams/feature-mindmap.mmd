@@ -1,0 +1,84 @@
+mindmap
+  root((Nooreign))
+    Atlas
+      Kingdoms
+        12 realms with terrain, crest and capital
+        creed, motto, questions
+        aiStance headline + verdict
+        relations: alliance / rivalry / vassal / debate / succession
+      Cartography
+        relationGraph + centrality
+        territoryBounds (nearest-capital partition)
+        distantPairs (the estranged pair)
+    Court
+      Advisors
+        28 on 12 benches
+        six-axis axiom vector each
+        temperament: caution ambition solidarity formality
+        voice: register, cadence, tells
+      Argument moves
+        premise / objection / synthesis / appeal
+        weight in [0,1]
+        leansOn: AxiomKey[]
+        appliesTo: dilemma tags or option ids
+      Voices
+        deterministic speech from stored text
+        no model call, no invented attribution
+    Deliberation
+      Axiom calculus
+        scoreOptionWith = dot product / weightSum
+        weighAdvisor = 0.7 self + 0.3 kingdom
+        decidingAxis
+        distance, balance, describeProfile
+      Utilons
+        stakeholder-weighted total
+        fairnessIndex (normalised Gini)
+        utilonScale bands
+        moralStatusRisk amplifier
+      Council
+        runCouncil rounds 1-3
+        decision + tie-break policy
+        superMajority + minorityReport
+        synthesis from the minority when close
+        seeded jitter, cap 0.05
+      Argument graph
+        buildGraph + target resolution
+        topologicalOrder + cycle detection
+        inheritedWeight (INHERITANCE 0.4)
+        toMermaid
+    Chronicle
+      32 eras, -470 to 2026
+      eraIndex contiguous windows
+      buildRail + year/position invertibility
+      progressOf - the stack rebuilds
+      diffEras, milestonesFor, highlightEras
+    Observatory
+      20 techniques in 6 towers
+      coverageMatrix over the six axes
+      gapAnalysis severity blend
+      readinessScore with breadth bonus
+      dependencyHealth: dangling + cycles
+      costBenefit maturity per cost
+    Dilemmas
+      20 cases, 2-5 options each
+      analyseDilemma - pivot and settled axes
+      courtReading - preview without a council
+      cautiousValue - currency discounted for risk
+    Experiments
+      8 scorers, one per model
+      additive not multiplicative terms
+      JITTER_BOUND 0.03 keyed on value
+      sweep and sweepGrid
+      phaseOf from the worst metric
+    Codex
+      120 glossary terms
+      28 canon texts
+      BM25-style search index
+      reflective prompts
+    Platform
+      Turborepo, raw TS packages
+      Next.js 15 App Router, RSC
+      Tailwind v4 theme tokens
+      packages/ui design system
+      optional FastAPI service
+      Rust parity crate

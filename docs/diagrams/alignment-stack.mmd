@@ -1,0 +1,84 @@
+flowchart TB
+
+  %% The 20 techniques of the alignment stack, grouped into the six TECHNIQUE_KINDS.
+  %% `requires` edges are the real dependency edges from packages/seed/src/techniques.ts;
+  %% `supersedes` is drawn dashed. Everything else is derived from `kind`.
+
+  subgraph training["training — 6 techniques"]
+    direction TB
+    t01["t01 Hard Constraints<br/>1942 · maturity 0.72 · low"]
+    t02["t02 Data Curation and Filtering<br/>2019 · 0.85 · medium"]
+    t03["t03 Imitation Learning<br/>1989 · 0.88 · medium"]
+    t04["t04 Preference Learning<br/>2017 · 0.90 · medium"]
+    t05["t05 Reward Modelling<br/>2021 · 0.86 · high"]
+    t14["t14 Weak-to-Strong Generalisation<br/>2023 · 0.50 · medium"]
+    t18["t18 Corrigibility Training<br/>2022 · 0.35 · medium"]
+  end
+
+  subgraph oversight["oversight — 4 techniques"]
+    direction TB
+    t06["t06 Constitutional AI<br/>2022 · 0.62 · medium"]
+    t11["t11 Scalable Oversight<br/>2018 · 0.42 · high"]
+    t12["t12 Debate<br/>2018 · 0.38 · high"]
+    t13["t13 Iterated Adversarial Debate<br/>2022 · 0.30 · high"]
+  end
+
+  subgraph inter["interpretability — 3 techniques"]
+    direction TB
+    t08["t08 Saliency Probes<br/>2013 · 0.66 · low"]
+    t09["t09 Sparse Autoencoders<br/>2023 · 0.45 · high"]
+    t10["t10 Activation Steering<br/>2021 · 0.55 · low"]
+  end
+
+  subgraph evalq["evaluation — 3 techniques"]
+    direction TB
+    t07["t07 Over-optimisation Guards<br/>2023 · 0.58 · low"]
+    t15["t15 Red Teaming<br/>2021 · 0.72 · medium"]
+    t16["t16 Dangerous-Capability Evals<br/>2023 · 0.55 · high"]
+  end
+
+  subgraph monitor["monitoring — 1 technique"]
+    direction TB
+    t17["t17 Tripwire Monitoring<br/>2023 · 0.45 · low"]
+  end
+
+  subgraph govern["governance — 3 techniques"]
+    direction TB
+    t19["t19 Compute Governance<br/>2022 · 0.35 · high"]
+    t20["t20 International Law<br/>2021 · 0.30 · medium"]
+  end
+
+  %% --- requires edges (real foreign keys) ---
+  t03 -->|"requires"| t04
+  t04 -->|"requires"| t05
+  t08 -->|"requires"| t10
+  t11 -->|"requires"| t12
+  t12 -->|"requires"| t13
+  t03 -->|"requires"| t14
+  t03 -->|"requires"| t15
+  t03 -->|"requires"| t18
+  t16 -->|"requires"| t17
+  t04 -->|"requires"| t06
+
+  %% --- supersession ---
+  t08 -.->|"superseded by"| t09
+
+  %% --- the failure this graph exists to catch ---
+  %% The shipped `requires` graph is acyclic and every edge resolves. The two
+  %% quieter failures dependencyHealth() reports are (a) a `requires` id that no
+  %% technique defines, and (b) a cycle, where "add oversight to the training
+  %% loop" and "add training to the oversight loop" both look reasonable in
+  %% isolation. Neither is drawn here because neither exists in the dataset.
+
+  gap["dependencyHealth() audits the `requires` and<br/>`supersedes` edges. On the shipped data it reports<br/>no dangling ids and no cycles — and that is the<br/>result worth guarding, not an accident worth baking in."]
+
+  gap -.-> t11
+  gap -.-> t16
+
+  legend1["coverageMatrix() reads each technique's `covers`.<br/>A technique that declares an axis it cannot<br/>actually reason about is a dataset bug, not a finding."]
+  legend1 -.-> training
+  legend1 -.-> oversight
+  legend1 -.-> inter
+  legend1 -.-> evalq
+  legend1 -.-> monitor
+  legend1 -.-> govern

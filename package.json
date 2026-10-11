@@ -1,0 +1,48 @@
+{
+  "name": "nooreign",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The philosophical atlas of aligning intelligence",
+  "license": "MIT",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "start": "turbo start",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "test": "turbo test",
+    "test:watch": "vitest --watch",
+    "test:e2e": "playwright test",
+    "e2e:install": "playwright install chromium",
+    "assets": "bun scripts/gen-assets.mjs",
+    "diagrams": "bun scripts/gen-diagrams.mjs",
+    "generate": "bun scripts/generate.ts",
+    "seed": "bun scripts/seed.ts",
+    "loc": "bun scripts/loc-count.mjs",
+    "verify": "bun run typecheck && bun run lint && bun run test && bun run build",
+    "service:agents": "python -m uvicorn services.agents.app.main:app --reload --port 8080",
+    "crate:engine": "cargo test --manifest-path crates/engine/Cargo.toml"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@eslint/eslintrc": "^3.3.7",
+    "@next/eslint-plugin-next": "^15.5.27",
+    "@playwright/test": "^1.49.0",
+    "@types/d3-scale": "^4.0.9",
+    "@types/node": "^20.17.0",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "prettier": "^3.4.0",
+    "turbo": "^2.3.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0"
+  },
+  "packageManager": "bun@1.3.14",
+  "engines": {
+    "node": ">=20.11.0"
+  }
+}

@@ -1,0 +1,105 @@
+version: 2
+
+updates:
+  # --- JS/TS dependencies (the Bun workspace) --------------------------------
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Etc/UTC
+    open-pull-requests-limit: 10
+    labels:
+      - dependencies
+      - javascript
+    commit-message:
+      prefix: "chore(deps)"
+    groups:
+      # Next.js minor/major moves carry the App Router and the standalone output;
+      # they need a human reading the changelog, not an auto-merge.
+      next:
+        patterns:
+          - "next"
+          - "eslint-config-next"
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+      typescript:
+        patterns:
+          - "typescript"
+          - "@types/*"
+      test:
+        patterns:
+          - "vitest"
+          - "@playwright/*"
+          - "@testing-library/*"
+      ui:
+        patterns:
+          - "tailwindcss"
+          - "recharts"
+          - "framer-motion"
+          - "d3-*"
+          - "lucide-react"
+      tooling:
+        patterns:
+          - "turbo"
+          - "eslint"
+          - "prettier"
+      # Everything not matched above gets its own PR rather than being folded
+      # into a group nobody is reviewing closely.
+      misc:
+        patterns:
+          - "*"
+
+  # --- GitHub Actions --------------------------------------------------------
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "07:00"
+      timezone: Etc/UTC
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - github-actions
+    commit-message:
+      prefix: "chore(ci)"
+    groups:
+      # CodeQL and the official actions move together; upgrading them piecemeal
+      # has broken the security pipeline before.
+      codeql:
+        patterns:
+          - "github/codeql-action*"
+      vercel:
+        patterns:
+          - "*vercel*"
+      actions:
+        patterns:
+          - "*"
+
+  # --- Docker ---------------------------------------------------------------
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "08:00"
+      timezone: Etc/UTC
+    open-pull-requests-limit: 5
+    labels:
+      - dependencies
+      - docker
+    commit-message:
+      prefix: "chore(docker)"
+    groups:
+      bun:
+        patterns:
+          - "oven/bun*"
+      # Patch-level base images only; a major/minor base bump needs review of
+      # the standalone output layout.
+      base:
+        patterns:
+          - "*"

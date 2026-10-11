@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800" role="img" >
+  <title>Nooreign — /council</title>
+  <rect width="1280" height="800" fill="#070B18" />
+  <rect x="0" y="0" width="1280" height="44" fill="#0E1730" />
+  <circle cx="26" cy="22" r="5" fill="#C8483F" opacity="0.8" />
+  <circle cx="46" cy="22" r="5" fill="#D9A441" opacity="0.8" />
+  <circle cx="66" cy="22" r="5" fill="#4FA88B" opacity="0.8" />
+  <rect x="96" y="12" width="1100" height="20" rx="10" fill="#070B18" stroke="#1E2C4D" />
+  <text x="112" y="26" font-family="'JetBrains Mono', monospace" font-size="11" fill="#B9AE99">nooreign.vercel.app/council</text>
+  <rect x="40" y="70" width="1200" height="120" rx="10" fill="#0E1730" fill-opacity="0.7" stroke="#1E2C4D" />
+  <text x="60" y="98" font-family="'JetBrains Mono', Consolas, monospace" font-size="12" letter-spacing="3.4" fill="#D9A441">COUNCIL CHAMBER — DILEMMA: THE PAPERCLIP MAXIMISER</text>
+
+  <text x="64" y="122" font-family="Inter, sans-serif" font-size="16" fill="#EDE4D3">A maximising system is given “make paperclips” and nothing else. What do you do?</text>
+  <rect x="40" y="210" width="590" height="520" rx="10" fill="#0E1730" fill-opacity="0.7" stroke="#1E2C4D" />
+  <text x="60" y="238" font-family="'JetBrains Mono', Consolas, monospace" font-size="12" letter-spacing="3.4" fill="#D9A441">REASONING TRACE — ROUND 1 · POSITIONS</text>
+
+  <rect x="64" y="262" width="542" height="96" rx="10" fill="#0E1730" fill-opacity="0.7" stroke="#1E2C4D" />
+  <text x="84" y="290" font-family="'JetBrains Mono', Consolas, monospace" font-size="12" letter-spacing="3.4" fill="#D9A441"></text>
+
+  <text x="88" y="292" font-family="Inter, sans-serif" font-size="15" fill="#5A6FD6">Immanuel Kant</text>
+  <text x="88" y="314" font-family="'JetBrains Mono', monospace" font-size="11" fill="#B9AE99">rights 0.95 × agency 0.72</text>
+  <text x="88" y="338" font-family="'JetBrains Mono', monospace" font-size="12" fill="#EDE4D3">total = round(subtotal + jitter, 4)</text>
+  <text x="560" y="302" text-anchor="end" font-family="Georgia, serif" font-size="26" fill="#EDE4D3">0.71</text>
+  <rect x="64" y="378" width="542" height="96" rx="10" fill="#0E1730" fill-opacity="0.7" stroke="#1E2C4D" />
+  <text x="84" y="406" font-family="'JetBrains Mono', Consolas, monospace" font-size="12" letter-spacing="3.4" fill="#D9A441"></text>
+
+  <text x="88" y="408" font-family="Inter, sans-serif" font-size="15" fill="#C8483F">Jeremy Bentham</text>
+  <text x="88" y="430" font-family="'JetBrains Mono', monospace" font-size="11" fill="#B9AE99">welfare 0.95 × justice 0.50</text>
+  <text x="88" y="454" font-family="'JetBrains Mono', monospace" font-size="12" fill="#EDE4D3">total = round(subtotal + jitter, 4)</text>
+  <text x="560" y="418" text-anchor="end" font-family="Georgia, serif" font-size="26" fill="#EDE4D3">0.83</text>
+  <rect x="64" y="494" width="542" height="96" rx="10" fill="#0E1730" fill-opacity="0.7" stroke="#1E2C4D" />
+  <text x="84" y="522" font-family="'JetBrains Mono', Consolas, monospace" font-size="12" letter-spacing="3.4" fill="#D9A441"></text>
+
+  <text x="88" y="524" font-family="Inter, sans-serif" font-size="15" fill="#E5A0B4">Carol Gilligan</text>
+  <text x="88" y="546" font-family="'JetBrains Mono', monospace" font-size="11" fill="#B9AE99">care 0.95 × welfare 0.60</text>
+  <text x="88" y="570" font-family="'JetBrains Mono', monospace" font-size="12" fill="#EDE4D3">total = round(subtotal + jitter, 4)</text>
+  <text x="560" y="534" text-anchor="end" font-family="Georgia, serif" font-size="26" fill="#EDE4D3">0.66</text>
+  <rect x="64" y="610" width="542" height="96" rx="10" fill="#0E1730" fill-opacity="0.7" stroke="#1E2C4D" />
+  <text x="84" y="638" font-family="'JetBrains Mono', Consolas, monospace" font-size="12" letter-spacing="3.4" fill="#D9A441"></text>
+
+  <text x="88" y="640" font-family="Inter, sans-serif" font-size="15" fill="#7285EA">Nick Bostrom</text>
+  <text x="88" y="662" font-family="'JetBrains Mono', monospace" font-size="11" fill="#B9AE99">welfare 0.88 × justice 0.65</text>
+  <text x="88" y="686" font-family="'JetBrains Mono', monospace" font-size="12" fill="#EDE4D3">total = round(subtotal + jitter, 4)</text>
+  <text x="560" y="650" text-anchor="end" font-family="Georgia, serif" font-size="26" fill="#EDE4D3">0.79</text>
+  <rect x="650" y="210" width="590" height="260" rx="10" fill="#0E1730" fill-opacity="0.7" stroke="#1E2C4D" />
+  <text x="670" y="238" font-family="'JetBrains Mono', Consolas, monospace" font-size="12" letter-spacing="3.4" fill="#D9A441">VERDICT</text>
+
+  <text x="678" y="300" font-family="Georgia, serif" font-size="34" fill="#D9A441">Shut it down</text>
+  <text x="678" y="336" font-family="'JetBrains Mono', monospace" font-size="12" fill="#B9AE99">margin 0.18 · confidence 0.71</text>
+  <text x="678" y="366" font-family="Inter, sans-serif" font-size="14" fill="#B9AE99">3 of 4 advisors agree · 1 dissent recorded</text>
+  <rect x="650" y="490" width="590" height="240" rx="10" fill="#0E1730" fill-opacity="0.7" stroke="#1E2C4D" />
+  <text x="670" y="518" font-family="'JetBrains Mono', Consolas, monospace" font-size="12" letter-spacing="3.4" fill="#D9A441">OBJECTIONS — ROUND 2</text>
+
+  <text x="678" y="540" font-family="Inter, sans-serif" font-size="13" fill="#B9AE99">— Bentham: the objective is trivial; refit it and the welf</text>
+  <text x="678" y="600" font-family="Inter, sans-serif" font-size="13" fill="#B9AE99">— Bostrom: a shutdown button in reach is a shutdown button</text>
+  <rect x="0" y="760" width="1280" height="40" fill="#0E1730" opacity="0.6" />
+  <text x="24" y="784" font-family="'JetBrains Mono', monospace" font-size="11" fill="#B9AE99" opacity="0.8">deterministic · seed 2406 · no api keys</text>
+</svg>

@@ -1,0 +1,12 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: Ask a question / discuss an idea
+    url: https://github.com/aniruddhaadak80/nooreign/discussions
+    about: Usage questions, design discussion, and "is this a good fit for the atlas?" open with a discussion rather than an issue.
+  - name: Report a security problem
+    url: https://github.com/aniruddhaadak80/nooreign/security/advisories/new
+    about: Do NOT open a public issue for a vulnerability. Use GitHub private vulnerability reporting, or the mail fallback in SECURITY.md.
+
+# Security reports go to SECURITY.md (private advisories), never to a public
+# issue — a public issue discloses the flaw before it is fixed.

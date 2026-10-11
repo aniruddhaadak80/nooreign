@@ -1,0 +1,43 @@
+name: CodeQL
+
+on:
+  # Weekly, off the busiest hour, plus every push to main. Security scanning on a
+  # schedule catches advisories published between deploys.
+  schedule:
+    - cron: "27 4 * * 1"
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Weekly runs are additive: never cancel one that is already scanning.
+concurrency:
+  group: codeql-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  analyze:
+    name: analyze (${{ matrix.language }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [javascript-typescript, python]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: github/codeql-action/init@v3
+        with:
+          language: ${{ matrix.language }}
+          # Python needs no build step: the agents service is a FastAPI app whose
+          # sources are analysed statically.
+          build-mode: ${{ matrix.language == 'python' && 'none' || 'autobuild' }}
+
+      - uses: github/codeql-action/autobuild@v3
+        if: matrix.language == 'javascript-typescript'
+
+      - uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{ matrix.language }}"

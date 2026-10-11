@@ -1,0 +1,28 @@
+[package]
+name = "nooreign-ethics"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.70"
+description = "Reference implementation of Nooreign's axiom calculus, utilon currency and three-round deliberation engine."
+license = "MIT"
+publish = false
+
+# This crate has ZERO dependencies. Not serde, not rand, not anything. The PRNG
+# is a hand-rolled mulberry32 and the JSON emitter is ~150 lines in `json.rs`.
+# The point of the reference implementation is that a TS parity test can read a
+# fixture byte-for-byte and know that nothing about the numbers moved, so every
+# third-party float, hash or serialisation quirk is a parity hazard we decline
+# to take on.
+[dependencies]
+
+[lib]
+name = "nooreign_ethics"
+path = "src/lib.rs"
+
+[[bin]]
+name = "fixtures"
+path = "src/bin/fixtures.rs"
+
+[profile.release]
+# No `lto`/`codegen-units` games needed: the crate is a few thousand lines and
+# the only hot path is six multiplications per axis.

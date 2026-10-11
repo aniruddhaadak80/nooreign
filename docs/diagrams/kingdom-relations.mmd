@@ -1,0 +1,77 @@
+%%{init: {"theme":"base","themeVariables":{"background":"#070B18","primaryColor":"#0E1730","primaryTextColor":"#EDE4D3","primaryBorderColor":"#D9A441","lineColor":"#5A6FD6","secondaryColor":"#4FA88B","tertiaryColor":"#C8483F","fontFamily":"Inter, ui-sans-serif, system-ui, sans-serif"}}}%%
+flowchart LR
+
+  %% Every edge below is a real entry in some kingdom's `relations` array.
+  %% Line style encodes RELATION_KINDS; the label carries the `note`.
+
+  subgraph west["Western courts"]
+    direction TB
+    stoa["stoa-vetera<br/>The Stoic Ramparts<br/>founded -300 · Epictetus, Marcus Aurelius"]
+    citadel["kantian-citadel<br/>The Kantian Citadel<br/>1781 · Kant, Korsgaard"]
+    foundry["benthamite-foundry<br/>The Benthamite Foundry<br/>1789 · Bentham, Mill"]
+    garden["virtue-garden<br/>The Virtue Garden<br/>-335 · Aristotle, Moore"]
+    contractual["contractual-court<br/>The Contractual Court<br/>1971 · Rawls, Scanlon"]
+  end
+
+  subgraph east["Relational courts"]
+    direction TB
+    sangha["sangha-terraces<br/>The Sangha Terraces<br/>-560 · the Buddha, Nagarjuna"]
+    middle["middle-kingdom<br/>The Middle Kingdom<br/>-551 · Confucius, Mozi"]
+    ubuntu["ubuntu-weave<br/>The Ubuntu Weave<br/>1985 · Tutu, Appiah"]
+    care["care-weft<br/>The Care Weft<br/>1982 · Gilligan, Held"]
+  end
+
+  subgraph modern["Modern and existential courts"]
+    direction TB
+    wilds["existential-wilds<br/>The Existential Wilds<br/>1943 · de Beauvoir, Camus"]
+    wharf["pragmatic-wharf<br/>The Pragmatic Wharf<br/>1907 · Dewey, Popper"]
+    longview["longview-foundry<br/>The Longview Foundry<br/>2014 · Wiener, Jonas, Singer,<br/>Russell, Bostrom, Yudkowsky"]
+  end
+
+  %% alliance — two-sided, weight 2
+  stoa -->|"alliance"| longview
+  citadel -->|"alliance"| garden
+  garden -->|"alliance"| middle
+  sangha -->|"alliance"| ubuntu
+  sangha -->|"alliance"| longview
+  ubuntu -->|"alliance"| care
+  ubuntu -->|"alliance"| middle
+  care -->|"alliance"| wilds
+  contractual -->|"alliance"| wharf
+
+  %% rivalry — two-sided, weight 1
+  citadel -->|"rivalry — 'the orchard is a calculator of delights'"| foundry
+  foundry -->|"rivalry — contractualism's rights are not on the ledger"| contractual
+  care -->|"rivalry — the ledger has no column for a relationship"| foundry
+  wilds -->|"rivalry — detachment is the thing being refused"| sangha
+
+  %% debate — two-sided, weight 1.5
+  citadel -->|"debate"| foundry
+  garden -->|"debate — 'who, exactly, is being counted?'"| foundry
+  citadel -->|"debate"| sangha
+  middle -->|"debate"| contractual
+  ubuntu -->|"debate"| contractual
+  care -->|"debate"| contractual
+  wilds -->|"debate"| ubuntu
+  longview -->|"debate"| wilds
+  longview -->|"debate"| wharf
+  wharf -->|"debate"| stoa
+
+  %% succession — ASYMMETRIC: X declares succession about Y means X succeeds Y
+  stoa -->|"succession — virtue as the stoic inheritance"| garden
+  garden -->|"succession — character ends in the pragmatists"| wharf
+  citadel -->|"succession — the contract as last-resort court"| contractual
+  foundry -->|"succession — the total turn"| longview
+  longview -->|"succession — longtermism inherits and rewrites the calculus"| foundry
+
+  %% vassal — ASYMMETRIC in general; declared from both sides in the shipped data
+  contractual <-.->|"vassal — instrumental reasoning answers to a contract<br/>declared by BOTH sides, so declaredBy.length === 2"| longview
+
+  subgraph asymmetry["Asymmetric relations are the point"]
+    direction TB
+    a1["alliance / rivalry / debate<br/>declared from both sides -> one edge,<br/>mutual: true, both notes kept"]
+    a2["vassal / succession<br/>declared one way -> one edge,<br/>declaredBy has length 1.<br/>tributaries() and successors()<br/>are the only lookups that<br/>can rely on this."]
+  end
+
+  centrality["centrality() ranks by weighted degree.<br/>RELATION_WEIGHT: alliance 2, succession 2,<br/>debate 1.5, rivalry 1, vassal 1.<br/>An alliance binds harder than a debate;"]
+  centrality -.-> asymmetry

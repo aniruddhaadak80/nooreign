@@ -1,0 +1,44 @@
+# dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# builds
+.next/
+out/
+dist/
+build/
+.turbo/
+target/
+*.tsbuildinfo
+
+# testing
+coverage/
+playwright-report/
+test-results/
+.vitest/
+
+# env
+.env
+.env.local
+.env*.local
+.vercel/
+
+# rust / python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# editors + os
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# logs
+*.log
+npm-debug.log*
+bun-debug.log*

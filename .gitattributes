@@ -1,0 +1,40 @@
+# Normalise line endings in the repository to LF; keep binaries untouched.
+* text=auto eol=lf
+
+# --- Language / diff ergonomics ---------------------------------------------
+# bun.lock is generated — exclude it from diffs and language stats.
+# NOTE: GitHub Linguist treats `linguist-generated=false` as the default, which
+# would *count* bun.lock as hand-written source and skew the language stats. The
+# attribute that actually hides it is `true` (plus `-detectable`), which is what
+# the repo wants, so that is what we set.
+bun.lock linguist-generated=true linguist-detectable=false -diff
+
+# SVGs are generated one-line artwork; mark them binary so they never produce a
+# whitespace-only diff or an eol-normalisation change.
+*.svg binary linguist-language=SVG
+
+# Lockfiles and generated maps are noise in diffs.
+*.lock linguist-generated=true
+*.tsbuildinfo linguist-generated=true
+*.snap linguist-generated=true
+
+# Documentation: markdown is the prose of the repo.
+*.md linguist-language=Markdown
+*.mdx linguist-language=Markdown
+docs/** linguist-documentation=true
+
+# Exclude docs and generated images from diffstat noise in PR review views.
+CHANGELOG.md linguist-generated=true
+docs/images/generated/** linguist-generated=true
+
+# --- Windows compatibility --------------------------------------------------
+# The repo is developed on Windows; ensure text is checked out as LF to keep the
+# `asset-check`/loc workflows byte-stable across platforms.
+*.ts text eol=lf
+*.tsx text eol=lf
+*.mjs text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.py text eol=lf
+*.rs text eol=lf
