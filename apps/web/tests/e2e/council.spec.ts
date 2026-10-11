@@ -51,7 +51,7 @@ test.describe("council chamber", () => {
   });
 
   test("changing the seed is reflected in the reported sitting", async ({ page }) => {
-    const seedInput = page.getByLabel("Seed");
+    const seedInput = page.getByLabel("Seed value", { exact: true });
     await seedInput.fill("4242");
     await seedInput.blur();
 

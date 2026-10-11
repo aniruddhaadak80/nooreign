@@ -5,6 +5,13 @@ import { ADVISORS, DILEMMAS, SEED, getAdvisor, getDilemma, getEra, getKingdom } 
 import { AXIOM_KEYS } from "@repo/seed";
 import { convene, defaultPanelFor } from "@/lib/convene";
 
+/**
+ * Every realm, court, era, dilemma and experiment is known at build time, so
+ * there is no fallback to render: an unknown slug is a 404, not a dynamic page. Without
+ * this, hosting platforms that wrap SSG routes in a catch-all lambda fail the build.
+ */
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return DILEMMAS.map((dilemma) => ({ slug: dilemma.slug }));
 }

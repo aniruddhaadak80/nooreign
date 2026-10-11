@@ -4,6 +4,13 @@ import { notFound } from "next/navigation";
 import { EXPERIMENTS, getExperiment } from "@repo/seed";
 import { ExperimentBench } from "@/components/experiments/experiment-bench";
 
+/**
+ * Every realm, court, era, dilemma and experiment is known at build time, so
+ * there is no fallback to render: an unknown slug is a 404, not a dynamic page. Without
+ * this, hosting platforms that wrap SSG routes in a catch-all lambda fail the build.
+ */
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return EXPERIMENTS.map((experiment) => ({ slug: experiment.slug }));
 }

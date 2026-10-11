@@ -5,6 +5,13 @@ import { ADVISORS, getAdvisor, getKingdom } from "@repo/seed";
 import { AxiomRadar } from "@/components/atlas/axiom-radar";
 import { VerdictBadge } from "@/components/atlas/verdict-badge";
 
+/**
+ * Every realm, court, era, dilemma and experiment is known at build time, so
+ * there is no fallback to render: an unknown slug is a 404, not a dynamic page. Without
+ * this, hosting platforms that wrap SSG routes in a catch-all lambda fail the build.
+ */
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return ADVISORS.map((advisor) => ({ slug: advisor.slug }));
 }

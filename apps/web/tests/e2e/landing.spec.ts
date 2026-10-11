@@ -20,10 +20,11 @@ test.describe("landing", () => {
 
   test("reports the real dataset sizes", async ({ page }) => {
     await page.goto("/");
-    const stats = page.locator("dl").first();
+    // A list, not a definition list — the stats carry a note as well as a value.
+    const stats = page.getByRole("list").filter({ hasText: "schools of thought" }).first();
     await expect(stats).toContainText("kingdoms");
     // Twelve kingdoms is a claim the seed data has to actually satisfy.
-    await expect(stats.locator("dd").first()).toHaveText("12");
+    await expect(stats.locator("p").nth(1)).toHaveText("12");
   });
 
   test("every primary section is reachable from the header", async ({ page }) => {

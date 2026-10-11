@@ -1,0 +1,49 @@
+# Vercel uploads the working directory, not the git tree, so everything that is
+# git-ignored still needs excluding here. Without this, a single Playwright
+# screenshot in test-results/ can abort the upload mid-flight.
+
+# Dependencies and build output
+node_modules
+**/node_modules
+.next
+**/.next
+.turbo
+**/.turbo
+target
+**/target
+out
+dist
+build
+
+# Test and tooling artefacts
+coverage
+test-results
+playwright-report
+.vitest
+**/.pytest_cache
+**/__pycache__
+**/.ruff_cache
+.venv
+
+# The polyglot tier has its own deployment path (Docker, Fly, Render, Railway).
+# The compose file is excluded as well as the service: if Vercel can see it, it
+# promotes the repository to a multi-service deployment and the top-level
+# `framework`/`rootDirectory` in vercel.json stop applying. Docker Compose remains
+# the supported local and self-hosted path; see docker-compose.yml in the repo.
+services
+crates
+bin
+docker-compose.yml
+docker-compose.*.yml
+
+# Repository furniture that no runtime needs
+.github
+docs
+scripts
+.vercel
+*.log
+.env*
+!.env.example
+
+# Keep the assets the site serves.
+!apps/web/public/**

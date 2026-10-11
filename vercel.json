@@ -1,12 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": "nextjs",
-  "rootDirectory": "apps/web",
   "installCommand": "bun install --frozen-lockfile",
-  "buildCommand": "bun run build",
-  "outputDirectory": ".next",
-  "regions": ["iad1", "bom1"],
-  "ignoreCommand": "node -e \"['services','crates','docs'].forEach((d) => console.log(d + '/'))\"",
+  "buildCommand": "cd apps/web && next build",
+  "outputDirectory": "apps/web/.next",
+  "regions": ["iad1"],
   "headers": [
     {
       "source": "/(.*)",

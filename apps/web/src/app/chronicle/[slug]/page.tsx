@@ -4,6 +4,13 @@ import { notFound } from "next/navigation";
 import { ERAS, TECHNIQUES, getAdvisor, getEra, getKingdom, getTechnique, techniquesAtEndOfEra } from "@repo/seed";
 import { formatSpan, formatYear } from "@/components/atlas/format";
 
+/**
+ * Every realm, court, era, dilemma and experiment is known at build time, so
+ * there is no fallback to render: an unknown slug is a 404, not a dynamic page. Without
+ * this, hosting platforms that wrap SSG routes in a catch-all lambda fail the build.
+ */
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return ERAS.map((era) => ({ slug: era.slug }));
 }

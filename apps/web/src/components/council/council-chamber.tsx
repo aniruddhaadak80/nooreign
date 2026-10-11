@@ -130,7 +130,7 @@ export function CouncilChamber({
               onChange={(event) => setSeed(Number(event.target.value))}
               onBlur={() => void sit(dilemmaId, panel, seed)}
               className="w-24 rounded-realm border border-abyss-border bg-abyss-raised/70 px-3 py-2 font-mono text-xs text-parchment focus:border-gold focus:outline-none"
-              aria-label="Seed"
+              aria-label="Seed value"
             />
           </div>
         </label>
