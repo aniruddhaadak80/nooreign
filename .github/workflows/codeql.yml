@@ -31,12 +31,11 @@ jobs:
       - uses: github/codeql-action/init@v3
         with:
           language: ${{ matrix.language }}
-          # Python needs no build step: the agents service is a FastAPI app whose
-          # sources are analysed statically.
-          build-mode: ${{ matrix.language == 'python' && 'none' || 'autobuild' }}
-
-      - uses: github/codeql-action/autobuild@v3
-        if: matrix.language == 'javascript-typescript'
+          # Neither language needs a build step: JS/TS is analysed statically
+          # (autobuild is unsupported for javascript-typescript) and the
+          # agents service is a FastAPI app whose sources are analysed
+          # statically.
+          build-mode: none
 
       - uses: github/codeql-action/analyze@v3
         with:
