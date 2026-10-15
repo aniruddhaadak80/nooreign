@@ -59,6 +59,30 @@ export const NAV_SECTIONS: NavSection[] = [
     hint: "Glossary, canon texts, and the method behind the atlas",
     keywords: ["glossary", "terms", "texts", "kant", "bentham", "definitions"],
   },
+  {
+    href: "/compare",
+    label: "Realm by realm",
+    hint: "The same dilemma before twelve separate courts, one per kingdom",
+    keywords: ["compare", "split", "disagreement", "each realm", "verdicts", "unanimity"],
+  },
+  {
+    href: "/engine",
+    label: "The engine",
+    hint: "What each case is about before anyone argues about it",
+    keywords: ["pivot axis", "costed", "fairness", "utilon", "isolation", "shape of a case"],
+  },
+  {
+    href: "/journal",
+    label: "Journal",
+    hint: "Write your own reflections against the prompts; nothing leaves your browser",
+    keywords: ["reflect", "writing", "prompt", "sit", "ritual", "private", "diary"],
+  },
+  {
+    href: "/cartographer",
+    label: "Cartographer",
+    hint: "The argument graph of a sitting, drawn as a directed acyclic diagram",
+    keywords: ["graph", "dag", "moves", "support", "attack", "mermaid", "argument"],
+  },
 ];
 
 export const NAV_BY_HREF: ReadonlyMap<string, NavSection> = new Map(NAV_SECTIONS.map((s) => [s.href, s]));

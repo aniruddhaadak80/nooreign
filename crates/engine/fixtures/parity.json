@@ -75,6 +75,10 @@
       "secondaryAxis": "agency",
       "profile": "rights before agency",
       "balance": 0.2105,
+      "weighedDominantAxis": "rights",
+      "weighedSecondaryAxis": "agency",
+      "weighedProfile": "rights before agency",
+      "weighedBalance": 0.262,
       "moves": [
         {
           "id": "kant.ci",
@@ -92,7 +96,7 @@
           "id": "kant.personhood",
           "kind": "premise",
           "claim": "A person is an end, never a means, however the totals fall.",
-          "support": "The humanity formula forbids treating rational agents as instruments, and an efficient cause that computes totals is an instrument.",
+          "support": "In the Foundation the humanity formula forbids treating rational agents as instruments, and an efficient cause that computes totals is an instrument.",
           "weight": 0.95,
           "leansOn": [
             "rights",
@@ -100,7 +104,8 @@
           ],
           "appliesTo": [
             "trolley",
-            "paperclip"
+            "paperclip",
+            "automation"
           ]
         },
         {
@@ -116,7 +121,7 @@
           ],
           "appliesTo": [
             "paperclip",
-            "halt"
+            "autonomy"
           ]
         },
         {
@@ -130,8 +135,7 @@
           ],
           "appliesTo": [
             "paperclip",
-            "deontology",
-            "trolley"
+            "deontology"
           ]
         }
       ]
@@ -160,6 +164,10 @@
       "secondaryAxis": "care",
       "profile": "welfare before care",
       "balance": 0.2105,
+      "weighedDominantAxis": "welfare",
+      "weighedSecondaryAxis": "care",
+      "weighedProfile": "welfare before care",
+      "weighedBalance": 0.262,
       "moves": [
         {
           "id": "bentham.calculus",
@@ -183,7 +191,8 @@
             "justice"
           ],
           "appliesTo": [
-            "trolley"
+            "trolley",
+            "harm"
           ]
         },
         {
@@ -212,8 +221,7 @@
           ],
           "appliesTo": [
             "paperclip",
-            "trolley",
-            "harm"
+            "alignment"
           ]
         }
       ]
@@ -242,6 +250,10 @@
       "secondaryAxis": "welfare",
       "profile": "care before welfare",
       "balance": 0.4211,
+      "weighedDominantAxis": "care",
+      "weighedSecondaryAxis": "virtue",
+      "weighedProfile": "care before virtue",
+      "weighedBalance": 0.4278,
       "moves": [
         {
           "id": "gilligan.care",
@@ -266,6 +278,7 @@
           ],
           "appliesTo": [
             "trolley",
+            "harm",
             "paperclip"
           ]
         },
@@ -297,7 +310,8 @@
           ],
           "appliesTo": [
             "trolley",
-            "paperclip"
+            "paperclip",
+            "alignment"
           ]
         }
       ]
@@ -326,6 +340,10 @@
       "secondaryAxis": "care",
       "profile": "virtue before care",
       "balance": 0.3158,
+      "weighedDominantAxis": "virtue",
+      "weighedSecondaryAxis": "care",
+      "weighedProfile": "virtue before care",
+      "weighedBalance": 0.3708,
       "moves": [
         {
           "id": "aristotle.eudaimonia",
@@ -365,7 +383,7 @@
           ],
           "appliesTo": [
             "trolley",
-            "deontology"
+            "harm"
           ]
         },
         {
@@ -379,9 +397,8 @@
             "justice"
           ],
           "appliesTo": [
-            "paperclip",
-            "deontology",
-            "trolley"
+            "alignment",
+            "paperclip"
           ]
         }
       ]
@@ -785,16 +802,6 @@
           "moveId": "kant.dignity",
           "claim": "Dignity survives the loss of every other consideration.",
           "conviction": 0.6304
-        },
-        {
-          "advisorId": "bentham",
-          "advisorName": "Jeremy Bentham",
-          "kingdomId": "kg-orchard",
-          "optionId": "halt",
-          "kind": "appeal",
-          "moveId": "bentham.sanction",
-          "claim": "Add the option to the table rather than striking it from the record.",
-          "conviction": 0.5854
         }
       ],
       "dissent": {
@@ -1268,62 +1275,6 @@
           "subtotal": 1.5371,
           "jitter": -0.0056,
           "total": 1.5315
-        },
-        {
-          "advisorId": "bentham",
-          "advisorName": "Jeremy Bentham",
-          "kingdomId": "kg-orchard",
-          "round": 3,
-          "kind": "appeal",
-          "optionId": "halt",
-          "premise": "An option excluded by fiat has never been costed, and an uncosted option is indistinguishable from a concealed preference.",
-          "claim": "Add the option to the table rather than striking it from the record.",
-          "moveId": "bentham.sanction",
-          "leansOn": [
-            "welfare",
-            "justice"
-          ],
-          "contributions": [
-            {
-              "axiom": "welfare",
-              "weight": 0.935,
-              "delta": 0.9,
-              "product": 0.8415
-            },
-            {
-              "axiom": "rights",
-              "weight": 0.245,
-              "delta": 0.2,
-              "product": 0.049
-            },
-            {
-              "axiom": "virtue",
-              "weight": 0.38,
-              "delta": 0.45,
-              "product": 0.171
-            },
-            {
-              "axiom": "care",
-              "weight": 0.535,
-              "delta": 0.3,
-              "product": 0.1605
-            },
-            {
-              "axiom": "justice",
-              "weight": 0.36,
-              "delta": 0.3,
-              "product": 0.108
-            },
-            {
-              "axiom": "agency",
-              "weight": 0.31,
-              "delta": 0.35,
-              "product": 0.1085
-            }
-          ],
-          "subtotal": 1.4385,
-          "jitter": -0.0054,
-          "total": 1.4331
         }
       ],
       "utilons": [

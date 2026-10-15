@@ -13,14 +13,14 @@
  * Tokens are deliberately few and boring (`year`, `count`, `seed`) so that
  * every script can place them in natural word order.
  *
- * There are exactly 96 keys (14 nav + 16 landing + 18 council + 12 dilemmas +
+ * There are exactly 100 keys (18 nav + 16 landing + 18 council + 12 dilemmas +
  * 16 kingdom + 10 chronicle + 10 common), grouped so a reader can find a string
- * by the surface that renders it. Adding a 97th key is a design decision, not
+ * by the surface that renders it. Adding another key is a design decision, not
  * a convenience.
  */
 
 /* ------------------------------------------------------------------ *
- * Navigation & chrome — 14
+ * Navigation & chrome — 18
  * ------------------------------------------------------------------ */
 const NAVIGATION = {
   "nav.kingdoms": "Kingdoms",
@@ -35,11 +35,19 @@ const NAVIGATION = {
   // `nav.back_to_atlas` and of the acronyms in `chronicle.stack_available`.
   "nav.codex": "Codex",
   "nav.method": "Method",
+  // Added with the realm-comparison, engine, journal and cartographer surfaces.
+  "nav.compare": "Realm by realm",
+  "nav.engine": "The engine",
+  "nav.journal": "Journal",
+  "nav.cartographer": "Cartographer",
   "nav.skip_to_content": "Skip to content",
   "nav.menu": "Menu",
   "nav.close": "Close",
   "nav.back_to_atlas": "Back to Nooreign",
-  "nav.site_sections": "Site sections",
+  // The header's landmark name. It says "the atlas" because that is the
+  // product's own word for itself — the e2e suite pins it, and a landmark
+  // called "Site sections" could belong to any website.
+  "nav.atlas_sections": "Atlas sections",
 } as const;
 
 /* ------------------------------------------------------------------ *

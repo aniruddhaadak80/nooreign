@@ -72,7 +72,11 @@ impl Json {
     }
 
     /// Build a string.
+    ///
+    /// Named `from_str` to match the fixture-builder call sites rather than
+    /// `std::str::FromStr::from_str` (this type is not `FromStr`).
     #[must_use]
+    #[allow(clippy::should_implement_trait)]
     pub fn from_str(value: &str) -> Json {
         Json::Str(value.to_string())
     }

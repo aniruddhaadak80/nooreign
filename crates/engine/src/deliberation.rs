@@ -1002,10 +1002,7 @@ pub fn decision(scores: &[BallotScore], options: &[DilemmaOption]) -> Decision {
     // over the same scores agree exactly.
     let mut advisor_ids: Vec<&str> = Vec::new();
     for score in scores {
-        if !advisor_ids
-            .iter()
-            .any(|id| *id == score.advisor_id.as_str())
-        {
+        if !advisor_ids.contains(&score.advisor_id.as_str()) {
             advisor_ids.push(&score.advisor_id);
         }
     }
@@ -1339,9 +1336,9 @@ pub fn court_vector(weights: &[AxiomVector]) -> AxiomVector {
         return AxiomVector::ZERO;
     }
     let mut out = [0.0; AXES];
-    for axis in 0..AXES {
+    for (axis, slot) in out.iter_mut().enumerate() {
         let column: Vec<f64> = weights.iter().map(|v| v.get(axis)).collect();
-        out[axis] = round4(sum(&column) / weights.len() as f64);
+        *slot = round4(sum(&column) / weights.len() as f64);
     }
     AxiomVector(out)
 }
@@ -1408,6 +1405,22 @@ pub fn parity_kingdoms() -> Vec<Kingdom> {
 /// The four-advisor parity bench: a deontologist, a utilitarian, a care
 /// ethicist and a virtue ethicist.
 ///
+/// **This is a mirror, and mirroring is a liability.** These four advisors are
+/// written out by hand a second time here, because this crate has no
+/// dependencies and cannot read the TypeScript fixtures at build time. That
+/// duplication has already cost us once: the `applies_to` lists below drifted
+/// from `packages/core/src/__fixtures__/council.ts`, which silently changed who
+/// got to speak in round 3 on the trolley case — Rust published two appeals
+/// where TypeScript published one, and neither suite noticed, because each only
+/// ever checked itself.
+///
+/// `packages/core/src/parity.test.ts` is what makes the drift impossible to miss
+/// again: it reads `fixtures/parity.json` and compares the whole council
+/// against the TypeScript engine, every trace included. When you change a value
+/// here, that test is the thing that will tell you the two engines no longer
+/// agree. Change the TypeScript fixtures first and mirror the change; they are
+/// canonical, because they are what the app actually deliberates with.
+///
 /// Each carries one premise, one objection and one appeal so that all three
 /// rounds produce traces for the fixture to assert on.
 #[must_use]
@@ -1432,10 +1445,14 @@ pub fn parity_advisors() -> Vec<Advisor> {
                     id: "kant.personhood".to_string(),
                     kind: MoveKind::Premise,
                     claim: "A person is an end, never a means, however the totals fall.".to_string(),
-                    support: "The humanity formula forbids treating rational agents as instruments, and an efficient cause that computes totals is an instrument.".to_string(),
+                    support: "In the Foundation the humanity formula forbids treating rational agents as instruments, and an efficient cause that computes totals is an instrument.".to_string(),
                     weight: 0.95,
                     leans_on: vec![1, 5],
-                    applies_to: vec!["trolley".to_string(), "paperclip".to_string()],
+                    applies_to: vec![
+                        "trolley".to_string(),
+                        "paperclip".to_string(),
+                        "automation".to_string(),
+                    ],
                 },
                 ArgumentMove {
                     id: "kant.no-lying-machine".to_string(),
@@ -1444,7 +1461,7 @@ pub fn parity_advisors() -> Vec<Advisor> {
                     support: "A mind that manufactures consent has used one as a means; the harm does not need a visible victim at the moment of the act.".to_string(),
                     weight: 0.8,
                     leans_on: vec![1, 5, 3],
-                    applies_to: vec!["paperclip".to_string(), "halt".to_string()],
+                    applies_to: vec!["paperclip".to_string(), "autonomy".to_string()],
                 },
                 ArgumentMove {
                     id: "kant.dignity".to_string(),
@@ -1456,7 +1473,6 @@ pub fn parity_advisors() -> Vec<Advisor> {
                     applies_to: vec![
                         "paperclip".to_string(),
                         "deontology".to_string(),
-                        "trolley".to_string(),
                     ],
                 },
             ],
@@ -1483,7 +1499,7 @@ pub fn parity_advisors() -> Vec<Advisor> {
                     support: "The dictum is an accounting rule, not an equality theorem, and reading it as a rights rule is a category error.".to_string(),
                     weight: 0.85,
                     leans_on: vec![0, 4],
-                    applies_to: vec!["trolley".to_string()],
+                    applies_to: vec!["trolley".to_string(), "harm".to_string()],
                 },
                 ArgumentMove {
                     id: "bentham.syllogism".to_string(),
@@ -1492,7 +1508,10 @@ pub fn parity_advisors() -> Vec<Advisor> {
                     support: "If the harm of the choice exceeds the harm of the alternative by more than the difference in probability, the calculus has already answered the objection.".to_string(),
                     weight: 0.8,
                     leans_on: vec![0],
-                    applies_to: vec!["trolley".to_string(), "deontology".to_string()],
+                    applies_to: vec![
+                        "trolley".to_string(),
+                        "deontology".to_string(),
+                    ],
                 },
                 ArgumentMove {
                     id: "bentham.sanction".to_string(),
@@ -1503,8 +1522,7 @@ pub fn parity_advisors() -> Vec<Advisor> {
                     leans_on: vec![0, 4],
                     applies_to: vec![
                         "paperclip".to_string(),
-                        "trolley".to_string(),
-                        "harm".to_string(),
+                        "alignment".to_string(),
                     ],
                 },
             ],
@@ -1531,7 +1549,11 @@ pub fn parity_advisors() -> Vec<Advisor> {
                     support: "Abstract aggregates are exactly what erases the relationship the argument is supposed to be about.".to_string(),
                     weight: 0.85,
                     leans_on: vec![3, 4],
-                    applies_to: vec!["trolley".to_string(), "paperclip".to_string()],
+                    applies_to: vec![
+                        "trolley".to_string(),
+                        "harm".to_string(),
+                        "paperclip".to_string(),
+                    ],
                 },
                 ArgumentMove {
                     id: "gilligan.distortion".to_string(),
@@ -1556,6 +1578,7 @@ pub fn parity_advisors() -> Vec<Advisor> {
                     applies_to: vec![
                         "trolley".to_string(),
                         "paperclip".to_string(),
+                        "alignment".to_string(),
                     ],
                 },
             ],
@@ -1596,7 +1619,7 @@ pub fn parity_advisors() -> Vec<Advisor> {
                     leans_on: vec![2, 3],
                     applies_to: vec![
                         "trolley".to_string(),
-                        "deontology".to_string(),
+                        "harm".to_string(),
                     ],
                 },
                 ArgumentMove {
@@ -1607,9 +1630,8 @@ pub fn parity_advisors() -> Vec<Advisor> {
                     weight: 0.65,
                     leans_on: vec![2, 4],
                     applies_to: vec![
+                        "alignment".to_string(),
                         "paperclip".to_string(),
-                        "deontology".to_string(),
-                        "trolley".to_string(),
                     ],
                 },
             ],
@@ -1755,6 +1777,19 @@ pub fn parity_document() -> Json {
                     "weighedAxioms",
                     Json::arr(weighed.as_slice().iter().map(|v| Json::Num(*v)).collect()),
                 ),
+                // The four unprefixed fields are the advisor's *own prior*, read
+                // off their raw axiom vector. They are what they wrote on the
+                // door before any kingdom had a say.
+                //
+                // They are not what decided the case. Every figure in
+                // `councils[]` is computed from `weighedAxioms`, and for at
+                // least one advisor on the bench the two disagree: gilligan's
+                // raw prior is `care before welfare` (welfare and justice tie at
+                // 0.5 for second place) while the garden blend makes it
+                // `care before virtue`. Publishing only one of those under the
+                // bare name `profile` made this document answer the same
+                // question two different ways, so the weighed versions are
+                // published alongside, named for what they are.
                 (
                     "dominantAxis",
                     Json::from_str(axis_name(dominant_axis(&advisor.axioms))),
@@ -1768,6 +1803,19 @@ pub fn parity_document() -> Json {
                     Json::from_str(&describe_profile(&advisor.axioms)),
                 ),
                 ("balance", Json::Num(balance(&advisor.axioms))),
+                (
+                    "weighedDominantAxis",
+                    Json::from_str(axis_name(dominant_axis(&weighed))),
+                ),
+                (
+                    "weighedSecondaryAxis",
+                    Json::from_str(axis_name(crate::axiom::secondary_axis(&weighed))),
+                ),
+                (
+                    "weighedProfile",
+                    Json::from_str(&describe_profile(&weighed)),
+                ),
+                ("weighedBalance", Json::Num(balance(&weighed))),
                 (
                     "moves",
                     Json::arr(

@@ -45,12 +45,16 @@ impl Rng {
     ///
     /// Port of the closure returned by `mulberry32` in
     /// `packages/core/src/util/rng.ts`.
+    ///
+    /// Named `next` to match the TS closure it ports rather than
+    /// `Iterator::next` (this type is not an `Iterator`).
+    #[allow(clippy::should_implement_trait)]
     pub fn next(&mut self) -> f64 {
         self.state = self.state.wrapping_add(0x6d2b_79f5);
         let mut t = self.state;
         t = (t ^ (t >> 15)).wrapping_mul(t | 1);
         t ^= t.wrapping_add((t ^ (t >> 7)).wrapping_mul(t | 61));
-        f64::from((t ^ (t >> 14)) as u32) / 4_294_967_296.0
+        f64::from(t ^ (t >> 14)) / 4_294_967_296.0
     }
 
     /// Uniform in `[min, max)`. A `max` below `min` collapses to `min`.
@@ -126,7 +130,7 @@ pub fn mulberry32(seed: u32) -> Rng {
 pub fn hash_string(s: &str) -> u32 {
     let mut h: u32 = 0x811c_9dc5;
     for unit in s.encode_utf16() {
-        h ^= u32::from(unit & 0xffff);
+        h ^= u32::from(unit);
         h = h.wrapping_mul(0x0100_0193);
     }
     h
@@ -301,7 +305,7 @@ mod tests {
         let mut rng = mulberry32(99);
         for _ in 0..500 {
             let x = rng.range(0.25, 0.75);
-            assert!(x >= 0.25 && x < 0.75, "out of range: {x}");
+            assert!((0.25..0.75).contains(&x), "out of range: {x}");
             let n = rng.int(1, 5);
             assert!((1..=5).contains(&n), "out of range: {n}");
         }

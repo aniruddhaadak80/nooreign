@@ -67,7 +67,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${cinzel.variable} ${inter.variable} ${jetbrains.variable}`}>
+    // `lang`/`dir` are set on the client by the locale switcher and reset to these
+    // on the server; `suppressHydrationWarning` covers the one frame in which the
+    // saved preference differs from what the server sent.
+    <html lang="en" dir="ltr" suppressHydrationWarning className={`${cinzel.variable} ${inter.variable} ${jetbrains.variable}`}>
       <body className="starfield min-h-dvh antialiased">
         <a className="skip-link" href="#main">
           Skip to content

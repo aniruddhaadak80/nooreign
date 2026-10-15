@@ -19,8 +19,8 @@ import {
 } from "./index";
 import { EN } from "./keys";
 
-/** 96 by construction: 14 nav + 16 landing + 18 council + 12 dilemmas + 16 kingdom + 10 chronicle + 10 common. */
-const EXPECTED_KEY_COUNT = 96;
+/** 100 by construction: 18 nav + 16 landing + 18 council + 12 dilemmas + 16 kingdom + 10 chronicle + 10 common. */
+const EXPECTED_KEY_COUNT = 100;
 
 const NON_ENGLISH = LOCALES.filter((descriptor) => descriptor.code !== DEFAULT_LOCALE);
 
@@ -47,6 +47,7 @@ const IDENTICAL_COGNATES: ReadonlySet<string> = new Set([
   "Objections", // fr
   "Verdict", // fr
   "Filter", // de (noun form of the control)
+  "Journal", // fr — the cognate is the ordinary French word, not an untranslated English one
 ]);
 
 /**
@@ -66,7 +67,7 @@ function tokensIn(template: string): string[] {
 }
 
 describe("catalog integrity", () => {
-  it("defines exactly 96 keys in English", () => {
+  it("defines exactly 100 keys in English", () => {
     expect(Object.keys(EN)).toHaveLength(EXPECTED_KEY_COUNT);
   });
 
@@ -181,6 +182,7 @@ describe("untranslated English", () => {
       Objections: ["fr"],
       Verdict: ["fr"],
       Filter: ["de"],
+      Journal: ["fr"],
     };
     for (const descriptor of NON_ENGLISH) {
       const catalog = getCatalog(descriptor.code);

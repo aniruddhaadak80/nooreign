@@ -161,10 +161,10 @@ pub fn contributions(weights: &AxiomVector, deltas: &AxiomVector) -> [AxiomContr
         delta: 0.0,
         product: 0.0,
     }; AXES];
-    for axis in 0..AXES {
+    for (axis, slot) in out.iter_mut().enumerate() {
         let weight = weights.get(axis);
         let delta = deltas.get(axis);
-        out[axis] = AxiomContribution {
+        *slot = AxiomContribution {
             axiom: axis,
             weight: round4(weight),
             delta: round4(delta),
@@ -228,8 +228,8 @@ pub fn weigh_advisor(own: &AxiomVector, kingdom: Option<&AxiomVector>) -> AxiomV
         return *own;
     };
     let mut blend = [0.0; AXES];
-    for axis in 0..AXES {
-        blend[axis] = round4(
+    for (axis, slot) in blend.iter_mut().enumerate() {
+        *slot = round4(
             ADVISOR_KINGDOM_BLEND * own.get(axis)
                 + (1.0 - ADVISOR_KINGDOM_BLEND) * context.get(axis),
         );

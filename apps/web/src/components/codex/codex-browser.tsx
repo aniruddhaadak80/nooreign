@@ -1,113 +1,153 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Link from "next/link";
-import type { GlossaryEntry, CanonText } from "@repo/seed";
+import { buildIndex, suggest } from "@repo/core";
+import type { SearchIndex } from "@repo/core";
+import type { CodexFacet } from "@/lib/codex-index";
+import { isRankingQuery, rankCodex, TermCard, toSearchableDocs } from "./term-card";
+import type { CodexDoc, CodexResult } from "./term-card";
+import { SearchField } from "./search-field";
 
 /**
- * The codex index is a client island so a hundred and twenty entries stay
- * searchable without shipping every definition into the HTML of the landing page.
+ * The codex browser.
+ *
+ * The whole index page is a client island for one reason: a hundred and twenty terms and twenty-eight
+ * canon texts have to be filterable without a round trip, and the alternative — an API route — would
+ * mean shipping a second implementation of the ranking to the browser anyway. The index is rebuilt
+ * client-side from the same serialisable documents the server rendered from, using the same
+ * `@repo/core` engine and the same `rankCodex`, so the two orderings cannot drift.
+ *
+ * Without JavaScript this component still renders the complete codex: `rankCodex` treats an empty
+ * query as browsing, which returns every document in the atlas's curated order.
  */
-export function CodexBrowser({ glossary, texts }: { glossary: GlossaryEntry[]; texts: CanonText[] }) {
-  const [query, setQuery] = useState("");
+
+/** How many ranked results each family shows before the list becomes noise rather than a result. */
+const RANKED_LIMIT = 24;
+
+/** The word currently being typed, if any — completions only make sense for a partial word. */
+const TRAILING_WORD = /([^\s"]+)$/;
+
+function completions(index: SearchIndex, raw: string): readonly string[] {
+  const token = TRAILING_WORD.exec(raw)?.[1] ?? "";
+  const needle = token.startsWith("-") ? token.slice(1) : token;
+  return needle.length < 2 ? [] : suggest(index, needle, 6);
+}
+
+export interface CodexBrowserProps {
+  readonly docs: readonly CodexDoc[];
+  readonly facets: readonly CodexFacet[];
+}
+
+export function CodexBrowser({ docs, facets }: CodexBrowserProps) {
+  const [raw, setRaw] = useState("");
   const [kind, setKind] = useState<string | null>(null);
 
-  const kinds = useMemo(() => [...new Set(glossary.map((entry) => entry.kind))].sort(), [glossary]);
+  const index = useMemo(() => buildIndex(toSearchableDocs(docs)), [docs]);
+  const results = useMemo(
+    () => rankCodex(index, docs, raw, kind === null ? {} : { kinds: [kind] }),
+    [index, docs, raw, kind],
+  );
+  const ranking = useMemo(() => isRankingQuery(raw), [raw]);
+  const suggestions = useMemo(() => completions(index, raw), [index, raw]);
 
-  const results = useMemo(() => {
-    const needle = query.trim().toLowerCase();
-    return glossary.filter((entry) => {
-      if (kind && entry.kind !== kind) return false;
-      if (!needle) return true;
-      return `${entry.term} ${entry.short} ${entry.long}`.toLowerCase().includes(needle);
-    });
-  }, [glossary, query, kind]);
+  const termResults = useMemo(() => results.filter((r) => r.doc.family === "term"), [results]);
+  const textResults = useMemo(() => results.filter((r) => r.doc.family === "text"), [results]);
 
   return (
     <div className="mt-10">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <label className="flex-1">
-          <span className="sr-only">Search the codex</span>
-          <input
-            type="search"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search terms, definitions, doctrine…"
-            className="w-full rounded-realm border border-abyss-border bg-abyss-raised/70 px-4 py-2.5 text-sm text-parchment placeholder:text-parchment-dim/50 focus:border-gold focus:outline-none"
-          />
-        </label>
-        <div className="flex flex-wrap gap-2" role="group" aria-label="Filter by kind">
-          {kinds.map((option) => (
-            <button
-              key={option}
-              type="button"
-              aria-pressed={kind === option}
-              onClick={() => setKind((current) => (current === option ? null : option))}
-              className={`rounded-full border px-3 py-1 font-mono text-[10px] uppercase tracking-[0.14em] transition-colors ${
-                kind === option
-                  ? "border-gold bg-gold/15 text-gold"
-                  : "border-abyss-border text-parchment-dim/70 hover:border-parchment-dim"
-              }`}
-            >
-              {option}
-            </button>
-          ))}
-        </div>
+      <SearchField
+        value={raw}
+        onChange={setRaw}
+        suggestions={suggestions}
+        counts={{
+          terms: termResults.length,
+          texts: textResults.length,
+          totalTerms: docs.filter((doc) => doc.family === "term").length,
+          totalTexts: docs.filter((doc) => doc.family === "text").length,
+        }}
+      />
+
+      <div className="mt-5 flex flex-wrap gap-2" role="group" aria-label="Filter by kind">
+        {facets.map((facet) => (
+          <button
+            key={facet.kind}
+            type="button"
+            aria-pressed={kind === facet.kind}
+            onClick={() => setKind((current) => (current === facet.kind ? null : facet.kind))}
+            className={`rounded-full border px-3 py-1 font-mono text-[10px] uppercase tracking-[0.14em] transition-colors ${
+              kind === facet.kind
+                ? "border-gold bg-gold/15 text-gold"
+                : "border-abyss-border text-parchment-dim/70 hover:border-parchment-dim"
+            }`}
+          >
+            {facet.kind} {facet.count}
+          </button>
+        ))}
       </div>
 
-      <p className="mt-4 font-mono text-[11px] text-parchment-dim/70" aria-live="polite">
-        {results.length} of {glossary.length} terms
-      </p>
+      <CodexSection
+        id="codex-terms"
+        heading="The vocabulary"
+        total={termResults.length}
+        noun="terms"
+        results={ranking ? termResults.slice(0, RANKED_LIMIT) : termResults}
+      />
+      <CodexSection
+        id="codex-canon"
+        heading="Canon"
+        total={textResults.length}
+        noun="texts"
+        results={ranking ? textResults.slice(0, RANKED_LIMIT) : textResults}
+      />
+    </div>
+  );
+}
 
-      <ul className="mt-6 grid gap-4 md:grid-cols-2">
-        {results.map((entry) => (
-          <li key={entry.slug}>
-            <Link
-              href={`/codex/${entry.slug}`}
-              className="plate flex h-full flex-col gap-2 rounded-realm p-5 transition-colors hover:border-gold/50"
-            >
-              <div className="flex items-baseline justify-between gap-3">
-                <h2 className="serif text-lg leading-tight text-parchment">{entry.term}</h2>
-                <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-parchment-dim/60">
-                  {entry.kind}
-                </span>
-              </div>
-              <p className="text-sm leading-relaxed text-parchment-dim">{entry.short}</p>
-            </Link>
-          </li>
-        ))}
-      </ul>
+function CodexSection({
+  id,
+  heading,
+  total,
+  noun,
+  results,
+}: {
+  readonly id: string;
+  readonly heading: string;
+  readonly total: number;
+  readonly noun: string;
+  readonly results: readonly CodexResult[];
+}) {
+  const truncated = results.length < total;
+  return (
+    <section aria-labelledby={id} className="mt-16">
+      <div className="flex flex-wrap items-baseline justify-between gap-4 border-b border-abyss-border pb-3">
+        <h2 id={id} className="serif text-2xl text-parchment">
+          {heading}
+        </h2>
+        <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-parchment-dim/70">
+          {total} {noun}
+        </p>
+      </div>
 
       {results.length === 0 ? (
-        <p className="mt-10 rounded-realm border border-dashed border-abyss-border p-8 text-center text-sm text-parchment-dim">
+        <p className="mt-6 rounded-realm border border-dashed border-abyss-border p-8 text-sm text-parchment-dim">
           Nothing in the codex matches that. The Moorean response is: so far, no one has.
         </p>
-      ) : null}
-
-      <section className="mt-20">
-        <h2 className="serif text-2xl text-parchment">Canon</h2>
-        <p className="mt-3 max-w-2xl text-base leading-relaxed text-parchment-dim">
-          The primary texts the kingdoms stand on. Excerpts are quoted only where the wording is certain;
-          everything else is marked as a paraphrase rather than dressed up as verbatim.
-        </p>
-        <ul className="mt-8 grid gap-4 md:grid-cols-2">
-          {texts.map((text) => (
-            <li key={text.id} className="plate rounded-realm p-5">
-              <div className="flex items-baseline justify-between gap-3">
-                <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-parchment-dim/60">
-                  {text.year < 0 ? `${Math.abs(text.year)} BCE` : text.year} · {text.kind}
-                </p>
-              </div>
-              <h3 className="serif mt-1 text-lg text-parchment">{text.title}</h3>
-              <p className="mt-1 text-sm text-parchment-dim">{text.author}</p>
-              <p className="mt-3 border-l-2 border-gold/40 pl-3 text-sm italic leading-relaxed text-parchment-dim/90">
-                “{text.excerpt}”
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-parchment-dim/80">{text.summary}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </div>
+      ) : (
+        <>
+          <ul className="mt-6 grid gap-4 md:grid-cols-2">
+            {results.map((result) => (
+              <li key={result.doc.id}>
+                <TermCard result={result} />
+              </li>
+            ))}
+          </ul>
+          {truncated ? (
+            <p className="mt-4 font-mono text-[11px] text-parchment-dim/60">
+              Showing the strongest {results.length} of {total} {noun}. Narrow the query to see the rest.
+            </p>
+          ) : null}
+        </>
+      )}
+    </section>
   );
 }
