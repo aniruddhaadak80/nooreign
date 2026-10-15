@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.7",
+    "@next/eslint-plugin-next": "^15.5.0",
     "@tailwindcss/postcss": "^4.0.0",
     "@types/d3-scale": "^4.0.9",
     "@types/node": "^20.17.0",
@@ -38,6 +39,7 @@
     "@types/react-dom": "^19.0.0",
     "eslint": "^9.17.0",
     "eslint-config-next": "^15.0.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.0",
     "vitest": "^3.0.0"
