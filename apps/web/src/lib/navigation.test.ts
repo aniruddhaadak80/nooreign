@@ -9,6 +9,7 @@ import robots from "@/app/robots";
 /** The footer links, mirrored here so the reachability check above stays honest. */
 const FOOTER_HREFS: readonly string[] = [
   "/method",
+  "/resilience",
   "https://github.com/aniruddhaadak80/nooreign",
   "https://github.com/aniruddhaadak80/nooreign/blob/main/CONTRIBUTING.md",
   "https://github.com/aniruddhaadak80/nooreign/issues",

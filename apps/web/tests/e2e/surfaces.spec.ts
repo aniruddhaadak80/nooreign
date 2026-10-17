@@ -66,6 +66,29 @@ test.describe("the cartographer", () => {
   });
 });
 
+test.describe("the resilience report", () => {
+  test("offers every case a stress report and opens one", async ({ page }) => {
+    await page.goto("/resilience");
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("How much of a verdict is chance?");
+    await expect(page.getByTestId("resilience-summary")).toBeVisible();
+
+    const cases = page.locator('a[href^="/resilience/"]');
+    expect(await cases.count()).toBeGreaterThanOrEqual(12);
+
+    await cases.first().click();
+    await expect(page).toHaveURL(/\/resilience\/[^/]+$/);
+    await expect(page.getByRole("heading", { level: 1 })).toContainText(
+      "Does the verdict survive a different draw?",
+    );
+    await expect(page.getByTestId("resilience-sweep")).toBeVisible();
+    // One square per seed: the default sweep window is the whole story the
+    // draw panel tells, and 24 is `STRESS_SEEDS` in the web layer's own words.
+    expect(await page.getByTestId("seed-cell").count()).toBe(24);
+    await expect(page.getByTestId("influence-panel")).toBeVisible();
+    expect(await page.getByTestId("influence-entry").count()).toBeGreaterThan(0);
+  });
+});
+
 test.describe("machine-readable endpoints", () => {
   test("the OG route answers with a real PNG", async ({ request }) => {
     const response = await request.get("/og?kind=kingdom&title=Kantian%20Citadel");
@@ -91,6 +114,30 @@ test.describe("machine-readable endpoints", () => {
     for (const url of ["/cartographer", "/compare/", "/codex/", "/codex/texts/", "/court/"]) {
       expect(xml, `sitemap.xml never mentions ${url}`).toContain(url);
     }
+  });
+
+  test("the resilience API answers with the report the page shows", async ({ request }) => {
+    const response = await request.post("/api/resilience", {
+      data: { dilemmaId: "d01", count: 6 },
+    });
+    expect(response.status()).toBe(200);
+
+    const body = (await response.json()) as {
+      dilemmaId: string;
+      panel: unknown[];
+      resilience: { count: number; modalWinnerId: string };
+      influence: { entries: unknown[] };
+    };
+    expect(body.dilemmaId).toBe("d01");
+    expect(body.resilience.count).toBe(6);
+    expect(body.panel.length).toBeGreaterThan(0);
+    // One leave-one-out per seated advisor: the bench thinned one at a time.
+    expect(body.influence.entries.length).toBe(body.panel.length);
+  });
+
+  test("the resilience API refuses a case the atlas does not have", async ({ request }) => {
+    const response = await request.post("/api/resilience", { data: { dilemmaId: "dm-nope" } });
+    expect(response.status()).toBe(404);
   });
 
   test("robots.txt allows the prose and refuses the API", async ({ request }) => {

@@ -69,6 +69,9 @@ interface Tier {
  *   realm and weekly rather than monthly.
  * - An experiment is a bench you can push numbers through: interesting, narrow.
  * - A canon text is a primary source — stable for centuries, so `yearly`.
+ * - A resilience report is an analysis of a case rather than a case of its own:
+ *   valuable to arrive at from the dilemma, never a destination to rank above
+ *   one, so it sits on the comparison rung.
  * - A glossary term is the bottom of the ladder on purpose: there are a hundred
  *   and twenty of them, each one a lookup rather than a destination, and
  *   ranking 120 definitions at 0.6 would bury the twelve pages that make the
@@ -89,6 +92,7 @@ const TIERS = {
   canon: { changeFrequency: "yearly", priority: 0.5 },
   glossary: { changeFrequency: "yearly", priority: 0.4 },
   comparison: { changeFrequency: "monthly", priority: 0.4 },
+  resilience: { changeFrequency: "monthly", priority: 0.4 },
 } as const satisfies Record<string, Tier>;
 
 type TierName = keyof typeof TIERS;
@@ -104,7 +108,7 @@ const HUB_ROUTES: readonly string[] = [
   "/codex",
 ];
 
-const REFERENCE_ROUTES: readonly string[] = ["/method", "/engine", "/compare", "/journal", "/cartographer"];
+const REFERENCE_ROUTES: readonly string[] = ["/method", "/engine", "/compare", "/journal", "/cartographer", "/resilience"];
 
 function entry(path: string, tier: TierName): SitemapEntry {
   return {
@@ -146,6 +150,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...ADVISORS.map((advisor) => entry(`/court/${advisor.slug}`, "advisor")),
     ...DILEMMAS.map((dilemma) => entry(`/dilemmas/${dilemma.slug}`, "dilemma")),
     ...DILEMMAS.map((dilemma) => entry(`/compare/${dilemma.slug}`, "comparison")),
+    ...DILEMMAS.map((dilemma) => entry(`/resilience/${dilemma.slug}`, "resilience")),
     ...EXPERIMENTS.map((experiment) => entry(`/experiments/${experiment.slug}`, "experiment")),
     ...TEXTS.map((text) => entry(`/codex/texts/${text.slug}`, "canon")),
     ...GLOSSARY.map((entry_) => entry(`/codex/${entry_.slug}`, "glossary")),

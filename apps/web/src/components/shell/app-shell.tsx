@@ -150,6 +150,7 @@ const COLUMNS: { title: string; links: { href: string; label: string }[] }[] = [
       { href: "/compare", label: "How each realm rules" },
       { href: "/dilemmas", label: "Dilemma engine" },
       { href: "/engine", label: "What the case is about" },
+      { href: "/resilience", label: "Verdict resilience" },
     ],
   },
   {
