@@ -153,6 +153,21 @@ export {
   type TopologicalResult,
   type WellFormedReport,
 } from "./council/argument-graph";
+export {
+  analyseInfluence,
+  analyseResilience,
+  INFLUENCE_THRESHOLDS,
+  RESILIENCE_SWEEP,
+  RESILIENCE_THRESHOLDS,
+  type InfluenceEntry,
+  type InfluenceReport,
+  type InfluenceVerdict,
+  type OptionStability,
+  type ResilienceInput,
+  type ResilienceReport,
+  type ResilienceVerdict,
+  type SeedOutcome,
+} from "./council/resilience";
 
 /* -------------------------------- dilemmas -------------------------------- */
 export {
