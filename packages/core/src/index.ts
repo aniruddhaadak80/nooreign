@@ -318,3 +318,9 @@ export {
   type SearchIndex,
   type SearchableDoc,
 } from "./search/index";
+export {
+  boundedDistance,
+  didYouMean,
+  NEAR_MISS_MAX_DISTANCE,
+  type DidYouMeanOptions,
+} from "./search/fuzzy";
