@@ -71,6 +71,42 @@ a subtotal, a jitter value, and a rounded total. Round them yourself and you get
 | see what the alignment stack can measure | `/observatory` | a coverage matrix — and the moral axes nothing in the stack can address |
 | grind the classic thought experiments | `/experiments` | parameter sweeps with monotone, documented models |
 | look a term up | `/codex` | 120 definitions and 28 canon texts |
+| ask whether a verdict survives a different draw | `/resilience` | every case re-stressed across 24 seeds, then once more with each advisor removed |
+
+### Beyond the browser
+
+Three clients read the same engine — the web app, a CLI, and an MCP server — and all three call
+`@repo/core` directly, so a verdict computed in one is the same document in the others.
+
+```powershell
+# the CLI: the whole atlas from a terminal (ids or slugs; every number computed locally)
+bun packages/cli/src/bin.ts kingdoms
+bun packages/cli/src/bin.ts convene paperclip-maximiser --seed 2406
+bun packages/cli/src/bin.ts resilience trolley-of-five-million --count 48
+bun packages/cli/src/bin.ts compare d01 --json
+bun packages/cli/src/bin.ts convene d01 --mermaid        # the argument graph, as Mermaid source
+
+# the MCP server: the same corpus over stdio, seven read-only tools
+bun packages/mcp/src/bin.ts
+```
+
+The MCP surface is `nooreign_list_kingdoms`, `nooreign_list_advisors`, `nooreign_list_dilemmas`,
+`nooreign_get_dilemma`, `nooreign_convene`, `nooreign_compare_kingdoms` and `nooreign_stress_verdict` —
+every one `readOnlyHint: true` with no network access, returning both a markdown rendering and the same
+document as structured JSON.
+
+```jsonc
+// opencode.json — hold the atlas open beside a conversation
+{
+  "mcp": {
+    "nooreign": {
+      "type": "local",
+      "command": ["bun", "packages/mcp/src/bin.ts"],
+      "enabled": true
+    }
+  }
+}
+```
 
 ---
 
@@ -137,17 +173,19 @@ The same numbers, in the same order, appear on the council page. Nothing is summ
 ```mermaid
 flowchart LR
   subgraph apps["apps/web — Next.js 15 App Router"]
-    RSC["Server Components\n28 routes"]
-    API["Route handlers\n/api/deliberate\n/api/experiment\n/healthz"]
+    RSC["Server Components\n24 pages"]
+    API["Route handlers\n/api/deliberate\n/api/experiment\n/api/resilience\n/healthz"]
     ISLE["Client islands\ncouncil · bench · codex"]
   end
 
   subgraph packages["packages — typed, pure, offline"]
-    CORE["@repo/core\ndeliberation · ethics\nchronicle · observatory"]
+    CORE["@repo/core\ndeliberation · ethics\nchronicle · observatory · resilience"]
     SEED["@repo/seed\n12 kingdoms · 28 advisors\n32 eras · 20 dilemmas"]
     UI["@repo/ui\ncrests · terrain · traces"]
     I18N["@repo/i18n\n14 locales"]
     SDK["@repo/sdk\ntyped clients"]
+    CLI["@repo/cli\nnooreign CLI"]
+    MCP["@repo/mcp\nMCP server · 7 tools"]
   end
 
   subgraph poly["polyglot"]
@@ -164,6 +202,10 @@ flowchart LR
   RS -. "parity fixtures" .-> CORE
   PY -. "same engine, headless" .-> CORE
   SDK --> API
+  CLI --> CORE
+  CLI --> SEED
+  MCP --> CORE
+  MCP --> SEED
   UI --> SEED
 ```
 
@@ -280,19 +322,19 @@ hand-tuned randomness, nothing is fetched at runtime, and regenerating reproduce
 
 | | files | lines |
 |---|---:|---:|
-| TypeScript / TSX | 205 | 39,714 |
-| Rust | 9 | 6,096 |
+| TypeScript / TSX | 249 | 50,543 |
+| Rust | 9 | 6,152 |
 | Python | 10 | 4,959 |
-| JavaScript (scripts) | 11 | 1,055 |
-| **Code lines** | **236** | **51,945** |
-| Markdown | 50 | 12,540 |
-| JSON / YAML / TOML / config | 38 | 3,782 |
+| JavaScript (scripts) | 13 | 1,063 |
+| **Code lines** | **282** | **62,838** |
+| Markdown | 51 | 12,743 |
+| JSON / YAML / TOML / config | 41 | 2,818 |
 | SVG assets | 21 | 1,802 |
 | Mermaid sources | 14 | 1,096 |
-| **Total lines** | **368** | **72,757** |
+| **Total lines** | **420** | **84,108** |
 
 **On the million-line target, honestly:** this repository is ~72k lines, not 1M, and the gap is real.
-Every line here is product surface (116 prerendered routes), domain logic with tests, one of three
+Every line here is product surface (302 prerendered routes), domain logic with tests, one of three
 interoperating implementations of the council engine, or documentation someone would actually read. The
 honest levers for a bigger repository are more *content* — more kingdoms, more dilemmas, more canon texts
 in more languages — rather than more scaffolding.
