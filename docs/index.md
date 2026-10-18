@@ -62,6 +62,7 @@ that sentence.
 | [`guides/adding-an-advisor.md`](guides/adding-an-advisor.md) | Authoring a thinker and their axiom vector |
 | [`guides/adding-a-dilemma.md`](guides/adding-a-dilemma.md) | Authoring a case and its option deltas |
 | [`guides/adding-a-technique.md`](guides/adding-a-technique.md) | Authoring a technique for the observatory |
+| [`guides/adding-a-locale.md`](guides/adding-a-locale.md) | Authoring an interface translation |
 
 ### Runbooks
 
