@@ -51,6 +51,34 @@ stops being deterministic.
 > Windows host without the MSVC toolchain. Build against the GNU target instead:
 > `cargo build --manifest-path crates/engine/Cargo.toml --target x86_64-pc-windows-gnu`.
 
+## The gate
+
+The comparison is only worth something if something runs it, so the repository
+runs it on every push:
+
+```sh
+bun run verify:parity
+```
+
+That is two steps, and they are also two separate scripts so CI can use them
+apart:
+
+| Script | What it does |
+| --- | --- |
+| `bun run parity:generate` | `cargo run --quiet --manifest-path crates/engine/Cargo.toml --bin fixtures` — rewrites `fixtures/parity.json` from this crate |
+| `bun run parity:test` | `vitest run --project core src/parity.test.ts` — asks the TypeScript engine to reproduce every number in the fixture |
+| `bun run verify:parity` | both, in that order |
+
+The `parity` job in `.github/workflows/ci.yml` runs the same two steps, plus
+`git diff --exit-code crates/engine/fixtures/parity.json`: the fixture is
+committed, so a Rust engine that moved on without regenerating it fails the job
+instead of quietly agreeing with a stale file.
+
+`packages/core/src/parity.test.ts` **skips** — with a printed reason — when the
+fixture is absent, so a contributor without a Rust toolchain is not blocked.
+The fixture is committed, so the ordinary checkout has it; the skip exists for
+the checkout that does not.
+
 ## Layout
 
 | File | What it is | TypeScript it mirrors |
