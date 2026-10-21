@@ -215,6 +215,43 @@ jobs:
       - name: Clippy
         run: cargo clippy --manifest-path crates/engine/Cargo.toml -- -D warnings
 
+  parity:
+    name: parity gate (rust ⇄ typescript)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: ${{ env.BUN_VERSION }}
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: crates/engine -> target
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      # ADR 0008: the Rust crate is the reference implementation and the
+      # TypeScript engine is tested against it. This job is the whole point of
+      # that arrangement — the `quality` job runs the TypeScript suite against
+      # the *committed* fixture, which proves the two engines agree with a file
+      # that could itself be stale. Regenerating the fixture here first means
+      # the comparison is against what the Rust engine publishes today.
+      - name: Regenerate the parity fixture from the Rust engine
+        run: bun run parity:generate
+
+      # The fixture is committed, so a Rust engine that moved on without a
+      # regenerated fixture shows up as a diff here rather than as a silent
+      # disagreement somewhere else.
+      - name: The committed fixture must match the Rust engine
+        run: git diff --exit-code -- crates/engine/fixtures/parity.json
+
+      - name: Compare the TypeScript engine against the Rust fixture
+        run: bun run parity:test
+
   secrets-scan:
     name: secrets scan
     runs-on: ubuntu-latest
