@@ -166,6 +166,11 @@ winner = argmax_o Σ_a total(a, o)
 
 The same numbers, in the same order, appear on the council page. Nothing is summarised after the fact.
 
+`a.axioms[k]` above is shorthand: the engine scores with the **weighed** vector — 70% the advisor's own
+weights, 30% their kingdom's — so a Citadel Kant and an unaffiliated Kant are not the same witness. A
+complete sitting, with every weight, product, subtotal and jitter checked against a real run, is in
+[`docs/guides/reading-a-verdict.md`](docs/guides/reading-a-verdict.md).
+
 ---
 
 ## Architecture
@@ -359,7 +364,7 @@ in more languages — rather than more scaffolding.
 | [`docs/data-sources.md`](docs/data-sources.md) | Where every historical claim comes from |
 | [`docs/adr/`](docs/adr/) | Ten architecture decision records |
 | [`docs/diagrams/`](docs/diagrams/) | Fourteen mermaid sources, diffable and GitHub-renderable |
-| [`docs/guides/`](docs/guides/) | Ten task guides, from clone to adding a kingdom |
+| [`docs/guides/`](docs/guides/) | Thirteen task guides, from clone to adding a kingdom |
 | [`docs/runbooks/`](docs/runbooks/) | Five operational runbooks |
 | [`docs/api/`](docs/api/) | REST, Python service, Rust crate and core module reference |
 
