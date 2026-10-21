@@ -184,7 +184,7 @@ Three GitHub secrets, never committed: `VERCEL_TOKEN`, `VERCEL_ORG_ID`,
 
 | Variable | Where | Why |
 | --- | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | build time, inlined into the client bundle | Canonical origin for metadata, canonical URLs and the sitemap |
+| `NEXT_PUBLIC_SITE_URL` | build time, inlined into the client bundle | The origin the image records. **The app does not read it yet** — the canonical origin is a literal in `layout.tsx`, `sitemap.ts`, `robots.ts` and `og/route.tsx`. See [`deploying-to-fly.md`](deploying-to-fly.md) |
 | `NOOREIGN_SERVICE_URL` | runtime, optional | Leave empty |
 | `NEXT_PUBLIC_NOOREIGN_SERVICE_URL` | build time, optional | Leave empty |
 | `NEXT_TELEMETRY_DISABLED=1` | runtime | The atlas must not phone home |
@@ -201,6 +201,9 @@ fly launch --copy-config --no-deploy
 fly secrets set NOOREIGN_SERVICE_URL=...   # only if the agents service is up
 fly deploy
 ```
+
+The long version — the app name, the build argument that is not a secret, and how
+to verify the deployment — is [`deploying-to-fly.md`](deploying-to-fly.md).
 
 Configuration highlights:
 
@@ -224,6 +227,10 @@ The `[[http_service.checks]]` block is the `/api/healthz` HTTP check above.
 
 `render.yaml` is a blueprint. Render reads it from the repo root
 (Infrastructure → Blueprints).
+
+The long version — the commands in order, the `NEXT_PUBLIC_SITE_URL` prompt that
+fails silently, and how to verify the deployment — is
+[`deploying-to-render.md`](deploying-to-render.md).
 
 Two services:
 
@@ -344,7 +351,9 @@ Then, in order:
    ```
 
 3. **Set `NEXT_PUBLIC_SITE_URL`** to the real origin. It is inlined at build time, so
-   setting it after the build does nothing.
+   setting it after the build does nothing. To make the deployed site actually claim
+   that origin, change the four literals too — `metadataBase` in `layout.tsx`, `SITE`
+   in `sitemap.ts` and `robots.ts`, and the origin on the Open Graph image.
 
 4. **Leave `NOOREIGN_SERVICE_URL` empty** unless you are deploying the Python service
    too. The atlas does not need it and setting it introduces a dependency you have not
@@ -367,17 +376,20 @@ Then, in order:
 | --- | --- | --- |
 | Container boots, every route 404s | `.next/static` or `public` not copied into the runner | Check both `COPY` lines in the `Dockerfile` |
 | Fly machine unhealthy | `HOSTNAME` not `0.0.0.0` | Set it; the proxy cannot reach loopback |
-| Wrong canonical URL / OG image | `NEXT_PUBLIC_SITE_URL` set after the build | Set it at build time |
+| Wrong canonical URL / OG image | the origin is a literal in `layout.tsx`, `sitemap.ts`, `robots.ts` and `og/route.tsx` | change the four literals and rebuild — `NEXT_PUBLIC_SITE_URL` alone does not move them |
 | `502` from a proxy, container healthy | `PORT` mismatch | `PORT=3000` and `HOSTNAME=0.0.0.0` |
 | Python service reachable but the site ignores it | `NOOREIGN_SERVICE_URL` set at runtime on a build-time-only var | It is a runtime var; check it is set on the **server**, not only in the build env |
 | CSS missing in the Docker image | `public/` not copied | See the `Dockerfile` comment |
 
 ## Related
 
-- [`../runbooks/release.md`](../runbooks/release.md) — the tag, CI and artefact flow
-- [`../runbooks/incident-triage.md`](../runbooks/incident-triage.md) — when the deployed
+- [`../runbooks/release.md`](../runbooks/release.md) - the tag, CI and artefact flow
+- [`../runbooks/incident-triage.md`](../runbooks/incident-triage.md) - when the deployed
   site misbehaves
-- [`../api/python-service.md`](../api/python-service.md) — the optional service
+- [`deploying-to-fly.md`](deploying-to-fly.md) - the Fly walkthrough, command by command
+- [`deploying-to-render.md`](deploying-to-render.md) - the Render walkthrough, command
+  by command
+- [`../api/python-service.md`](../api/python-service.md) - the optional service
 - [`../api/rest-api.md`](../api/rest-api.md) — `/api/healthz` in full
 - [ADR 0009](../adr/0009-optional-python-agents-service.md) — why the Python
   service is optional at runtime
