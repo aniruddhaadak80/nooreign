@@ -40,6 +40,17 @@ jobs:
         with:
           bun-version: ${{ env.BUN_VERSION }}
 
+      # Bun's global install cache is content-addressed, so restoring it across
+      # runs turns `bun install` into a copy from disk instead of a download.
+      # Keyed on the lockfile hash: a dependency change invalidates it exactly.
+      - name: Cache Bun install cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            bun-${{ runner.os }}-
+
       # --frozen-lockfile: CI must never resolve a new version. If the lockfile
       # is stale relative to package.json, the job fails loudly instead of
       # silently installing something different from what was reviewed.
@@ -79,6 +90,14 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: ${{ env.BUN_VERSION }}
+
+      - name: Cache Bun install cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: bun-${{ runner.os }}-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            bun-${{ runner.os }}-
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
