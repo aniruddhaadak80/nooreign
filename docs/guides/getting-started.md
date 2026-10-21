@@ -158,5 +158,6 @@ Routes marked "planned" in the roadmap are not yet present in `apps/web/src/app`
 | Add a thinker | [`adding-an-advisor.md`](adding-an-advisor.md) |
 | Add a case | [`adding-a-dilemma.md`](adding-a-dilemma.md) |
 | Add a technique | [`adding-a-technique.md`](adding-a-technique.md) |
+| Add a locale | [`adding-a-locale.md`](adding-a-locale.md) |
 | Understand determinism | [`determinism-and-seeds.md`](determinism-and-seeds.md) |
 | Contribute | [`contributing-guide.md`](contributing-guide.md) |
