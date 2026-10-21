@@ -29,7 +29,7 @@ jobs:
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # The Vercel token/org/project ids live in repo secrets and are absent
       # on forks and fresh clones. Fail soft with a notice instead of letting
@@ -49,7 +49,7 @@ jobs:
 
       # `vercel pull` materialises .vercel/project.json and the env for the
       # project, so `vercel build`/`deploy` do not need the CLI to guess linkage.
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         if: steps.guard.outputs.missing != 'true'
         with:
           node-version: "20"
