@@ -183,6 +183,9 @@ every record against its schema **and** every foreign key, on import.
 | A term | `glossary.ts` | — |
 | A canon text | `texts.ts` | — |
 
+Interface strings are not seed content: they live in `packages/i18n` as typed,
+closed catalogues — see [`adding-a-locale.md`](adding-a-locale.md) for the walkthrough.
+
 The six moral axes are `welfare`, `rights`, `virtue`, `care`, `justice`, `agency`.
 Weights are in `[0, 1]` and **their sum is intentionally unconstrained** — no tradition
 agrees on a budget.

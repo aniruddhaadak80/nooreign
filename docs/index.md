@@ -57,11 +57,14 @@ that sentence.
 | [`guides/determinism-and-seeds.md`](guides/determinism-and-seeds.md) | Every stochastic path, the seed `2406`, and how to regenerate |
 | [`guides/writing-good-argument-moves.md`](guides/writing-good-argument-moves.md) | How to write an `ArgumentMove` that is attributable to its advisor |
 | [`guides/deploying.md`](guides/deploying.md) | Vercel, Docker, Fly, Render, Railway, and the healthcheck contract |
+| [`guides/deploying-to-fly.md`](guides/deploying-to-fly.md) | Step by step to a Fly machine: the commands, the app name, the build argument that is not a secret |
+| [`guides/deploying-to-render.md`](guides/deploying-to-render.md) | Step by step to a Render blueprint: the commands, the prompt that fails silently, how to verify it |
 | [`guides/contributing-guide.md`](guides/contributing-guide.md) | Branching, commits, the determinism rule, review |
 | [`guides/adding-a-kingdom.md`](guides/adding-a-kingdom.md) | Authoring a realm |
 | [`guides/adding-an-advisor.md`](guides/adding-an-advisor.md) | Authoring a thinker and their axiom vector |
 | [`guides/adding-a-dilemma.md`](guides/adding-a-dilemma.md) | Authoring a case and its option deltas |
 | [`guides/adding-a-technique.md`](guides/adding-a-technique.md) | Authoring a technique for the observatory |
+| [`guides/adding-a-locale.md`](guides/adding-a-locale.md) | Authoring an interface translation |
 
 ### Runbooks
 

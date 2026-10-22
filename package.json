@@ -24,6 +24,9 @@
                     "seed":  "bun scripts/seed.ts",
                     "loc":  "bun scripts/loc-count.mjs",
                     "verify":  "bun run typecheck \u0026\u0026 bun run lint \u0026\u0026 bun run test \u0026\u0026 bun run build",
+                    "parity:generate":  "cargo run --quiet --manifest-path crates/engine/Cargo.toml --bin fixtures",
+                    "parity:test":  "vitest run --project core src/parity.test.ts",
+                    "verify:parity":  "bun run parity:generate \u0026\u0026 bun run parity:test",
                     "service:agents":  "python -m uvicorn services.agents.app.main:app --reload --port 8080",
                     "crate:engine":  "cargo test --manifest-path crates/engine/Cargo.toml"
                 },
