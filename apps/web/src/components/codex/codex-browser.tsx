@@ -6,6 +6,7 @@ import type { SearchIndex } from "@repo/core";
 import type { CodexFacet } from "@/lib/codex-index";
 import { isRankingQuery, rankCodex, TermCard, toSearchableDocs } from "./term-card";
 import type { CodexDoc, CodexResult } from "./term-card";
+import { queryCorrections } from "./near-miss";
 import { SearchField } from "./search-field";
 
 /**
@@ -16,6 +17,10 @@ import { SearchField } from "./search-field";
  * mean shipping a second implementation of the ranking to the browser anyway. The index is rebuilt
  * client-side from the same serialisable documents the server rendered from, using the same
  * `@repo/core` engine and the same `rankCodex`, so the two orderings cannot drift.
+ *
+ * When a query finds nothing, the strip under the field offers the closest queries the corpus can
+ * actually answer (`queryCorrections`), which is the one useful thing left to say. It stays hidden
+ * while results are on screen: a correction next to working results is noise.
  *
  * Without JavaScript this component still renders the complete codex: `rankCodex` treats an empty
  * query as browsing, which returns every document in the atlas's curated order.
@@ -49,6 +54,10 @@ export function CodexBrowser({ docs, facets }: CodexBrowserProps) {
   );
   const ranking = useMemo(() => isRankingQuery(raw), [raw]);
   const suggestions = useMemo(() => completions(index, raw), [index, raw]);
+  const corrections = useMemo(
+    () => (results.length === 0 ? queryCorrections(index, raw) : []),
+    [index, raw, results],
+  );
 
   const termResults = useMemo(() => results.filter((r) => r.doc.family === "term"), [results]);
   const textResults = useMemo(() => results.filter((r) => r.doc.family === "text"), [results]);
@@ -66,6 +75,31 @@ export function CodexBrowser({ docs, facets }: CodexBrowserProps) {
           totalTexts: docs.filter((doc) => doc.family === "text").length,
         }}
       />
+
+      {corrections.length === 0 ? null : (
+        <div className="mt-4" aria-live="polite">
+          <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-parchment-dim/70">
+            Did you mean
+          </p>
+          <ul
+            data-testid="codex-did-you-mean"
+            aria-label="Suggested corrections"
+            className="mt-2 flex flex-wrap items-center gap-2"
+          >
+            {corrections.map((correction) => (
+              <li key={correction.query}>
+                <button
+                  type="button"
+                  onClick={() => setRaw(correction.query)}
+                  className="rounded-full border border-verdigris/40 bg-verdigris/5 px-2.5 py-0.5 font-mono text-[11px] text-verdigris transition-colors hover:border-verdigris"
+                >
+                  {correction.query}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <div className="mt-5 flex flex-wrap gap-2" role="group" aria-label="Filter by kind">
         {facets.map((facet) => (
