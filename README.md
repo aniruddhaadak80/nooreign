@@ -364,7 +364,7 @@ in more languages — rather than more scaffolding.
 | [`docs/data-sources.md`](docs/data-sources.md) | Where every historical claim comes from |
 | [`docs/adr/`](docs/adr/) | Ten architecture decision records |
 | [`docs/diagrams/`](docs/diagrams/) | Fourteen mermaid sources, diffable and GitHub-renderable |
-| [`docs/guides/`](docs/guides/) | Thirteen task guides, from clone to adding a kingdom |
+| [`docs/guides/`](docs/guides/) | Fourteen task guides, from clone to adding a kingdom |
 | [`docs/runbooks/`](docs/runbooks/) | Five operational runbooks |
 | [`docs/api/`](docs/api/) | REST, Python service, Rust crate and core module reference |
 
