@@ -55,6 +55,7 @@ that sentence.
 | [`guides/getting-started.md`](guides/getting-started.md) | Cold clone to running dev server, and the command map |
 | [`guides/architecture.md`](guides/architecture.md) | Package graph, request flow, dependency rules |
 | [`guides/determinism-and-seeds.md`](guides/determinism-and-seeds.md) | Every stochastic path, the seed `2406`, and how to regenerate |
+| [`guides/reading-a-verdict.md`](guides/reading-a-verdict.md) | One sitting end to end — the paperclip maximiser before Kant, Bentham and Bostrom — with every number checked |
 | [`guides/writing-good-argument-moves.md`](guides/writing-good-argument-moves.md) | How to write an `ArgumentMove` that is attributable to its advisor |
 | [`guides/deploying.md`](guides/deploying.md) | Vercel, Docker, Fly, Render, Railway, and the healthcheck contract |
 | [`guides/deploying-to-fly.md`](guides/deploying-to-fly.md) | Step by step to a Fly machine: the commands, the app name, the build argument that is not a secret |
