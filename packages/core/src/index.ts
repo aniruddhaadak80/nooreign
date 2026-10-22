@@ -31,6 +31,17 @@ export {
 } from "./util/math";
 export { mulberry32, hashString, createRng, expectedMean, type Rng } from "./util/rng";
 export {
+  median,
+  quantile,
+  variance,
+  stdDev,
+  gini,
+  normalizedEntropy,
+  zScores,
+  summary,
+  type Summary,
+} from "./util/stats";
+export {
   ok,
   err,
   isOk,
