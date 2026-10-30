@@ -18,9 +18,9 @@
   --color-indigo-glow: #5a6fd6;
   --color-ink: #060911;
 
-  --font-display: var(--font-cinzel), Georgia, "Times New Roman", serif;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-mono-jetbrains), ui-monospace, "SFMono-Regular", monospace;
+  --font-display: "Cinzel", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, "SFMono-Regular", monospace;
 
   --radius-plate: 0.25rem;
   --radius-realm: 0.625rem;

@@ -1,28 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Cinzel, Inter, JetBrains_Mono } from "next/font/google";
+import "@fontsource/cinzel/400.css";
+import "@fontsource/cinzel/600.css";
+import "@fontsource/cinzel/700.css";
+import "@fontsource-variable/inter";
+import "@fontsource-variable/jetbrains-mono";
 import { AppHeader, AppFooter } from "@/components/shell";
 import { NAV_SECTIONS } from "@/lib/navigation";
 import "./globals.css";
-
-const cinzel = Cinzel({
-  subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-cinzel",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-mono-jetbrains",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://nooreign.vercel.app"),
@@ -70,7 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     // `lang`/`dir` are set on the client by the locale switcher and reset to these
     // on the server; `suppressHydrationWarning` covers the one frame in which the
     // saved preference differs from what the server sent.
-    <html lang="en" dir="ltr" suppressHydrationWarning className={`${cinzel.variable} ${inter.variable} ${jetbrains.variable}`}>
+    <html lang="en" dir="ltr" suppressHydrationWarning>
       <body className="starfield min-h-dvh antialiased">
         <a className="skip-link" href="#main">
           Skip to content
