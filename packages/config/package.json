@@ -9,6 +9,6 @@
     "./eslint": "./eslint.config.mjs"
   },
   "devDependencies": {
-    "typescript-eslint": "^8.18.0"
+    "typescript-eslint": "^8.72.1"
   }
 }
