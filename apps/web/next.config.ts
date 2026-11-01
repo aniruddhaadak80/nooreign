@@ -20,9 +20,6 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["lucide-react", "recharts", "d3-scale"],
   },
-  eslint: {
-    dirs: ["src"],
-  },
   async headers() {
     return [
       {

@@ -1,21 +1,18 @@
-import { FlatCompat } from "@eslint/eslintrc";
-import { dirname } from "node:path";
-import { fileURLToPath } from "node:url";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
 
 /**
- * Next 15 still ships `eslint-config-next` in the legacy eslintrc shape
- * (`{ extends: [...] }`), and `next lint` is deprecated in favour of the plain
- * ESLint CLI. `FlatCompat` is the supported bridge: it lets the app keep
- * Next's rule set — including the react-hooks rules that matter for the council
- * and bench islands — inside a flat config that ESLint 9 can run directly.
+ * Next 16 ships `eslint-config-next` as native flat config, so it can be spread
+ * directly into the ESLint 9 config instead of going through `FlatCompat`
+ * (which no longer understands the package's flat exports).
  *
  * The packages use `@repo/config`'s stricter preset instead; only the app needs
- * the Next-specific rules.
+ * the Next-specific rules, including the react-hooks rules that matter for the
+ * council and bench islands.
  */
-const compat = new FlatCompat({ baseDirectory: dirname(fileURLToPath(import.meta.url)) });
-
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+  ...nextVitals,
+  ...nextTs,
   {
     ignores: [
       ".next/**",
