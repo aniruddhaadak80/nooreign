@@ -15,6 +15,25 @@ updates:
       - javascript
     commit-message:
       prefix: "chore(deps)"
+    # Majors below are real migrations (new APIs, config formats, or peer
+    # requirements), not version bumps. Keeping them out of the queue stops
+    # Dependabot reopening the same red PR every week; each one gets a
+    # deliberate branch when we are ready to do the migration.
+    ignore:
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "eslint"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "eslint-plugin-react-hooks"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "zod"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "recharts"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "framer-motion"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "lucide-react"
+        update-types: ["version-update:semver-major"]
     groups:
       # Next.js minor/major moves carry the App Router and the standalone output;
       # they need a human reading the changelog, not an auto-merge.
