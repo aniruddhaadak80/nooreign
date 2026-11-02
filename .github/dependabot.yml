@@ -20,6 +20,10 @@ updates:
     # Dependabot reopening the same red PR every week; each one gets a
     # deliberate branch when we are ready to do the migration.
     ignore:
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "tailwind-merge"
+        update-types: ["version-update:semver-major"]
       - dependency-name: "typescript"
         update-types: ["version-update:semver-major"]
       - dependency-name: "eslint"
