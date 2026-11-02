@@ -31,7 +31,7 @@
                     "crate:engine":  "cargo test --manifest-path crates/engine/Cargo.toml"
                 },
     "devDependencies":  {
-                            "@axe-core/playwright":  "^4.13.0",
+                            "@axe-core/playwright":  "^4.14.0",
                             "@playwright/test":  "^1.64.1",
                             "@types/d3-scale":  "^4.0.9",
                             "@types/node":  "^20.17.0",
