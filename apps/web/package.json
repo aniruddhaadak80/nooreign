@@ -34,8 +34,8 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.7",
-    "@next/eslint-plugin-next": "16.4.3",
-    "@tailwindcss/postcss": "^4.0.0",
+    "@next/eslint-plugin-next": "16.4.5",
+    "@tailwindcss/postcss": "^4.3.4",
     "@types/d3-scale": "^4.0.9",
     "@types/node": "^20.17.0",
     "@types/react": "^19.0.0",
