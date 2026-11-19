@@ -182,6 +182,7 @@ export function createServer(): McpServer {
         outputSchema?: unknown;
         annotations?: unknown;
       },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any -- callback args are inferred from the runtime schema
       cb: (args: any) => unknown,
     ): void;
   };
