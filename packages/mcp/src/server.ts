@@ -169,9 +169,27 @@ const stressInput = z
 export function createServer(): McpServer {
   const server = new McpServer({ name: SERVER_NAME, version: SERVER_VERSION });
 
+  // The SDK resolves a nested zod 3 for its types while this workspace runs on
+  // the patched zod 4 line. Its runtime accepts both; keep the duplicate type
+  // trees out of tsc with a narrow local view of the registration surface.
+  type McpToolRegistrar = {
+    registerTool(
+      name: string,
+      config: {
+        title?: string;
+        description?: string;
+        inputSchema?: unknown;
+        outputSchema?: unknown;
+        annotations?: unknown;
+      },
+      cb: (args: any) => unknown,
+    ): void;
+  };
+  const mcp = server as unknown as McpToolRegistrar;
+
   /* ------------------------------------------------------------ the corpus */
 
-  server.registerTool(
+  mcp.registerTool(
     "nooreign_list_kingdoms",
     {
       title: "List the kingdoms",
@@ -199,7 +217,7 @@ Errors: none — the call always succeeds.`,
     },
   );
 
-  server.registerTool(
+  mcp.registerTool(
     "nooreign_list_advisors",
     {
       title: "List the advisors",
@@ -231,7 +249,7 @@ Errors:
     },
   );
 
-  server.registerTool(
+  mcp.registerTool(
     "nooreign_list_dilemmas",
     {
       title: "List the hard cases",
@@ -257,7 +275,7 @@ Errors: none — the call always succeeds.`,
     },
   );
 
-  server.registerTool(
+  mcp.registerTool(
     "nooreign_get_dilemma",
     {
       title: "Get one case in full",
@@ -296,7 +314,7 @@ Errors:
 
   /* ------------------------------------------------------------ the court */
 
-  server.registerTool(
+  mcp.registerTool(
     "nooreign_convene",
     {
       title: "Convene a court on a case",
@@ -342,7 +360,7 @@ Follow-ups: nooreign_stress_verdict asks whether this verdict survives a differe
     },
   );
 
-  server.registerTool(
+  mcp.registerTool(
     "nooreign_compare_kingdoms",
     {
       title: "Compare kingdoms on one case",
@@ -377,7 +395,7 @@ Errors:
     },
   );
 
-  server.registerTool(
+  mcp.registerTool(
     "nooreign_stress_verdict",
     {
       title: "Stress-test a verdict",
