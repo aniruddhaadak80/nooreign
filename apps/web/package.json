@@ -2,7 +2,7 @@
   "name": "@repo/web",
   "version": "0.1.0",
   "private": true,
-  "description": "Nooreign — the philosophical atlas of aligning intelligence",
+  "description": "Nooreign \u2014 the philosophical atlas of aligning intelligence",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
@@ -29,7 +29,7 @@
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "recharts": "^2.15.0",
-    "zod": "^3.24.0",
+    "zod": "^4.6.6",
     "zustand": "^5.1.0"
   },
   "devDependencies": {

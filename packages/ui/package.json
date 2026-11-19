@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Nooreign design system — crests, terrain, rails, traces, council chrome",
+  "description": "Nooreign design system \u2014 crests, terrain, rails, traces, council chrome",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "exports": {
@@ -25,7 +25,7 @@
     "lucide-react": "^1.72.0",
     "react": "^19.3.1",
     "tailwind-merge": "^2.6.0",
-    "zod": "^3.24.0"
+    "zod": "^4.6.6"
   },
   "devDependencies": {
     "@repo/config": "workspace:*",

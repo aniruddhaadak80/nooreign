@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "MCP server for Nooreign — the atlas as tools an agent can call: convene courts, compare kingdoms, stress verdicts",
+  "description": "MCP server for Nooreign \u2014 the atlas as tools an agent can call: convene courts, compare kingdoms, stress verdicts",
   "bin": {
     "nooreign-mcp": "./src/bin.ts"
   },
@@ -21,7 +21,7 @@
     "@modelcontextprotocol/sdk": "^1.32.2",
     "@repo/core": "workspace:*",
     "@repo/seed": "workspace:*",
-    "zod": "^3.24.0"
+    "zod": "^4.6.6"
   },
   "devDependencies": {
     "@repo/config": "workspace:*",
